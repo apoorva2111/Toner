@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ContentDetailsEntity" representedClassName="ContentDetailsEntity" syncable="YES">
+        <attribute name="artistImage" attributeType="String" defaultValueString=""/>
+        <attribute name="artistName" attributeType="String" defaultValueString=""/>
+        <attribute name="fileSize" attributeType="String" defaultValueString=""/>
+        <attribute name="fileType" attributeType="String" defaultValueString=""/>
+        <attribute name="songDuration" attributeType="String" defaultValueString=""/>
+        <attribute name="songID" attributeType="String" defaultValueString=""/>
+        <attribute name="songImage" attributeType="String" defaultValueString=""/>
+        <attribute name="songName" attributeType="String" defaultValueString=""/>
+        <attribute name="songPath" attributeType="String" defaultValueString=""/>
+    </entity>
+    <entity name="CurrentDownloadEntity" representedClassName="CurrentDownloadEntity" syncable="YES">
+        <attribute name="artistImage" attributeType="String" defaultValueString=""/>
+        <attribute name="artistName" attributeType="String" defaultValueString=""/>
+        <attribute name="downloadStatus" optional="YES" attributeType="String"/>
+        <attribute name="fileSize" attributeType="String" defaultValueString=""/>
+        <attribute name="fileType" attributeType="String" defaultValueString=""/>
+        <attribute name="songDuration" attributeType="String" defaultValueString=""/>
+        <attribute name="songID" attributeType="String" defaultValueString=""/>
+        <attribute name="songImage" attributeType="String" defaultValueString=""/>
+        <attribute name="songName" attributeType="String" defaultValueString=""/>
+        <attribute name="songPath" attributeType="String" defaultValueString=""/>
+    </entity>
+    <elements>
+        <element name="ContentDetailsEntity" positionX="-54" positionY="-9" width="128" height="178"/>
+        <element name="CurrentDownloadEntity" positionX="-63" positionY="-18" width="128" height="193"/>
+    </elements>
+</model>

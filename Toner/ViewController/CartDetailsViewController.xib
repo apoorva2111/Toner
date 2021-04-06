@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CartDetailsViewController" customModule="Tonneru" customModuleProvider="target">
+            <connections>
+                <outlet property="checkOutButton" destination="Qxn-Lv-hmm" id="uga-9b-Yjl"/>
+                <outlet property="tableView" destination="N33-Zs-HPX" id="MR2-zu-qN9"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N33-Zs-HPX">
+                    <rect key="frame" x="0.0" y="44" width="414" height="802"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxn-Lv-hmm">
+                    <rect key="frame" x="0.0" y="846" width="414" height="50"/>
+                    <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="fiu-sN-zIk"/>
+                    </constraints>
+                    <state key="normal" title="Check Out"/>
+                    <connections>
+                        <action selector="checkOutButtonClicked:" destination="-1" eventType="touchUpInside" id="AWc-Ou-HQy"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Qxn-Lv-hmm" secondAttribute="trailing" id="Alq-pi-EUb"/>
+                <constraint firstItem="N33-Zs-HPX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bvm-0U-Di6"/>
+                <constraint firstItem="Qxn-Lv-hmm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="GSC-VT-d3h"/>
+                <constraint firstItem="Qxn-Lv-hmm" firstAttribute="top" secondItem="N33-Zs-HPX" secondAttribute="bottom" id="TjQ-aZ-YbG"/>
+                <constraint firstItem="N33-Zs-HPX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ghZ-fm-JQa"/>
+                <constraint firstAttribute="bottom" secondItem="Qxn-Lv-hmm" secondAttribute="bottom" id="iZd-bg-B3G"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="N33-Zs-HPX" secondAttribute="trailing" id="roc-KZ-uDl"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="137.68115942028987" y="125.89285714285714"/>
+        </view>
+    </objects>
+</document>

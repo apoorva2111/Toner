@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayListCells" rowHeight="68" id="NTo-tx-fuo" customClass="PlayListCells" customModule="Tonneru" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NTo-tx-fuo" id="hxl-3m-i0K">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUT-SI-FfX">
+                        <rect key="frame" x="54" y="20" width="256" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="HAM-qY-cUF"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playlist" textAlignment="center" lineBreakMode="wordWrap" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywG-pK-fCU">
+                        <rect key="frame" x="54" y="46" width="50" height="15"/>
+                        <color key="backgroundColor" red="0.43137254901960786" green="0.45882352941176469" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="rf3-kZ-8OD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d8-if-mhW">
+                        <rect key="frame" x="280" y="19" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Gxj-cO-Cxr"/>
+                            <constraint firstAttribute="height" constant="30" id="ryG-e7-3kb"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                        <state key="normal" image="plus"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iKN-ZG-KdN">
+                        <rect key="frame" x="0.0" y="66" width="320" height="1"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="m36-X5-LUL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playList" translatesAutoresizingMaskIntoConstraints="NO" id="HxC-dq-6lK">
+                        <rect key="frame" x="8" y="17" width="30" height="30"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="jDo-7h-qDN"/>
+                            <constraint firstAttribute="width" constant="30" id="rKQ-qN-tD9"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music" translatesAutoresizingMaskIntoConstraints="NO" id="ZlU-FW-RlB">
+                        <rect key="frame" x="107" y="43.5" width="20" height="20"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="tOC-CK-OLs"/>
+                            <constraint firstAttribute="height" constant="20" id="xX9-40-fxB"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZo-gW-g44">
+                        <rect key="frame" x="127" y="46" width="9" height="15"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="ZlU-FW-RlB" firstAttribute="centerY" secondItem="ywG-pK-fCU" secondAttribute="centerY" id="1Mo-5t-WDr"/>
+                    <constraint firstItem="HxC-dq-6lK" firstAttribute="leading" secondItem="hxl-3m-i0K" secondAttribute="leading" constant="8" id="2DD-vo-Y2L"/>
+                    <constraint firstAttribute="trailing" secondItem="8d8-if-mhW" secondAttribute="trailing" constant="10" id="2oz-B6-KLZ"/>
+                    <constraint firstItem="ywG-pK-fCU" firstAttribute="leading" secondItem="CUT-SI-FfX" secondAttribute="leading" id="4CR-Wg-pRN"/>
+                    <constraint firstItem="CUT-SI-FfX" firstAttribute="top" secondItem="hxl-3m-i0K" secondAttribute="top" constant="20" id="7V1-7P-Ch5"/>
+                    <constraint firstItem="ywG-pK-fCU" firstAttribute="top" secondItem="CUT-SI-FfX" secondAttribute="bottom" constant="5" id="BI0-13-2ys"/>
+                    <constraint firstItem="ZlU-FW-RlB" firstAttribute="leading" secondItem="ywG-pK-fCU" secondAttribute="trailing" constant="3" id="FSE-5y-guR"/>
+                    <constraint firstAttribute="trailing" secondItem="iKN-ZG-KdN" secondAttribute="trailing" id="FhB-FI-z0o"/>
+                    <constraint firstAttribute="trailing" secondItem="CUT-SI-FfX" secondAttribute="trailing" constant="10" id="Laf-9T-OkK"/>
+                    <constraint firstItem="CUT-SI-FfX" firstAttribute="leading" secondItem="HxC-dq-6lK" secondAttribute="trailing" constant="16" id="T7v-Y3-704"/>
+                    <constraint firstAttribute="bottom" secondItem="iKN-ZG-KdN" secondAttribute="bottom" constant="1" id="XrZ-OL-wIj"/>
+                    <constraint firstItem="HxC-dq-6lK" firstAttribute="top" secondItem="hxl-3m-i0K" secondAttribute="top" constant="17" id="ZOa-Kv-A6y"/>
+                    <constraint firstItem="rZo-gW-g44" firstAttribute="leading" secondItem="ZlU-FW-RlB" secondAttribute="trailing" id="bJ6-5C-owh"/>
+                    <constraint firstItem="8d8-if-mhW" firstAttribute="centerY" secondItem="hxl-3m-i0K" secondAttribute="centerY" id="kyV-9n-MNl"/>
+                    <constraint firstItem="iKN-ZG-KdN" firstAttribute="leading" secondItem="hxl-3m-i0K" secondAttribute="leading" id="naj-Xd-PMI"/>
+                    <constraint firstItem="rZo-gW-g44" firstAttribute="centerY" secondItem="ZlU-FW-RlB" secondAttribute="centerY" id="xHn-Dc-kGB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="bottomView" destination="iKN-ZG-KdN" id="MW1-zr-qDT"/>
+                <outlet property="ganre" destination="ywG-pK-fCU" id="7Xy-gP-uV5"/>
+                <outlet property="images" destination="HxC-dq-6lK" id="sG2-ya-8dA"/>
+                <outlet property="lblPlayListCount" destination="rZo-gW-g44" id="daX-uA-8hA"/>
+                <outlet property="plusButton" destination="8d8-if-mhW" id="R3w-f1-Swf"/>
+                <outlet property="songName" destination="CUT-SI-FfX" id="7MX-wf-LtZ"/>
+            </connections>
+            <point key="canvasLocation" x="33.600000000000001" y="76.46176911544228"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="music" width="48" height="48"/>
+        <image name="playList" width="64" height="64"/>
+        <image name="plus" width="30" height="30"/>
+    </resources>
+</document>

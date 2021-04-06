@@ -1,0 +1,1159 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0473774F7E338C8B4F8EB426 /* Pods_Toner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 455A0D81617918872AC61DDC /* Pods_Toner.framework */; };
+		CE0F43B2254DA77D0001B85E /* MyDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F43B0254DA77D0001B85E /* MyDownloadViewController.swift */; };
+		CE0F43B3254DA77D0001B85E /* MyDownloadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0F43B1254DA77D0001B85E /* MyDownloadViewController.xib */; };
+		CE0F43B6254DAF9D0001B85E /* DownloadTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0F43B4254DAF9D0001B85E /* DownloadTableViewCell.swift */; };
+		CE0F43B7254DAF9D0001B85E /* DownloadTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE0F43B5254DAF9D0001B85E /* DownloadTableViewCell.xib */; };
+		CE120F43251FA16100C0CD30 /* FollowingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE120F42251FA16100C0CD30 /* FollowingsViewController.swift */; };
+		CE120F45251FA16800C0CD30 /* FollowingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE120F44251FA16800C0CD30 /* FollowingsViewController.xib */; };
+		CE14157024D4962600AB1A06 /* ProductDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE14156E24D4962600AB1A06 /* ProductDetailsViewController.xib */; };
+		CE203DA82549DC3E00A422E3 /* TonneruDownloadUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE203DA72549DC3E00A422E3 /* TonneruDownloadUtility.swift */; };
+		CE238B8D254C5D89009FC48B /* TonneruDownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA84BC72544189E002E2841 /* TonneruDownloadButton.swift */; };
+		CE238B8E254C5DD2009FC48B /* TonneruDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA84BC9254418CA002E2841 /* TonneruDownloadManager.swift */; };
+		CE260594250BF62F001132D6 /* FollowChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE260592250BF62F001132D6 /* FollowChatTableViewCell.swift */; };
+		CE260595250BF62F001132D6 /* FollowChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE260593250BF62F001132D6 /* FollowChatTableViewCell.xib */; };
+		CE3CD34824BE39650012B4E4 /* ProductBannersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3CD34624BE39650012B4E4 /* ProductBannersCollectionViewCell.swift */; };
+		CE3CD34924BE39650012B4E4 /* ProductBannersCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE3CD34724BE39650012B4E4 /* ProductBannersCollectionViewCell.xib */; };
+		CE4B5812251F1A7500C7FDAE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B5810251F1A7500C7FDAE /* EditProfileViewController.swift */; };
+		CE4B5813251F1A7500C7FDAE /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4B5811251F1A7500C7FDAE /* EditProfileViewController.xib */; };
+		CE4B5815251F733D00C7FDAE /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B5814251F733D00C7FDAE /* Station.swift */; };
+		CE4B5818251F810E00C7FDAE /* MyStationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4B5816251F810E00C7FDAE /* MyStationsViewController.swift */; };
+		CE4B5819251F810E00C7FDAE /* MyStationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4B5817251F810E00C7FDAE /* MyStationsViewController.xib */; };
+		CE4C17E124BD567900795989 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4C17DF24BD567900795989 /* BannerCollectionViewCell.swift */; };
+		CE4C17E224BD567900795989 /* BannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4C17E024BD567900795989 /* BannerCollectionViewCell.xib */; };
+		CE4E14BD24F0E32700D98603 /* SubscriptionPlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E14BC24F0E32700D98603 /* SubscriptionPlanModel.swift */; };
+		CE4E14C024F0E4EC00D98603 /* SubscriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E14BE24F0E4EC00D98603 /* SubscriptionTableViewCell.swift */; };
+		CE4E14C124F0E4EC00D98603 /* SubscriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4E14BF24F0E4EC00D98603 /* SubscriptionTableViewCell.xib */; };
+		CE4E14C324F13ED100D98603 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4E14C224F13ED100D98603 /* ForgotPasswordViewController.swift */; };
+		CE84C88924D9D54B008BECFF /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE84C88824D9D54B008BECFF /* CategoryListViewController.swift */; };
+		CE84C88B24D9D681008BECFF /* CategoryListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE84C88A24D9D681008BECFF /* CategoryListViewController.xib */; };
+		CE886E08250CA3A600ECFC53 /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE886E06250CA3A600ECFC53 /* PlayListViewController.swift */; };
+		CE8E0E5D24D32C5C0080B52E /* ValueStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8E0E5C24D32C5C0080B52E /* ValueStepper.swift */; };
+		CE99462F24F0E0F8000A532E /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE99462D24F0E0F8000A532E /* SubscriptionViewController.swift */; };
+		CE99463024F0E0F8000A532E /* SubscriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE99462E24F0E0F8000A532E /* SubscriptionViewController.xib */; };
+		CEA84BCD254479E6002E2841 /* TonneruDownload.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEA84BCB254479E5002E2841 /* TonneruDownload.xcdatamodeld */; };
+		CEB088B024BF2ADA00C2EBEA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB088AF24BF2ADA00C2EBEA /* LoginViewController.swift */; };
+		CEB088B224BF440B00C2EBEA /* ExpandableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB088B124BF440B00C2EBEA /* ExpandableLabel.swift */; };
+		CEB088B424BF4D5A00C2EBEA /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB088B324BF4D5A00C2EBEA /* RegisterViewController.swift */; };
+		CEC0E5E024DB216100F2DEEF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC0E5DF24DB216100F2DEEF /* SettingsViewController.swift */; };
+		CEC0E5E324DB296700F2DEEF /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC0E5E124DB296700F2DEEF /* SettingsTableViewCell.swift */; };
+		CEC0E5E424DB296700F2DEEF /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEC0E5E224DB296700F2DEEF /* SettingsTableViewCell.xib */; };
+		CEC0E5E624DB2AE500F2DEEF /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEC0E5E524DB2AE500F2DEEF /* Setting.swift */; };
+		CECC5DB124C3833100A0E5CC /* TonneruMusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56F9F923774E6400F1A965 /* TonneruMusicPlayer.swift */; };
+		CED5898324BE9CA400007EC9 /* ZKCarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5898224BE9CA300007EC9 /* ZKCarousel.swift */; };
+		CED5C83E24C32A71002CF276 /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5C83B24C32A70002CF276 /* UIViewController+Utils.swift */; };
+		CED5C83F24C32A71002CF276 /* TransitionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5C83C24C32A71002CF276 /* TransitionCoordinator.swift */; };
+		CED5C84024C32A71002CF276 /* Array+UIViewPropertyAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5C83D24C32A71002CF276 /* Array+UIViewPropertyAnimator.swift */; };
+		CED5C84324C32D2C002CF276 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED5C84124C32D2B002CF276 /* PlayerViewController.swift */; };
+		CED5C84424C32D2C002CF276 /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CED5C84224C32D2B002CF276 /* PlayerViewController.xib */; };
+		CEE13A97251F8D89004FBAA6 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE13A95251F8D89004FBAA6 /* ChangePasswordViewController.swift */; };
+		CEE13A98251F8D89004FBAA6 /* ChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE13A96251F8D89004FBAA6 /* ChangePasswordViewController.xib */; };
+		CEE59E5624B78FEA006DE1A3 /* ProductDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE59E5524B78FEA006DE1A3 /* ProductDetailsViewController.swift */; };
+		CEE846D8250CA7B8007E938B /* PlayListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE846D6250CA7B8007E938B /* PlayListTableViewCell.swift */; };
+		CEE846D9250CA7B8007E938B /* PlayListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE846D7250CA7B8007E938B /* PlayListTableViewCell.xib */; };
+		CEE846DB250CABE8007E938B /* PlayListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE846DA250CABE8007E938B /* PlayListModel.swift */; };
+		CEE846DF250D0D7B007E938B /* CreatePlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE846DD250D0D7B007E938B /* CreatePlayListViewController.xib */; };
+		CEE95BC524BD53A100ADDD1E /* HomeBannerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE95BC324BD53A100ADDD1E /* HomeBannerTableViewCell.swift */; };
+		CEE95BC624BD53A100ADDD1E /* HomeBannerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE95BC424BD53A100ADDD1E /* HomeBannerTableViewCell.xib */; };
+		CEE9907724CDB30300B8603D /* StationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE9907524CDB30300B8603D /* StationListViewController.swift */; };
+		CEE9907824CDB30300B8603D /* StationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE9907624CDB30300B8603D /* StationListViewController.xib */; };
+		DE34EE8025C79B0C0089354C /* AddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE34EE7F25C79B0C0089354C /* AddressViewController.xib */; };
+		DE34EE8425C7C9570089354C /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE34EE8325C7C9570089354C /* AddressViewController.swift */; };
+		DE4D103826005378003B7C94 /* MyAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D103726005378003B7C94 /* MyAlbumViewController.swift */; };
+		DE4D103B26006F71003B7C94 /* MyAlbumViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4D103A26006F71003B7C94 /* MyAlbumViewController.xib */; };
+		DE961A962601C8DD0038635F /* CreatePlayListViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE961A952601C8DD0038635F /* CreatePlayListViewViewController.xib */; };
+		DE961A9E2601E9A70038635F /* CreatePlayListViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE961A9D2601E9A70038635F /* CreatePlayListViewViewController.swift */; };
+		DEC674D326023AAC00D59551 /* MyCommission.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC674D226023AAC00D59551 /* MyCommission.xib */; };
+		DEC674D626023D3900D59551 /* CommisionDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC674D526023D3900D59551 /* CommisionDetails.xib */; };
+		DEC674D9260244A900D59551 /* MyCommission.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC674D8260244A900D59551 /* MyCommission.swift */; };
+		E36331CE261362730043453A /* MyCommissionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36331CC261362730043453A /* MyCommissionTVCell.swift */; };
+		E36331CF261362730043453A /* MyCommissionTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E36331CD261362730043453A /* MyCommissionTVCell.xib */; };
+		E39FDA5A260E5F150095EDEE /* AcountOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39FDA58260E5F150095EDEE /* AcountOverviewViewController.swift */; };
+		E39FDA5B260E5F150095EDEE /* AcountOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39FDA59260E5F150095EDEE /* AcountOverviewViewController.xib */; };
+		E3C925AF2618A308003EF12B /* MySongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C925AD2618A308003EF12B /* MySongViewController.swift */; };
+		E3C925B02618A308003EF12B /* MySongViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3C925AE2618A308003EF12B /* MySongViewController.xib */; };
+		E3E31B042619C66E00D84303 /* SongInPlayListImageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E31B022619C66E00D84303 /* SongInPlayListImageTVCell.swift */; };
+		E3E31B052619C66E00D84303 /* SongInPlayListImageTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E31B032619C66E00D84303 /* SongInPlayListImageTVCell.xib */; };
+		E3E31B0A2619CBC600D84303 /* SongInPlayListTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E31B082619CBC600D84303 /* SongInPlayListTVCell.swift */; };
+		E3E31B0B2619CBC600D84303 /* SongInPlayListTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3E31B092619CBC600D84303 /* SongInPlayListTVCell.xib */; };
+		EF10591D2440416100406A2B /* TopSalesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF10591B2440416100406A2B /* TopSalesTableViewCell.swift */; };
+		EF10591E2440416100406A2B /* TopSalesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF10591C2440416100406A2B /* TopSalesTableViewCell.xib */; };
+		EF105920244045D700406A2B /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF10591F244045D700406A2B /* ItemModel.swift */; };
+		EF10592324405C7B00406A2B /* ItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF10592124405C7B00406A2B /* ItemsCollectionViewCell.swift */; };
+		EF10592424405C7B00406A2B /* ItemsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF10592224405C7B00406A2B /* ItemsCollectionViewCell.xib */; };
+		EF12262423767A5B0038AEC0 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF12262323767A5B0038AEC0 /* UIViewController.swift */; };
+		EF12262923767BD20038AEC0 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF12262623767BD20038AEC0 /* Montserrat-Light.ttf */; };
+		EF12262A23767BD20038AEC0 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF12262723767BD20038AEC0 /* Montserrat-Regular.ttf */; };
+		EF12262B23767BD20038AEC0 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF12262823767BD20038AEC0 /* Montserrat-Medium.ttf */; };
+		EF12262E23767C510038AEC0 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF12262D23767C510038AEC0 /* UIFont.swift */; };
+		EF12263023768CB20038AEC0 /* MusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF12262F23768CB20038AEC0 /* MusicListViewController.swift */; };
+		EF1226392376B4D90038AEC0 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1226382376B4D90038AEC0 /* SongModel.swift */; };
+		EF12263C2377095F0038AEC0 /* SongListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF12263A2377095F0038AEC0 /* SongListCell.swift */; };
+		EF12263D2377095F0038AEC0 /* SongListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF12263B2377095F0038AEC0 /* SongListCell.xib */; };
+		EF3B8C5823F4E90F000F323F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C5723F4E90F000F323F /* HomeViewController.swift */; };
+		EF3B8C5A23F4ED3E000F323F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C5923F4ED3E000F323F /* UIColor.swift */; };
+		EF3B8C6023F4EE5D000F323F /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C5B23F4EE5D000F323F /* UITextField.swift */; };
+		EF3B8C6123F4EE5D000F323F /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C5C23F4EE5D000F323F /* UIButton.swift */; };
+		EF3B8C6223F4EE5D000F323F /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C5D23F4EE5D000F323F /* UIView.swift */; };
+		EF3B8C6323F4EE5D000F323F /* STRINGS.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C5E23F4EE5D000F323F /* STRINGS.swift */; };
+		EF3B8C6423F4EE5D000F323F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C5F23F4EE5D000F323F /* Config.swift */; };
+		EF3B8C6B23F4EEE1000F323F /* APJPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C6523F4EEE1000F323F /* APJPicker.swift */; };
+		EF3B8C6C23F4EEE1000F323F /* FAIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C6723F4EEE1000F323F /* FAIcon.swift */; };
+		EF3B8C6D23F4EEE1000F323F /* FAIcon+Lookup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C6823F4EEE1000F323F /* FAIcon+Lookup.swift */; };
+		EF3B8C6E23F4EEE2000F323F /* AACarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C6923F4EEE1000F323F /* AACarousel.swift */; };
+		EF3B8C6F23F4EEE2000F323F /* ASToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C6A23F4EEE1000F323F /* ASToast.swift */; };
+		EF3B8C7123F4EFBB000F323F /* HomePageDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C7023F4EFBB000F323F /* HomePageDataModel.swift */; };
+		EF3B8C7423F4F86C000F323F /* TopArtistTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C7223F4F86C000F323F /* TopArtistTableViewCell.swift */; };
+		EF3B8C7523F4F86C000F323F /* TopArtistTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF3B8C7323F4F86C000F323F /* TopArtistTableViewCell.xib */; };
+		EF3B8C7823F4FB0D000F323F /* ArtistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3B8C7623F4FB0D000F323F /* ArtistCollectionViewCell.swift */; };
+		EF3B8C7923F4FB0D000F323F /* ArtistCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF3B8C7723F4FB0D000F323F /* ArtistCollectionViewCell.xib */; };
+		EF52B08A243E4FC700604EEA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF52B089243E4FC700604EEA /* FontAwesome.ttf */; };
+		EF52B08C243E526200604EEA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF52B08B243E526200604EEA /* SearchViewController.swift */; };
+		EF6CFE21237488250004B469 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6CFE20237488250004B469 /* TabBarController.swift */; };
+		EF891A0923732AF4009388B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF891A0823732AF4009388B4 /* AppDelegate.swift */; };
+		EF891A0B23732AF4009388B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF891A0A23732AF4009388B4 /* ViewController.swift */; };
+		EF891A0E23732AF4009388B4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF891A0C23732AF4009388B4 /* Main.storyboard */; };
+		EF891A1023732AF6009388B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF891A0F23732AF6009388B4 /* Assets.xcassets */; };
+		EF891A1323732AF6009388B4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF891A1123732AF6009388B4 /* LaunchScreen.storyboard */; };
+		EFA3A447237D048900FE3118 /* ArtistImageHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA3A445237D048900FE3118 /* ArtistImageHeaderCell.swift */; };
+		EFA3A448237D048900FE3118 /* ArtistImageHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFA3A446237D048900FE3118 /* ArtistImageHeaderCell.xib */; };
+		EFB4E5872400B813005D5E1C /* ArtistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB4E5862400B813005D5E1C /* ArtistModel.swift */; };
+		EFB6936D23FE36DD00798F3A /* GenresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB6936B23FE36DD00798F3A /* GenresTableViewCell.swift */; };
+		EFB6936E23FE36DD00798F3A /* GenresTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFB6936C23FE36DD00798F3A /* GenresTableViewCell.xib */; };
+		EFB6937123FE382200798F3A /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB6936F23FE382200798F3A /* GenreCollectionViewCell.swift */; };
+		EFB6937223FE382200798F3A /* GenreCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFB6937023FE382200798F3A /* GenreCollectionViewCell.xib */; };
+		EFC6BCA6243F991E00EB336B /* MerchandiseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC6BCA5243F991E00EB336B /* MerchandiseViewController.swift */; };
+		EFF8D7EC2440C46900E28E1A /* NewArrivalsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF8D7EA2440C46900E28E1A /* NewArrivalsCollectionViewCell.swift */; };
+		EFF8D7ED2440C46900E28E1A /* NewArrivalsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFF8D7EB2440C46900E28E1A /* NewArrivalsCollectionViewCell.xib */; };
+		F9130931253DFE4F00C48314 /* CartListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F913092F253DFE4F00C48314 /* CartListCell.swift */; };
+		F9130932253DFE4F00C48314 /* CartListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9130930253DFE4F00C48314 /* CartListCell.xib */; };
+		F9130935253E060700C48314 /* CartDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9130933253E060700C48314 /* CartDetailsViewController.swift */; };
+		F9130936253E060700C48314 /* CartDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9130934253E060700C48314 /* CartDetailsViewController.xib */; };
+		F917CCEC2535E74C00EC5884 /* EditSocialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F917CCEB2535E74C00EC5884 /* EditSocialViewController.xib */; };
+		F917CCEE2535E88A00EC5884 /* EditSocialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F917CCED2535E88A00EC5884 /* EditSocialViewController.swift */; };
+		F93CB8A2254894E500ECDC07 /* PlaylistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93CB8A1254894E500ECDC07 /* PlaylistViewModel.swift */; };
+		F93CB8A52548956500ECDC07 /* SongsInPlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93CB8A32548956400ECDC07 /* SongsInPlaylistViewController.swift */; };
+		F93CB8A62548956500ECDC07 /* SongsInPlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F93CB8A42548956500ECDC07 /* SongsInPlaylistViewController.xib */; };
+		F93DB574254DBABA0060C038 /* BadgedBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DB573254DBABA0060C038 /* BadgedBarButtonItem.swift */; };
+		F93DB579254DCF360060C038 /* ContentDetailsEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DB575254DCF350060C038 /* ContentDetailsEntity+CoreDataProperties.swift */; };
+		F93DB57A254DCF360060C038 /* ContentDetailsEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DB576254DCF350060C038 /* ContentDetailsEntity+CoreDataClass.swift */; };
+		F93DB57B254DCF360060C038 /* CurrentDownloadEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DB577254DCF350060C038 /* CurrentDownloadEntity+CoreDataClass.swift */; };
+		F93DB57C254DCF360060C038 /* CurrentDownloadEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DB578254DCF350060C038 /* CurrentDownloadEntity+CoreDataProperties.swift */; };
+		F94C5B76253B22A10058410E /* SelectStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F94C5B74253B22A10058410E /* SelectStationViewController.swift */; };
+		F94C5B77253B22A10058410E /* SelectStationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F94C5B75253B22A10058410E /* SelectStationViewController.xib */; };
+		F97AC133253F27D200288E2C /* CartAmountFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97AC131253F27D200288E2C /* CartAmountFooterCell.swift */; };
+		F97AC134253F27D200288E2C /* CartAmountFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F97AC132253F27D200288E2C /* CartAmountFooterCell.xib */; };
+		F97AC136253F2FCF00288E2C /* CartListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F97AC135253F2FCF00288E2C /* CartListModel.swift */; };
+		F9FD536A25447B1D00C1FF47 /* AddToPlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FD536925447B1C00C1FF47 /* AddToPlayListViewController.xib */; };
+		F9FD536C25447B3D00C1FF47 /* AddToPlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FD536B25447B3D00C1FF47 /* AddToPlayListViewController.swift */; };
+		F9FD536E2544988D00C1FF47 /* PlayListCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9FD536D2544988D00C1FF47 /* PlayListCells.swift */; };
+		F9FD53702544989B00C1FF47 /* PlayListCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FD536F2544989B00C1FF47 /* PlayListCells.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		143DAD559B395B6E8C1527B2 /* Pods-Toner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toner.release.xcconfig"; path = "Target Support Files/Pods-Toner/Pods-Toner.release.xcconfig"; sourceTree = "<group>"; };
+		3CAFBF887004EB6B4D31B6A5 /* Pods-Toner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toner.debug.xcconfig"; path = "Target Support Files/Pods-Toner/Pods-Toner.debug.xcconfig"; sourceTree = "<group>"; };
+		455A0D81617918872AC61DDC /* Pods_Toner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Toner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE0F43B0254DA77D0001B85E /* MyDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDownloadViewController.swift; sourceTree = "<group>"; };
+		CE0F43B1254DA77D0001B85E /* MyDownloadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyDownloadViewController.xib; sourceTree = "<group>"; };
+		CE0F43B4254DAF9D0001B85E /* DownloadTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTableViewCell.swift; sourceTree = "<group>"; };
+		CE0F43B5254DAF9D0001B85E /* DownloadTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DownloadTableViewCell.xib; sourceTree = "<group>"; };
+		CE120F42251FA16100C0CD30 /* FollowingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FollowingsViewController.swift; sourceTree = "<group>"; };
+		CE120F44251FA16800C0CD30 /* FollowingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FollowingsViewController.xib; sourceTree = "<group>"; };
+		CE14156E24D4962600AB1A06 /* ProductDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductDetailsViewController.xib; sourceTree = "<group>"; };
+		CE203DA72549DC3E00A422E3 /* TonneruDownloadUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonneruDownloadUtility.swift; sourceTree = "<group>"; };
+		CE260592250BF62F001132D6 /* FollowChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowChatTableViewCell.swift; sourceTree = "<group>"; };
+		CE260593250BF62F001132D6 /* FollowChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FollowChatTableViewCell.xib; sourceTree = "<group>"; };
+		CE3CD34624BE39650012B4E4 /* ProductBannersCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBannersCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE3CD34724BE39650012B4E4 /* ProductBannersCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductBannersCollectionViewCell.xib; sourceTree = "<group>"; };
+		CE4B5810251F1A7500C7FDAE /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		CE4B5811251F1A7500C7FDAE /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		CE4B5814251F733D00C7FDAE /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		CE4B5816251F810E00C7FDAE /* MyStationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyStationsViewController.swift; sourceTree = "<group>"; };
+		CE4B5817251F810E00C7FDAE /* MyStationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyStationsViewController.xib; sourceTree = "<group>"; };
+		CE4C17DF24BD567900795989 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		CE4C17E024BD567900795989 /* BannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerCollectionViewCell.xib; sourceTree = "<group>"; };
+		CE4E14BC24F0E32700D98603 /* SubscriptionPlanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPlanModel.swift; sourceTree = "<group>"; };
+		CE4E14BE24F0E4EC00D98603 /* SubscriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionTableViewCell.swift; sourceTree = "<group>"; };
+		CE4E14BF24F0E4EC00D98603 /* SubscriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionTableViewCell.xib; sourceTree = "<group>"; };
+		CE4E14C224F13ED100D98603 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		CE84C88824D9D54B008BECFF /* CategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
+		CE84C88A24D9D681008BECFF /* CategoryListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryListViewController.xib; sourceTree = "<group>"; };
+		CE886E06250CA3A600ECFC53 /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
+		CE886E07250CA3A600ECFC53 /* PlayListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayListViewController.xib; sourceTree = "<group>"; };
+		CE8E0E5C24D32C5C0080B52E /* ValueStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueStepper.swift; sourceTree = "<group>"; };
+		CE99462D24F0E0F8000A532E /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
+		CE99462E24F0E0F8000A532E /* SubscriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionViewController.xib; sourceTree = "<group>"; };
+		CEA84BC72544189E002E2841 /* TonneruDownloadButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonneruDownloadButton.swift; sourceTree = "<group>"; };
+		CEA84BC9254418CA002E2841 /* TonneruDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonneruDownloadManager.swift; sourceTree = "<group>"; };
+		CEA84BCC254479E5002E2841 /* TonneruDownload.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TonneruDownload.xcdatamodel; sourceTree = "<group>"; };
+		CEB088AF24BF2ADA00C2EBEA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		CEB088B124BF440B00C2EBEA /* ExpandableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableLabel.swift; sourceTree = "<group>"; };
+		CEB088B324BF4D5A00C2EBEA /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		CEC0E5DF24DB216100F2DEEF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		CEC0E5E124DB296700F2DEEF /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		CEC0E5E224DB296700F2DEEF /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
+		CEC0E5E524DB2AE500F2DEEF /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		CED5898224BE9CA300007EC9 /* ZKCarousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZKCarousel.swift; sourceTree = "<group>"; };
+		CED5C83B24C32A70002CF276 /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
+		CED5C83C24C32A71002CF276 /* TransitionCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionCoordinator.swift; sourceTree = "<group>"; };
+		CED5C83D24C32A71002CF276 /* Array+UIViewPropertyAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+UIViewPropertyAnimator.swift"; sourceTree = "<group>"; };
+		CED5C84124C32D2B002CF276 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		CED5C84224C32D2B002CF276 /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		CEE13A95251F8D89004FBAA6 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		CEE13A96251F8D89004FBAA6 /* ChangePasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangePasswordViewController.xib; sourceTree = "<group>"; };
+		CEE59E5524B78FEA006DE1A3 /* ProductDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsViewController.swift; sourceTree = "<group>"; };
+		CEE846D6250CA7B8007E938B /* PlayListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListTableViewCell.swift; sourceTree = "<group>"; };
+		CEE846D7250CA7B8007E938B /* PlayListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayListTableViewCell.xib; sourceTree = "<group>"; };
+		CEE846DA250CABE8007E938B /* PlayListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListModel.swift; sourceTree = "<group>"; };
+		CEE846DD250D0D7B007E938B /* CreatePlayListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreatePlayListViewController.xib; sourceTree = "<group>"; };
+		CEE95BC324BD53A100ADDD1E /* HomeBannerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBannerTableViewCell.swift; sourceTree = "<group>"; };
+		CEE95BC424BD53A100ADDD1E /* HomeBannerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeBannerTableViewCell.xib; sourceTree = "<group>"; };
+		CEE9907524CDB30300B8603D /* StationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationListViewController.swift; sourceTree = "<group>"; };
+		CEE9907624CDB30300B8603D /* StationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationListViewController.xib; sourceTree = "<group>"; };
+		CEFFF60324C5E74F002D0719 /* TonneruDevCertificates.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TonneruDevCertificates.p12; sourceTree = "<group>"; };
+		CEFFF60424C5E750002D0719 /* TonneruDistributionCertificates.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TonneruDistributionCertificates.p12; sourceTree = "<group>"; };
+		CEFFF60724C5E770002D0719 /* Tonneru_Provisioning_Profile_Distribution.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tonneru_Provisioning_Profile_Distribution.mobileprovision; sourceTree = "<group>"; };
+		CEFFF60824C5E784002D0719 /* CertificateSigningRequest.certSigningRequest */ = {isa = PBXFileReference; lastKnownFileType = text; path = CertificateSigningRequest.certSigningRequest; sourceTree = "<group>"; };
+		CEFFF60924C5E784002D0719 /* distribution.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = distribution.cer; sourceTree = "<group>"; };
+		CEFFF60A24C5E7A2002D0719 /* Tonneru_Provisioning_Profile_Dev.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = Tonneru_Provisioning_Profile_Dev.mobileprovision; sourceTree = "<group>"; };
+		DE34EE7F25C79B0C0089354C /* AddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddressViewController.xib; sourceTree = "<group>"; };
+		DE34EE8325C7C9570089354C /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
+		DE4D103726005378003B7C94 /* MyAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlbumViewController.swift; sourceTree = "<group>"; };
+		DE4D103A26006F71003B7C94 /* MyAlbumViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyAlbumViewController.xib; sourceTree = "<group>"; };
+		DE961A952601C8DD0038635F /* CreatePlayListViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreatePlayListViewViewController.xib; sourceTree = "<group>"; };
+		DE961A9D2601E9A70038635F /* CreatePlayListViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayListViewViewController.swift; sourceTree = "<group>"; };
+		DEC674D226023AAC00D59551 /* MyCommission.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCommission.xib; sourceTree = "<group>"; };
+		DEC674D526023D3900D59551 /* CommisionDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommisionDetails.xib; sourceTree = "<group>"; };
+		DEC674D8260244A900D59551 /* MyCommission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommission.swift; sourceTree = "<group>"; };
+		E36331CC261362730043453A /* MyCommissionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommissionTVCell.swift; sourceTree = "<group>"; };
+		E36331CD261362730043453A /* MyCommissionTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCommissionTVCell.xib; sourceTree = "<group>"; };
+		E39FDA58260E5F150095EDEE /* AcountOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountOverviewViewController.swift; sourceTree = "<group>"; };
+		E39FDA59260E5F150095EDEE /* AcountOverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcountOverviewViewController.xib; sourceTree = "<group>"; };
+		E3C925AD2618A308003EF12B /* MySongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongViewController.swift; sourceTree = "<group>"; };
+		E3C925AE2618A308003EF12B /* MySongViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MySongViewController.xib; sourceTree = "<group>"; };
+		E3E23D85260FBA77004793E5 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		E3E23D87260FBC0D004793E5 /* Montserrat SemiBold 600.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat SemiBold 600.ttf"; sourceTree = "<group>"; };
+		E3E31B022619C66E00D84303 /* SongInPlayListImageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInPlayListImageTVCell.swift; sourceTree = "<group>"; };
+		E3E31B032619C66E00D84303 /* SongInPlayListImageTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongInPlayListImageTVCell.xib; sourceTree = "<group>"; };
+		E3E31B082619CBC600D84303 /* SongInPlayListTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongInPlayListTVCell.swift; sourceTree = "<group>"; };
+		E3E31B092619CBC600D84303 /* SongInPlayListTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongInPlayListTVCell.xib; sourceTree = "<group>"; };
+		EF10591B2440416100406A2B /* TopSalesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSalesTableViewCell.swift; sourceTree = "<group>"; };
+		EF10591C2440416100406A2B /* TopSalesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopSalesTableViewCell.xib; sourceTree = "<group>"; };
+		EF10591F244045D700406A2B /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		EF10592124405C7B00406A2B /* ItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewCell.swift; sourceTree = "<group>"; };
+		EF10592224405C7B00406A2B /* ItemsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsCollectionViewCell.xib; sourceTree = "<group>"; };
+		EF12262323767A5B0038AEC0 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		EF12262623767BD20038AEC0 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		EF12262723767BD20038AEC0 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
+		EF12262823767BD20038AEC0 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		EF12262D23767C510038AEC0 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		EF12262F23768CB20038AEC0 /* MusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewController.swift; sourceTree = "<group>"; };
+		EF1226382376B4D90038AEC0 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		EF12263A2377095F0038AEC0 /* SongListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongListCell.swift; sourceTree = "<group>"; };
+		EF12263B2377095F0038AEC0 /* SongListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongListCell.xib; sourceTree = "<group>"; };
+		EF17AA86237902CD00E80155 /* AudioPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerManager.swift; sourceTree = "<group>"; };
+		EF3B8C5723F4E90F000F323F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EF3B8C5923F4ED3E000F323F /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		EF3B8C5B23F4EE5D000F323F /* UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		EF3B8C5C23F4EE5D000F323F /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		EF3B8C5D23F4EE5D000F323F /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		EF3B8C5E23F4EE5D000F323F /* STRINGS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STRINGS.swift; sourceTree = "<group>"; };
+		EF3B8C5F23F4EE5D000F323F /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		EF3B8C6523F4EEE1000F323F /* APJPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APJPicker.swift; sourceTree = "<group>"; };
+		EF3B8C6723F4EEE1000F323F /* FAIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FAIcon.swift; sourceTree = "<group>"; };
+		EF3B8C6823F4EEE1000F323F /* FAIcon+Lookup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FAIcon+Lookup.swift"; sourceTree = "<group>"; };
+		EF3B8C6923F4EEE1000F323F /* AACarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AACarousel.swift; sourceTree = "<group>"; };
+		EF3B8C6A23F4EEE1000F323F /* ASToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASToast.swift; sourceTree = "<group>"; };
+		EF3B8C7023F4EFBB000F323F /* HomePageDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageDataModel.swift; sourceTree = "<group>"; };
+		EF3B8C7223F4F86C000F323F /* TopArtistTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopArtistTableViewCell.swift; sourceTree = "<group>"; };
+		EF3B8C7323F4F86C000F323F /* TopArtistTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopArtistTableViewCell.xib; sourceTree = "<group>"; };
+		EF3B8C7623F4FB0D000F323F /* ArtistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistCollectionViewCell.swift; sourceTree = "<group>"; };
+		EF3B8C7723F4FB0D000F323F /* ArtistCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistCollectionViewCell.xib; sourceTree = "<group>"; };
+		EF52B089243E4FC700604EEA /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		EF52B08B243E526200604EEA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		EF56F9F72377181900F1A965 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		EF56F9F923774E6400F1A965 /* TonneruMusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonneruMusicPlayer.swift; sourceTree = "<group>"; };
+		EF6CFE20237488250004B469 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		EF891A0523732AF4009388B4 /* Tonneru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tonneru.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF891A0823732AF4009388B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EF891A0A23732AF4009388B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EF891A0D23732AF4009388B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EF891A0F23732AF6009388B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EF891A1223732AF6009388B4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EF891A1423732AF6009388B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFA3A445237D048900FE3118 /* ArtistImageHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistImageHeaderCell.swift; sourceTree = "<group>"; };
+		EFA3A446237D048900FE3118 /* ArtistImageHeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtistImageHeaderCell.xib; sourceTree = "<group>"; };
+		EFB4E5862400B813005D5E1C /* ArtistModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistModel.swift; sourceTree = "<group>"; };
+		EFB6936B23FE36DD00798F3A /* GenresTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresTableViewCell.swift; sourceTree = "<group>"; };
+		EFB6936C23FE36DD00798F3A /* GenresTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenresTableViewCell.xib; sourceTree = "<group>"; };
+		EFB6936F23FE382200798F3A /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
+		EFB6937023FE382200798F3A /* GenreCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenreCollectionViewCell.xib; sourceTree = "<group>"; };
+		EFC6BCA5243F991E00EB336B /* MerchandiseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MerchandiseViewController.swift; sourceTree = "<group>"; };
+		EFF8D7EA2440C46900E28E1A /* NewArrivalsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewArrivalsCollectionViewCell.swift; sourceTree = "<group>"; };
+		EFF8D7EB2440C46900E28E1A /* NewArrivalsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewArrivalsCollectionViewCell.xib; sourceTree = "<group>"; };
+		F913092F253DFE4F00C48314 /* CartListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListCell.swift; sourceTree = "<group>"; };
+		F9130930253DFE4F00C48314 /* CartListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartListCell.xib; sourceTree = "<group>"; };
+		F9130933253E060700C48314 /* CartDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartDetailsViewController.swift; sourceTree = "<group>"; };
+		F9130934253E060700C48314 /* CartDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartDetailsViewController.xib; sourceTree = "<group>"; };
+		F917CCEB2535E74C00EC5884 /* EditSocialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditSocialViewController.xib; sourceTree = "<group>"; };
+		F917CCED2535E88A00EC5884 /* EditSocialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSocialViewController.swift; sourceTree = "<group>"; };
+		F93CB8A1254894E500ECDC07 /* PlaylistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewModel.swift; sourceTree = "<group>"; };
+		F93CB8A32548956400ECDC07 /* SongsInPlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsInPlaylistViewController.swift; sourceTree = "<group>"; };
+		F93CB8A42548956500ECDC07 /* SongsInPlaylistViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongsInPlaylistViewController.xib; sourceTree = "<group>"; };
+		F93DB573254DBABA0060C038 /* BadgedBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgedBarButtonItem.swift; sourceTree = "<group>"; };
+		F93DB575254DCF350060C038 /* ContentDetailsEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContentDetailsEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F93DB576254DCF350060C038 /* ContentDetailsEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ContentDetailsEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F93DB577254DCF350060C038 /* CurrentDownloadEntity+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CurrentDownloadEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F93DB578254DCF350060C038 /* CurrentDownloadEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CurrentDownloadEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F94C5B74253B22A10058410E /* SelectStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectStationViewController.swift; sourceTree = "<group>"; };
+		F94C5B75253B22A10058410E /* SelectStationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectStationViewController.xib; sourceTree = "<group>"; };
+		F94EBC802578D4ED00D016B5 /* distribution-2.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "distribution-2.cer"; sourceTree = "<group>"; };
+		F94EBC812578D4ED00D016B5 /* CertificateSigningRequest.certSigningRequest */ = {isa = PBXFileReference; lastKnownFileType = text; path = CertificateSigningRequest.certSigningRequest; sourceTree = "<group>"; };
+		F94EBC822578D4ED00D016B5 /* TonneruNewprovisioning.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = TonneruNewprovisioning.mobileprovision; sourceTree = "<group>"; };
+		F94EBC832578D4ED00D016B5 /* TonneruNew.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = TonneruNew.p12; sourceTree = "<group>"; };
+		F97AC131253F27D200288E2C /* CartAmountFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartAmountFooterCell.swift; sourceTree = "<group>"; };
+		F97AC132253F27D200288E2C /* CartAmountFooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CartAmountFooterCell.xib; sourceTree = "<group>"; };
+		F97AC135253F2FCF00288E2C /* CartListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartListModel.swift; sourceTree = "<group>"; };
+		F98A32592577FDA70093BC61 /* Toner_provisioning-2.mobileprovision */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Toner_provisioning-2.mobileprovision"; sourceTree = "<group>"; };
+		F98A325A2577FDA70093BC61 /* CertificateSigningRequest.certSigningRequest */ = {isa = PBXFileReference; lastKnownFileType = text; path = CertificateSigningRequest.certSigningRequest; sourceTree = "<group>"; };
+		F98A325B2577FDA70093BC61 /* tonerP12.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tonerP12.p12; sourceTree = "<group>"; };
+		F98A325C2577FDA70093BC61 /* toner.p12 */ = {isa = PBXFileReference; lastKnownFileType = file; path = toner.p12; sourceTree = "<group>"; };
+		F9FD536925447B1C00C1FF47 /* AddToPlayListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddToPlayListViewController.xib; sourceTree = "<group>"; };
+		F9FD536B25447B3D00C1FF47 /* AddToPlayListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddToPlayListViewController.swift; sourceTree = "<group>"; };
+		F9FD536D2544988D00C1FF47 /* PlayListCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayListCells.swift; sourceTree = "<group>"; };
+		F9FD536F2544989B00C1FF47 /* PlayListCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayListCells.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EF891A0223732AF4009388B4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0473774F7E338C8B4F8EB426 /* Pods_Toner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6CB5DF073122FC4D8D2A0491 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3CAFBF887004EB6B4D31B6A5 /* Pods-Toner.debug.xcconfig */,
+				143DAD559B395B6E8C1527B2 /* Pods-Toner.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CEA84BC625441875002E2841 /* Offline */ = {
+			isa = PBXGroup;
+			children = (
+				F93DB576254DCF350060C038 /* ContentDetailsEntity+CoreDataClass.swift */,
+				F93DB575254DCF350060C038 /* ContentDetailsEntity+CoreDataProperties.swift */,
+				F93DB577254DCF350060C038 /* CurrentDownloadEntity+CoreDataClass.swift */,
+				F93DB578254DCF350060C038 /* CurrentDownloadEntity+CoreDataProperties.swift */,
+				CEA84BC72544189E002E2841 /* TonneruDownloadButton.swift */,
+				CEA84BC9254418CA002E2841 /* TonneruDownloadManager.swift */,
+				CEA84BCB254479E5002E2841 /* TonneruDownload.xcdatamodeld */,
+				CE203DA72549DC3E00A422E3 /* TonneruDownloadUtility.swift */,
+			);
+			path = Offline;
+			sourceTree = "<group>";
+		};
+		CED5C83A24C32A24002CF276 /* Music Player */ = {
+			isa = PBXGroup;
+			children = (
+				CED5C84124C32D2B002CF276 /* PlayerViewController.swift */,
+				CED5C84224C32D2B002CF276 /* PlayerViewController.xib */,
+				CED5C83C24C32A71002CF276 /* TransitionCoordinator.swift */,
+				CED5C83D24C32A71002CF276 /* Array+UIViewPropertyAnimator.swift */,
+				CED5C83B24C32A70002CF276 /* UIViewController+Utils.swift */,
+			);
+			path = "Music Player";
+			sourceTree = "<group>";
+		};
+		CEE9907424CDB2D300B8603D /* ViewController XIB */ = {
+			isa = PBXGroup;
+			children = (
+				DE34EE7F25C79B0C0089354C /* AddressViewController.xib */,
+				CE99462E24F0E0F8000A532E /* SubscriptionViewController.xib */,
+				F917CCEB2535E74C00EC5884 /* EditSocialViewController.xib */,
+				F9FD536925447B1C00C1FF47 /* AddToPlayListViewController.xib */,
+				CE84C88A24D9D681008BECFF /* CategoryListViewController.xib */,
+				CEE9907624CDB30300B8603D /* StationListViewController.xib */,
+				F93CB8A32548956400ECDC07 /* SongsInPlaylistViewController.swift */,
+				F93CB8A42548956500ECDC07 /* SongsInPlaylistViewController.xib */,
+				CE14156E24D4962600AB1A06 /* ProductDetailsViewController.xib */,
+				CE886E07250CA3A600ECFC53 /* PlayListViewController.xib */,
+				F94C5B75253B22A10058410E /* SelectStationViewController.xib */,
+				CEE846DD250D0D7B007E938B /* CreatePlayListViewController.xib */,
+				CE4B5811251F1A7500C7FDAE /* EditProfileViewController.xib */,
+				CE4B5817251F810E00C7FDAE /* MyStationsViewController.xib */,
+				CEE13A96251F8D89004FBAA6 /* ChangePasswordViewController.xib */,
+				CE120F44251FA16800C0CD30 /* FollowingsViewController.xib */,
+				CE0F43B1254DA77D0001B85E /* MyDownloadViewController.xib */,
+				DE4D103A26006F71003B7C94 /* MyAlbumViewController.xib */,
+				E39FDA59260E5F150095EDEE /* AcountOverviewViewController.xib */,
+				E3C925AE2618A308003EF12B /* MySongViewController.xib */,
+			);
+			path = "ViewController XIB";
+			sourceTree = "<group>";
+		};
+		CEFFF60224C5E650002D0719 /* Certificate */ = {
+			isa = PBXGroup;
+			children = (
+				CEFFF60824C5E784002D0719 /* CertificateSigningRequest.certSigningRequest */,
+				CEFFF60924C5E784002D0719 /* distribution.cer */,
+				CEFFF60724C5E770002D0719 /* Tonneru_Provisioning_Profile_Distribution.mobileprovision */,
+				CEFFF60324C5E74F002D0719 /* TonneruDevCertificates.p12 */,
+				CEFFF60424C5E750002D0719 /* TonneruDistributionCertificates.p12 */,
+				CEFFF60A24C5E7A2002D0719 /* Tonneru_Provisioning_Profile_Dev.mobileprovision */,
+			);
+			path = Certificate;
+			sourceTree = "<group>";
+		};
+		EF12262123767A2A0038AEC0 /* ThirdParty Library */ = {
+			isa = PBXGroup;
+			children = (
+				F93DB573254DBABA0060C038 /* BadgedBarButtonItem.swift */,
+				CED5C83A24C32A24002CF276 /* Music Player */,
+				EF3B8C6923F4EEE1000F323F /* AACarousel.swift */,
+				EF3B8C6523F4EEE1000F323F /* APJPicker.swift */,
+				EF3B8C6A23F4EEE1000F323F /* ASToast.swift */,
+				EF3B8C6623F4EEE1000F323F /* Fontawesome */,
+				EF56F9F923774E6400F1A965 /* TonneruMusicPlayer.swift */,
+				EF17AA86237902CD00E80155 /* AudioPlayerManager.swift */,
+				CED5898224BE9CA300007EC9 /* ZKCarousel.swift */,
+				CEB088B124BF440B00C2EBEA /* ExpandableLabel.swift */,
+			);
+			path = "ThirdParty Library";
+			sourceTree = "<group>";
+		};
+		EF12262223767A3D0038AEC0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EF3B8C5F23F4EE5D000F323F /* Config.swift */,
+				EF3B8C5E23F4EE5D000F323F /* STRINGS.swift */,
+				EF3B8C5C23F4EE5D000F323F /* UIButton.swift */,
+				EF3B8C5B23F4EE5D000F323F /* UITextField.swift */,
+				EF3B8C5D23F4EE5D000F323F /* UIView.swift */,
+				EF3B8C5923F4ED3E000F323F /* UIColor.swift */,
+				EF12262323767A5B0038AEC0 /* UIViewController.swift */,
+				EF12262D23767C510038AEC0 /* UIFont.swift */,
+				CE8E0E5C24D32C5C0080B52E /* ValueStepper.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		EF12262523767BC50038AEC0 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E3E23D85260FBA77004793E5 /* Montserrat-Bold.ttf */,
+				EF12262623767BD20038AEC0 /* Montserrat-Light.ttf */,
+				E3E23D87260FBC0D004793E5 /* Montserrat SemiBold 600.ttf */,
+				EF12262823767BD20038AEC0 /* Montserrat-Medium.ttf */,
+				EF12262723767BD20038AEC0 /* Montserrat-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EF1226372376A7890038AEC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EF1226382376B4D90038AEC0 /* SongModel.swift */,
+				F97AC135253F2FCF00288E2C /* CartListModel.swift */,
+				EF3B8C7023F4EFBB000F323F /* HomePageDataModel.swift */,
+				EFB4E5862400B813005D5E1C /* ArtistModel.swift */,
+				F93CB8A1254894E500ECDC07 /* PlaylistViewModel.swift */,
+				EF10591F244045D700406A2B /* ItemModel.swift */,
+				CEC0E5E524DB2AE500F2DEEF /* Setting.swift */,
+				CE4E14BC24F0E32700D98603 /* SubscriptionPlanModel.swift */,
+				CEE846DA250CABE8007E938B /* PlayListModel.swift */,
+				CE4B5814251F733D00C7FDAE /* Station.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EF12263E237709650038AEC0 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				E3E31B092619CBC600D84303 /* SongInPlayListTVCell.xib */,
+				E3E31B032619C66E00D84303 /* SongInPlayListImageTVCell.xib */,
+				DE961A952601C8DD0038635F /* CreatePlayListViewViewController.xib */,
+				CE0F43B5254DAF9D0001B85E /* DownloadTableViewCell.xib */,
+				CEE846D7250CA7B8007E938B /* PlayListTableViewCell.xib */,
+				CE260593250BF62F001132D6 /* FollowChatTableViewCell.xib */,
+				CE4E14BF24F0E4EC00D98603 /* SubscriptionTableViewCell.xib */,
+				F9130930253DFE4F00C48314 /* CartListCell.xib */,
+				CEC0E5E224DB296700F2DEEF /* SettingsTableViewCell.xib */,
+				CE3CD34724BE39650012B4E4 /* ProductBannersCollectionViewCell.xib */,
+				EFF8D7EB2440C46900E28E1A /* NewArrivalsCollectionViewCell.xib */,
+				EF12263B2377095F0038AEC0 /* SongListCell.xib */,
+				EFA3A446237D048900FE3118 /* ArtistImageHeaderCell.xib */,
+				F97AC132253F27D200288E2C /* CartAmountFooterCell.xib */,
+				F9FD536F2544989B00C1FF47 /* PlayListCells.xib */,
+				EF3B8C7323F4F86C000F323F /* TopArtistTableViewCell.xib */,
+				EF3B8C7723F4FB0D000F323F /* ArtistCollectionViewCell.xib */,
+				EFB6936C23FE36DD00798F3A /* GenresTableViewCell.xib */,
+				EFB6937023FE382200798F3A /* GenreCollectionViewCell.xib */,
+				EF10591C2440416100406A2B /* TopSalesTableViewCell.xib */,
+				EF10592224405C7B00406A2B /* ItemsCollectionViewCell.xib */,
+				CEE95BC424BD53A100ADDD1E /* HomeBannerTableViewCell.xib */,
+				CE4C17E024BD567900795989 /* BannerCollectionViewCell.xib */,
+				DEC674D226023AAC00D59551 /* MyCommission.xib */,
+				DEC674D526023D3900D59551 /* CommisionDetails.xib */,
+				E36331CC261362730043453A /* MyCommissionTVCell.swift */,
+				E36331CD261362730043453A /* MyCommissionTVCell.xib */,
+			);
+			path = XIB;
+			sourceTree = "<group>";
+		};
+		EF12263F2377096F0038AEC0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				CE4C17DF24BD567900795989 /* BannerCollectionViewCell.swift */,
+				CEE95BC324BD53A100ADDD1E /* HomeBannerTableViewCell.swift */,
+				EF10592124405C7B00406A2B /* ItemsCollectionViewCell.swift */,
+				EF10591B2440416100406A2B /* TopSalesTableViewCell.swift */,
+				EF3B8C7223F4F86C000F323F /* TopArtistTableViewCell.swift */,
+				EF12263A2377095F0038AEC0 /* SongListCell.swift */,
+				EFA3A445237D048900FE3118 /* ArtistImageHeaderCell.swift */,
+				F9FD536D2544988D00C1FF47 /* PlayListCells.swift */,
+				EF3B8C7623F4FB0D000F323F /* ArtistCollectionViewCell.swift */,
+				EFB6936B23FE36DD00798F3A /* GenresTableViewCell.swift */,
+				EFB6936F23FE382200798F3A /* GenreCollectionViewCell.swift */,
+				EFF8D7EA2440C46900E28E1A /* NewArrivalsCollectionViewCell.swift */,
+				CE3CD34624BE39650012B4E4 /* ProductBannersCollectionViewCell.swift */,
+				CEC0E5E124DB296700F2DEEF /* SettingsTableViewCell.swift */,
+				CE4E14BE24F0E4EC00D98603 /* SubscriptionTableViewCell.swift */,
+				CE260592250BF62F001132D6 /* FollowChatTableViewCell.swift */,
+				F913092F253DFE4F00C48314 /* CartListCell.swift */,
+				CEE846D6250CA7B8007E938B /* PlayListTableViewCell.swift */,
+				F97AC131253F27D200288E2C /* CartAmountFooterCell.swift */,
+				CE0F43B4254DAF9D0001B85E /* DownloadTableViewCell.swift */,
+				E3E31B022619C66E00D84303 /* SongInPlayListImageTVCell.swift */,
+				E3E31B082619CBC600D84303 /* SongInPlayListTVCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		EF3B8C6623F4EEE1000F323F /* Fontawesome */ = {
+			isa = PBXGroup;
+			children = (
+				EF52B089243E4FC700604EEA /* FontAwesome.ttf */,
+				EF3B8C6723F4EEE1000F323F /* FAIcon.swift */,
+				EF3B8C6823F4EEE1000F323F /* FAIcon+Lookup.swift */,
+			);
+			path = Fontawesome;
+			sourceTree = "<group>";
+		};
+		EF56F9F62377181800F1A965 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EF56F9F72377181900F1A965 /* AVFoundation.framework */,
+				455A0D81617918872AC61DDC /* Pods_Toner.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EF6CFE1F237487E20004B469 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				E3C925AD2618A308003EF12B /* MySongViewController.swift */,
+				E39FDA58260E5F150095EDEE /* AcountOverviewViewController.swift */,
+				CE0F43B0254DA77D0001B85E /* MyDownloadViewController.swift */,
+				F94C5B74253B22A10058410E /* SelectStationViewController.swift */,
+				F9FD536B25447B3D00C1FF47 /* AddToPlayListViewController.swift */,
+				F9130933253E060700C48314 /* CartDetailsViewController.swift */,
+				F9130934253E060700C48314 /* CartDetailsViewController.xib */,
+				CE120F42251FA16100C0CD30 /* FollowingsViewController.swift */,
+				CEE13A95251F8D89004FBAA6 /* ChangePasswordViewController.swift */,
+				CE4B5816251F810E00C7FDAE /* MyStationsViewController.swift */,
+				F917CCED2535E88A00EC5884 /* EditSocialViewController.swift */,
+				CE4B5810251F1A7500C7FDAE /* EditProfileViewController.swift */,
+				CE886E06250CA3A600ECFC53 /* PlayListViewController.swift */,
+				CE99462D24F0E0F8000A532E /* SubscriptionViewController.swift */,
+				CE84C88824D9D54B008BECFF /* CategoryListViewController.swift */,
+				CEE9907524CDB30300B8603D /* StationListViewController.swift */,
+				EF891A0A23732AF4009388B4 /* ViewController.swift */,
+				EF6CFE20237488250004B469 /* TabBarController.swift */,
+				EF12262F23768CB20038AEC0 /* MusicListViewController.swift */,
+				EF3B8C5723F4E90F000F323F /* HomeViewController.swift */,
+				EF52B08B243E526200604EEA /* SearchViewController.swift */,
+				EFC6BCA5243F991E00EB336B /* MerchandiseViewController.swift */,
+				CEE59E5524B78FEA006DE1A3 /* ProductDetailsViewController.swift */,
+				CEB088B324BF4D5A00C2EBEA /* RegisterViewController.swift */,
+				CEC0E5DF24DB216100F2DEEF /* SettingsViewController.swift */,
+				CE4E14C224F13ED100D98603 /* ForgotPasswordViewController.swift */,
+				DE34EE8325C7C9570089354C /* AddressViewController.swift */,
+				DE4D103726005378003B7C94 /* MyAlbumViewController.swift */,
+				DE961A9D2601E9A70038635F /* CreatePlayListViewViewController.swift */,
+				DEC674D8260244A900D59551 /* MyCommission.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		EF8919FC23732AF4009388B4 = {
+			isa = PBXGroup;
+			children = (
+				EF891A0723732AF4009388B4 /* Toner */,
+				EF891A0623732AF4009388B4 /* Products */,
+				EF56F9F62377181800F1A965 /* Frameworks */,
+				6CB5DF073122FC4D8D2A0491 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		EF891A0623732AF4009388B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EF891A0523732AF4009388B4 /* Tonneru.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EF891A0723732AF4009388B4 /* Toner */ = {
+			isa = PBXGroup;
+			children = (
+				F94EBC7F2578D4ED00D016B5 /* TonerLatestCertificte */,
+				F98A32582577FDA70093BC61 /* toner certificate */,
+				CEA84BC625441875002E2841 /* Offline */,
+				CEFFF60224C5E650002D0719 /* Certificate */,
+				EF12263F2377096F0038AEC0 /* Cells */,
+				EF12263E237709650038AEC0 /* XIB */,
+				EF1226372376A7890038AEC0 /* Model */,
+				EF12262523767BC50038AEC0 /* Fonts */,
+				EF12262223767A3D0038AEC0 /* Extensions */,
+				EF12262123767A2A0038AEC0 /* ThirdParty Library */,
+				CEE9907424CDB2D300B8603D /* ViewController XIB */,
+				EF6CFE1F237487E20004B469 /* ViewController */,
+				EF891A0823732AF4009388B4 /* AppDelegate.swift */,
+				EF891A0C23732AF4009388B4 /* Main.storyboard */,
+				EF891A0F23732AF6009388B4 /* Assets.xcassets */,
+				EF891A1123732AF6009388B4 /* LaunchScreen.storyboard */,
+				EF891A1423732AF6009388B4 /* Info.plist */,
+				CEB088AF24BF2ADA00C2EBEA /* LoginViewController.swift */,
+			);
+			path = Toner;
+			sourceTree = "<group>";
+		};
+		F94EBC7F2578D4ED00D016B5 /* TonerLatestCertificte */ = {
+			isa = PBXGroup;
+			children = (
+				F94EBC802578D4ED00D016B5 /* distribution-2.cer */,
+				F94EBC812578D4ED00D016B5 /* CertificateSigningRequest.certSigningRequest */,
+				F94EBC822578D4ED00D016B5 /* TonneruNewprovisioning.mobileprovision */,
+				F94EBC832578D4ED00D016B5 /* TonneruNew.p12 */,
+			);
+			path = TonerLatestCertificte;
+			sourceTree = "<group>";
+		};
+		F98A32582577FDA70093BC61 /* toner certificate */ = {
+			isa = PBXGroup;
+			children = (
+				F98A32592577FDA70093BC61 /* Toner_provisioning-2.mobileprovision */,
+				F98A325A2577FDA70093BC61 /* CertificateSigningRequest.certSigningRequest */,
+				F98A325B2577FDA70093BC61 /* tonerP12.p12 */,
+				F98A325C2577FDA70093BC61 /* toner.p12 */,
+			);
+			path = "toner certificate";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EF891A0423732AF4009388B4 /* Toner */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF891A1723732AF6009388B4 /* Build configuration list for PBXNativeTarget "Toner" */;
+			buildPhases = (
+				F1A3A97823491974D97636D1 /* [CP] Check Pods Manifest.lock */,
+				EF891A0123732AF4009388B4 /* Sources */,
+				EF891A0223732AF4009388B4 /* Frameworks */,
+				EF891A0323732AF4009388B4 /* Resources */,
+				E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Toner;
+			productName = Toner;
+			productReference = EF891A0523732AF4009388B4 /* Tonneru.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EF8919FD23732AF4009388B4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = Users;
+				TargetAttributes = {
+					EF891A0423732AF4009388B4 = {
+						CreatedOnToolsVersion = 10.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = EF891A0023732AF4009388B4 /* Build configuration list for PBXProject "Toner" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EF8919FC23732AF4009388B4;
+			productRefGroup = EF891A0623732AF4009388B4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EF891A0423732AF4009388B4 /* Toner */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EF891A0323732AF4009388B4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFB6937223FE382200798F3A /* GenreCollectionViewCell.xib in Resources */,
+				EF12262923767BD20038AEC0 /* Montserrat-Light.ttf in Resources */,
+				EFA3A448237D048900FE3118 /* ArtistImageHeaderCell.xib in Resources */,
+				EF3B8C7523F4F86C000F323F /* TopArtistTableViewCell.xib in Resources */,
+				CE4C17E224BD567900795989 /* BannerCollectionViewCell.xib in Resources */,
+				EFB6936E23FE36DD00798F3A /* GenresTableViewCell.xib in Resources */,
+				CEC0E5E424DB296700F2DEEF /* SettingsTableViewCell.xib in Resources */,
+				CE4B5819251F810E00C7FDAE /* MyStationsViewController.xib in Resources */,
+				EF10592424405C7B00406A2B /* ItemsCollectionViewCell.xib in Resources */,
+				F9130936253E060700C48314 /* CartDetailsViewController.xib in Resources */,
+				E36331CF261362730043453A /* MyCommissionTVCell.xib in Resources */,
+				DEC674D326023AAC00D59551 /* MyCommission.xib in Resources */,
+				CE260595250BF62F001132D6 /* FollowChatTableViewCell.xib in Resources */,
+				EF891A1323732AF6009388B4 /* LaunchScreen.storyboard in Resources */,
+				CEE846DF250D0D7B007E938B /* CreatePlayListViewController.xib in Resources */,
+				CE0F43B3254DA77D0001B85E /* MyDownloadViewController.xib in Resources */,
+				CED5C84424C32D2C002CF276 /* PlayerViewController.xib in Resources */,
+				F93CB8A62548956500ECDC07 /* SongsInPlaylistViewController.xib in Resources */,
+				EF891A1023732AF6009388B4 /* Assets.xcassets in Resources */,
+				CE14157024D4962600AB1A06 /* ProductDetailsViewController.xib in Resources */,
+				CEE95BC624BD53A100ADDD1E /* HomeBannerTableViewCell.xib in Resources */,
+				EF12262A23767BD20038AEC0 /* Montserrat-Regular.ttf in Resources */,
+				EF12263D2377095F0038AEC0 /* SongListCell.xib in Resources */,
+				CEE846D9250CA7B8007E938B /* PlayListTableViewCell.xib in Resources */,
+				F9130932253DFE4F00C48314 /* CartListCell.xib in Resources */,
+				CEE9907824CDB30300B8603D /* StationListViewController.xib in Resources */,
+				DEC674D626023D3900D59551 /* CommisionDetails.xib in Resources */,
+				F97AC134253F27D200288E2C /* CartAmountFooterCell.xib in Resources */,
+				CE0F43B7254DAF9D0001B85E /* DownloadTableViewCell.xib in Resources */,
+				CE120F45251FA16800C0CD30 /* FollowingsViewController.xib in Resources */,
+				E3C925B02618A308003EF12B /* MySongViewController.xib in Resources */,
+				EF10591E2440416100406A2B /* TopSalesTableViewCell.xib in Resources */,
+				EF3B8C7923F4FB0D000F323F /* ArtistCollectionViewCell.xib in Resources */,
+				CE84C88B24D9D681008BECFF /* CategoryListViewController.xib in Resources */,
+				CE4B5813251F1A7500C7FDAE /* EditProfileViewController.xib in Resources */,
+				E3E31B052619C66E00D84303 /* SongInPlayListImageTVCell.xib in Resources */,
+				CEE13A98251F8D89004FBAA6 /* ChangePasswordViewController.xib in Resources */,
+				F917CCEC2535E74C00EC5884 /* EditSocialViewController.xib in Resources */,
+				F9FD53702544989B00C1FF47 /* PlayListCells.xib in Resources */,
+				CE3CD34924BE39650012B4E4 /* ProductBannersCollectionViewCell.xib in Resources */,
+				DE961A962601C8DD0038635F /* CreatePlayListViewViewController.xib in Resources */,
+				F94C5B77253B22A10058410E /* SelectStationViewController.xib in Resources */,
+				EF52B08A243E4FC700604EEA /* FontAwesome.ttf in Resources */,
+				EFF8D7ED2440C46900E28E1A /* NewArrivalsCollectionViewCell.xib in Resources */,
+				CE4E14C124F0E4EC00D98603 /* SubscriptionTableViewCell.xib in Resources */,
+				DE34EE8025C79B0C0089354C /* AddressViewController.xib in Resources */,
+				CE99463024F0E0F8000A532E /* SubscriptionViewController.xib in Resources */,
+				F9FD536A25447B1D00C1FF47 /* AddToPlayListViewController.xib in Resources */,
+				EF12262B23767BD20038AEC0 /* Montserrat-Medium.ttf in Resources */,
+				E3E31B0B2619CBC600D84303 /* SongInPlayListTVCell.xib in Resources */,
+				DE4D103B26006F71003B7C94 /* MyAlbumViewController.xib in Resources */,
+				E39FDA5B260E5F150095EDEE /* AcountOverviewViewController.xib in Resources */,
+				EF891A0E23732AF4009388B4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Toner/Pods-Toner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Toner/Pods-Toner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Toner/Pods-Toner-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F1A3A97823491974D97636D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Toner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EF891A0123732AF4009388B4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE120F43251FA16100C0CD30 /* FollowingsViewController.swift in Sources */,
+				CEB088B024BF2ADA00C2EBEA /* LoginViewController.swift in Sources */,
+				CE4E14BD24F0E32700D98603 /* SubscriptionPlanModel.swift in Sources */,
+				EF105920244045D700406A2B /* ItemModel.swift in Sources */,
+				E36331CE261362730043453A /* MyCommissionTVCell.swift in Sources */,
+				EF3B8C6323F4EE5D000F323F /* STRINGS.swift in Sources */,
+				CE0F43B6254DAF9D0001B85E /* DownloadTableViewCell.swift in Sources */,
+				CE4B5812251F1A7500C7FDAE /* EditProfileViewController.swift in Sources */,
+				CE99462F24F0E0F8000A532E /* SubscriptionViewController.swift in Sources */,
+				EF6CFE21237488250004B469 /* TabBarController.swift in Sources */,
+				CEB088B224BF440B00C2EBEA /* ExpandableLabel.swift in Sources */,
+				CEE59E5624B78FEA006DE1A3 /* ProductDetailsViewController.swift in Sources */,
+				CE4E14C324F13ED100D98603 /* ForgotPasswordViewController.swift in Sources */,
+				EF3B8C5A23F4ED3E000F323F /* UIColor.swift in Sources */,
+				CEE95BC524BD53A100ADDD1E /* HomeBannerTableViewCell.swift in Sources */,
+				EF10591D2440416100406A2B /* TopSalesTableViewCell.swift in Sources */,
+				CEE846D8250CA7B8007E938B /* PlayListTableViewCell.swift in Sources */,
+				EFA3A447237D048900FE3118 /* ArtistImageHeaderCell.swift in Sources */,
+				CE0F43B2254DA77D0001B85E /* MyDownloadViewController.swift in Sources */,
+				EF3B8C7423F4F86C000F323F /* TopArtistTableViewCell.swift in Sources */,
+				DE34EE8425C7C9570089354C /* AddressViewController.swift in Sources */,
+				CEC0E5E324DB296700F2DEEF /* SettingsTableViewCell.swift in Sources */,
+				EF3B8C7823F4FB0D000F323F /* ArtistCollectionViewCell.swift in Sources */,
+				EF52B08C243E526200604EEA /* SearchViewController.swift in Sources */,
+				CE4B5818251F810E00C7FDAE /* MyStationsViewController.swift in Sources */,
+				CE260594250BF62F001132D6 /* FollowChatTableViewCell.swift in Sources */,
+				F9FD536C25447B3D00C1FF47 /* AddToPlayListViewController.swift in Sources */,
+				EF3B8C6423F4EE5D000F323F /* Config.swift in Sources */,
+				EF3B8C6D23F4EEE1000F323F /* FAIcon+Lookup.swift in Sources */,
+				EF3B8C6123F4EE5D000F323F /* UIButton.swift in Sources */,
+				CE4E14C024F0E4EC00D98603 /* SubscriptionTableViewCell.swift in Sources */,
+				DEC674D9260244A900D59551 /* MyCommission.swift in Sources */,
+				CED5C84324C32D2C002CF276 /* PlayerViewController.swift in Sources */,
+				F93DB57B254DCF360060C038 /* CurrentDownloadEntity+CoreDataClass.swift in Sources */,
+				EF3B8C6F23F4EEE2000F323F /* ASToast.swift in Sources */,
+				F97AC136253F2FCF00288E2C /* CartListModel.swift in Sources */,
+				EF3B8C6C23F4EEE1000F323F /* FAIcon.swift in Sources */,
+				EFB6936D23FE36DD00798F3A /* GenresTableViewCell.swift in Sources */,
+				CE3CD34824BE39650012B4E4 /* ProductBannersCollectionViewCell.swift in Sources */,
+				CED5C83F24C32A71002CF276 /* TransitionCoordinator.swift in Sources */,
+				CEE846DB250CABE8007E938B /* PlayListModel.swift in Sources */,
+				E3E31B042619C66E00D84303 /* SongInPlayListImageTVCell.swift in Sources */,
+				CE4C17E124BD567900795989 /* BannerCollectionViewCell.swift in Sources */,
+				E3C925AF2618A308003EF12B /* MySongViewController.swift in Sources */,
+				EF891A0B23732AF4009388B4 /* ViewController.swift in Sources */,
+				F97AC133253F27D200288E2C /* CartAmountFooterCell.swift in Sources */,
+				F93DB57C254DCF360060C038 /* CurrentDownloadEntity+CoreDataProperties.swift in Sources */,
+				CE886E08250CA3A600ECFC53 /* PlayListViewController.swift in Sources */,
+				CECC5DB124C3833100A0E5CC /* TonneruMusicPlayer.swift in Sources */,
+				CED5C84024C32A71002CF276 /* Array+UIViewPropertyAnimator.swift in Sources */,
+				CEB088B424BF4D5A00C2EBEA /* RegisterViewController.swift in Sources */,
+				EFB6937123FE382200798F3A /* GenreCollectionViewCell.swift in Sources */,
+				F93CB8A52548956500ECDC07 /* SongsInPlaylistViewController.swift in Sources */,
+				EF1226392376B4D90038AEC0 /* SongModel.swift in Sources */,
+				DE4D103826005378003B7C94 /* MyAlbumViewController.swift in Sources */,
+				CEC0E5E624DB2AE500F2DEEF /* Setting.swift in Sources */,
+				F93DB574254DBABA0060C038 /* BadgedBarButtonItem.swift in Sources */,
+				F94C5B76253B22A10058410E /* SelectStationViewController.swift in Sources */,
+				CE84C88924D9D54B008BECFF /* CategoryListViewController.swift in Sources */,
+				CE8E0E5D24D32C5C0080B52E /* ValueStepper.swift in Sources */,
+				CED5898324BE9CA400007EC9 /* ZKCarousel.swift in Sources */,
+				F93DB579254DCF360060C038 /* ContentDetailsEntity+CoreDataProperties.swift in Sources */,
+				EFF8D7EC2440C46900E28E1A /* NewArrivalsCollectionViewCell.swift in Sources */,
+				CEC0E5E024DB216100F2DEEF /* SettingsViewController.swift in Sources */,
+				DE961A9E2601E9A70038635F /* CreatePlayListViewViewController.swift in Sources */,
+				EF12263023768CB20038AEC0 /* MusicListViewController.swift in Sources */,
+				CED5C83E24C32A71002CF276 /* UIViewController+Utils.swift in Sources */,
+				EF12262423767A5B0038AEC0 /* UIViewController.swift in Sources */,
+				EF12263C2377095F0038AEC0 /* SongListCell.swift in Sources */,
+				F9130935253E060700C48314 /* CartDetailsViewController.swift in Sources */,
+				F93CB8A2254894E500ECDC07 /* PlaylistViewModel.swift in Sources */,
+				EF3B8C7123F4EFBB000F323F /* HomePageDataModel.swift in Sources */,
+				CE238B8D254C5D89009FC48B /* TonneruDownloadButton.swift in Sources */,
+				EF12262E23767C510038AEC0 /* UIFont.swift in Sources */,
+				E39FDA5A260E5F150095EDEE /* AcountOverviewViewController.swift in Sources */,
+				F9130931253DFE4F00C48314 /* CartListCell.swift in Sources */,
+				EFB4E5872400B813005D5E1C /* ArtistModel.swift in Sources */,
+				EF3B8C6023F4EE5D000F323F /* UITextField.swift in Sources */,
+				F93DB57A254DCF360060C038 /* ContentDetailsEntity+CoreDataClass.swift in Sources */,
+				EF3B8C6B23F4EEE1000F323F /* APJPicker.swift in Sources */,
+				CE4B5815251F733D00C7FDAE /* Station.swift in Sources */,
+				EF3B8C6E23F4EEE2000F323F /* AACarousel.swift in Sources */,
+				F917CCEE2535E88A00EC5884 /* EditSocialViewController.swift in Sources */,
+				CEE13A97251F8D89004FBAA6 /* ChangePasswordViewController.swift in Sources */,
+				EF3B8C6223F4EE5D000F323F /* UIView.swift in Sources */,
+				CEE9907724CDB30300B8603D /* StationListViewController.swift in Sources */,
+				EFC6BCA6243F991E00EB336B /* MerchandiseViewController.swift in Sources */,
+				CE238B8E254C5DD2009FC48B /* TonneruDownloadManager.swift in Sources */,
+				CEA84BCD254479E6002E2841 /* TonneruDownload.xcdatamodeld in Sources */,
+				EF891A0923732AF4009388B4 /* AppDelegate.swift in Sources */,
+				EF3B8C5823F4E90F000F323F /* HomeViewController.swift in Sources */,
+				E3E31B0A2619CBC600D84303 /* SongInPlayListTVCell.swift in Sources */,
+				CE203DA82549DC3E00A422E3 /* TonneruDownloadUtility.swift in Sources */,
+				EF10592324405C7B00406A2B /* ItemsCollectionViewCell.swift in Sources */,
+				F9FD536E2544988D00C1FF47 /* PlayListCells.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EF891A0C23732AF4009388B4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF891A0D23732AF4009388B4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EF891A1123732AF6009388B4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF891A1223732AF6009388B4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EF891A1523732AF6009388B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EF891A1623732AF6009388B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EF891A1823732AF6009388B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3CAFBF887004EB6B4D31B6A5 /* Pods-Toner.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = KRU83VZ8AX;
+				INFOPLIST_FILE = Toner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.release.tonneru;
+				PRODUCT_NAME = Tonneru;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EF891A1923732AF6009388B4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 143DAD559B395B6E8C1527B2 /* Pods-Toner.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
+				DEVELOPMENT_TEAM = KRU83VZ8AX;
+				INFOPLIST_FILE = Toner/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.release.tonneru;
+				PRODUCT_NAME = Tonneru;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EF891A0023732AF4009388B4 /* Build configuration list for PBXProject "Toner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF891A1523732AF6009388B4 /* Debug */,
+				EF891A1623732AF6009388B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF891A1723732AF6009388B4 /* Build configuration list for PBXNativeTarget "Toner" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF891A1823732AF6009388B4 /* Debug */,
+				EF891A1923732AF6009388B4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CEA84BCB254479E5002E2841 /* TonneruDownload.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CEA84BCC254479E5002E2841 /* TonneruDownload.xcdatamodel */,
+			);
+			currentVersion = CEA84BCC254479E5002E2841 /* TonneruDownload.xcdatamodel */;
+			path = TonneruDownload.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = EF8919FD23732AF4009388B4 /* Project object */;
+}

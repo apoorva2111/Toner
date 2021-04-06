@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PlayListTableViewCell" rowHeight="84" id="KGk-i7-Jjw" customClass="PlayListTableViewCell" customModule="Tonneru" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="412" height="84"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="412" height="84"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MQu-n9-3xo">
+                        <rect key="frame" x="4" y="4" width="404" height="76"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dlw-AL-mRD">
+                                <rect key="frame" x="5" y="8" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.29408872130000002" green="0.2941361368" blue="0.29407837990000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="TdU-EC-rYn"/>
+                                    <constraint firstAttribute="width" constant="60" id="bOh-3B-FmD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F5l-W8-uXj">
+                                <rect key="frame" x="75" y="28" width="237" height="20.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8R-gk-D3E">
+                                <rect key="frame" x="317" y="17.5" width="41" height="41"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="hgP-ji-1oi"/>
+                                    <constraint firstAttribute="width" constant="41" id="wwv-i4-XTx"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="edit_Playlist"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FI8-yZ-OKS">
+                                <rect key="frame" x="363" y="17.5" width="41" height="41"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41" id="N3J-FI-hBE"/>
+                                    <constraint firstAttribute="width" constant="41" id="T9S-pG-bKY"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="delete"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="F5l-W8-uXj" firstAttribute="leading" secondItem="dlw-AL-mRD" secondAttribute="trailing" constant="10" id="DkJ-kE-Aqy"/>
+                            <constraint firstItem="dlw-AL-mRD" firstAttribute="centerY" secondItem="MQu-n9-3xo" secondAttribute="centerY" id="O4M-Je-7oc"/>
+                            <constraint firstItem="F5l-W8-uXj" firstAttribute="centerY" secondItem="dlw-AL-mRD" secondAttribute="centerY" id="Usr-Lr-98t"/>
+                            <constraint firstItem="FI8-yZ-OKS" firstAttribute="centerY" secondItem="F5l-W8-uXj" secondAttribute="centerY" id="ZSX-t3-HxG"/>
+                            <constraint firstItem="b8R-gk-D3E" firstAttribute="centerY" secondItem="F5l-W8-uXj" secondAttribute="centerY" id="ZdC-NB-LPT"/>
+                            <constraint firstItem="dlw-AL-mRD" firstAttribute="leading" secondItem="MQu-n9-3xo" secondAttribute="leading" constant="5" id="rN7-Ir-RYh"/>
+                            <constraint firstItem="FI8-yZ-OKS" firstAttribute="leading" secondItem="b8R-gk-D3E" secondAttribute="trailing" constant="5" id="tA0-5F-bFh"/>
+                            <constraint firstItem="b8R-gk-D3E" firstAttribute="leading" secondItem="F5l-W8-uXj" secondAttribute="trailing" constant="5" id="yJF-SW-3MS"/>
+                            <constraint firstAttribute="trailing" secondItem="FI8-yZ-OKS" secondAttribute="trailing" id="ze7-RI-fIc"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="MQu-n9-3xo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="Iq0-ve-qnl"/>
+                    <constraint firstAttribute="trailing" secondItem="MQu-n9-3xo" secondAttribute="trailing" constant="4" id="WfV-0m-lBs"/>
+                    <constraint firstItem="MQu-n9-3xo" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="Y1o-ov-Jr4"/>
+                    <constraint firstAttribute="bottom" secondItem="MQu-n9-3xo" secondAttribute="bottom" constant="4" id="ZsA-sE-Abn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="backView" destination="MQu-n9-3xo" id="Uhh-d3-HUW"/>
+                <outlet property="deleteplayListButton" destination="FI8-yZ-OKS" id="Lw6-nX-ziw"/>
+                <outlet property="editPlaylistButton" destination="b8R-gk-D3E" id="jWD-vd-kTl"/>
+                <outlet property="playListImageView" destination="dlw-AL-mRD" id="yLN-sj-iHb"/>
+                <outlet property="playListName" destination="F5l-W8-uXj" id="RCS-ri-lVn"/>
+            </connections>
+            <point key="canvasLocation" x="204.34782608695653" y="131.25"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="delete" width="75" height="75"/>
+        <image name="edit_Playlist" width="75" height="75"/>
+    </resources>
+</document>

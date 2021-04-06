@@ -1,0 +1,36 @@
+PODS:
+  - Alamofire (4.7.3)
+  - AudioPlayerManager (1.2.3)
+  - IQKeyboardManagerSwift (6.5.6)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
+
+DEPENDENCIES:
+  - Alamofire (= 4.7.3)
+  - AudioPlayerManager
+  - IQKeyboardManagerSwift
+  - Kingfisher (~> 5.0)
+  - NVActivityIndicatorView
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AudioPlayerManager
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - NVActivityIndicatorView
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AudioPlayerManager: 02601ac29abb8efc0043c851ee5f5c79e69d77fa
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+
+PODFILE CHECKSUM: 7eee5c8b10da303f10748179070ccba96af0a093
+
+COCOAPODS: 1.10.1

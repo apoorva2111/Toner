@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TopArtistTableViewCell" rowHeight="213" id="KGk-i7-Jjw" customClass="TopArtistTableViewCell" customModule="Tonneru" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="413" height="213"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="413" height="213"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Tqv-Cs-fU0">
+                        <rect key="frame" x="4" y="37" width="401" height="168"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="168" id="adt-P3-IAs"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Kvj-In-1uo">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top artists" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gL9-sB-Bhv">
+                        <rect key="frame" x="8" y="8" width="80.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="Gx2-jf-GHm"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gL9-sB-Bhv" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="3ii-OS-uMB"/>
+                    <constraint firstItem="Tqv-Cs-fU0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="4" id="Dxg-OQ-gSa"/>
+                    <constraint firstItem="gL9-sB-Bhv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="EO7-ef-jf9"/>
+                    <constraint firstItem="Tqv-Cs-fU0" firstAttribute="top" secondItem="gL9-sB-Bhv" secondAttribute="bottom" constant="8" id="KLh-Aj-ggN"/>
+                    <constraint firstAttribute="trailing" secondItem="Tqv-Cs-fU0" secondAttribute="trailing" constant="8" id="N4B-LU-oQx"/>
+                    <constraint firstAttribute="bottom" secondItem="Tqv-Cs-fU0" secondAttribute="bottom" constant="8" id="XVf-oO-Ztp"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="collectionView" destination="Tqv-Cs-fU0" id="Dx0-dp-uwq"/>
+                <outlet property="collectionviewHeightConstraint" destination="adt-P3-IAs" id="nNs-mt-xQC"/>
+                <outlet property="topArtistLabel" destination="gL9-sB-Bhv" id="FtM-Km-4U5"/>
+            </connections>
+            <point key="canvasLocation" x="205.07246376811597" y="140.95982142857142"/>
+        </tableViewCell>
+    </objects>
+</document>
