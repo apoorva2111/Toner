@@ -14,4 +14,6 @@ struct PlayListModel {
     var name: String = ""
     var totalsongs: String = "0"
     var image: String = ""
+    var all_song_id = [String]()
+    
 }

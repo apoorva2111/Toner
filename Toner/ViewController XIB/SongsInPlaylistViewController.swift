@@ -21,6 +21,10 @@ class SongsInPlaylistViewController: UIViewController {
     var activityIndicator: NVActivityIndicatorView!
     var plyalist_id = ""
     var playlist_name = ""
+    var isFrom_Album = ""
+    var arrAlbumSong = [Album_Songs]()
+    var dict = AlbumSongList(dictionary: [:])
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,9 +42,13 @@ class SongsInPlaylistViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: "SongInPlayListTVCell", bundle: nil), forCellReuseIdentifier: "SongInPlayListTVCell")
         tableView.register(UINib(nibName: "SongInPlayListImageTVCell", bundle: nil), forCellReuseIdentifier: "SongInPlayListImageTVCell")
-
+        if isFrom_Album == "Album"{
+            getAllSongFromAlbum()
+        }else{
+            getAllSongFromPlaylist()
+            
+        }
         
-        getAllSongFromPlaylist()
         // Do any additional setup after loading the view.
     }
     
@@ -89,7 +97,43 @@ class SongsInPlaylistViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
-
+    
+    func getAllSongFromAlbum(){
+        self.activityIndicator.startAnimating()
+        
+        let bodyParams = [
+            "album_id": plyalist_id
+            ] as [String : String]
+        self.activityIndicator.startAnimating()
+        Alamofire.request("https://tonnerumusic.com/api/v1/albumDetails", method: .post, parameters: bodyParams).validate().responseJSON { [self] (response) in
+            
+            guard response.result.isSuccess else {
+                self.view.makeToast(message: Message.apiError)
+                self.activityIndicator.stopAnimating()
+                return
+            }
+            
+            let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+            self.activityIndicator.stopAnimating()
+            
+            print(resposeJSON)
+            let albumArray = resposeJSON["songs"] as? NSArray ?? NSArray()
+            dict = AlbumSongList(dictionary: resposeJSON)
+            if arrAlbumSong.count>0{
+                arrAlbumSong.removeAll()
+            }
+            for objAlbum in albumArray{
+                let obj = Album_Songs(dictionary: objAlbum as! NSDictionary)
+                arrAlbumSong.append(obj!)
+            }
+            
+            /*
+             
+             */
+            
+       self.tableView.reloadData()
+        }
+    }
     fileprivate func deleteSongApiCAlled(_ index : Int) {
         let bodyParams = [
             "playlist_id": self.plyalist_id,
@@ -198,7 +242,7 @@ class SongsInPlaylistViewController: UIViewController {
         TonneruMusicPlayer.repeatMode = .off
         TonneruMusicPlayer.shuffleModeOn = false
         
-        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
 }
@@ -208,31 +252,51 @@ extension SongsInPlaylistViewController : UITableViewDelegate, UITableViewDataSo
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFrom_Album == "Album"{
+            return self.arrAlbumSong.count + 1
+        }else{
         return self.playListData?.songs.count ?? 0 + 1
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SongInPlayListImageTVCell", for: indexPath) as! SongInPlayListImageTVCell
+            if isFrom_Album == "Album"{
+                cell.imgView.kf.setImage(with: URL(string: self.dict?.image ?? ""))
+                cell.imgView.contentMode = .scaleToFill
+                cell.btnPlaySong.addTarget(self, action: #selector(playSong), for: .touchUpInside)
+
+            }else{
             cell.imgView.kf.setImage(with: URL(string: self.playListData?.image ?? ""))
             cell.imgView.contentMode = .scaleToFill
             cell.btnPlaySong.addTarget(self, action: #selector(playSong), for: .touchUpInside)
-
+            }
             cell.backgroundColor = .clear
 return cell
         }else{
         let cell = tableView.dequeueReusableCell(withIdentifier: "SongInPlayListTVCell", for: indexPath) as! SongInPlayListTVCell
         cell.backgroundColor = .clear
-//        cell.playListName.text = self.playListData?.songs[indexPath.row-1].song_name
-//        cell.editPlaylistButton.isHidden = true
-//        cell.playListImageView.kf.setImage(with: URL(string: self.playListData?.image ?? ""))
-//        cell.deleteplayListButton.tag = indexPath.row
-//        cell.deleteplayListButton.addTarget(self, action: #selector(deleteSong), for: .touchUpInside)
-            cell.lblTitle.text = self.playListData?.songs[indexPath.row-1].song_name
+            if isFrom_Album == "Album"{
+//                cell.btnDownloadOutlet.tag = indexPath.row
+//                cell.btnDownloadOutlet.addTarget(self, action: #selector(downloadSong), for: .touchUpInside)
+//
+//                cell.btnAddOutlet.tag = indexPath.row
+//                cell.btnAddOutlet.addTarget(self, action: #selector(addSong), for: .touchUpInside)
+                
+                let objAlbum = arrAlbumSong[indexPath.row - 1]
+                cell.lblTitle.text = objAlbum.name
+                cell.lblDescription.text = ""
+
+            }else{
+                let objDict = playListData?.songs[indexPath.row]
+                cell.lblTitle.text = objDict?.song_name
+                cell.lblDescription.text = objDict?.artist_name
             cell.btnDownloadOutlet.tag = indexPath.row
             cell.btnDownloadOutlet.addTarget(self, action: #selector(downloadSong), for: .touchUpInside)
             
             cell.btnAddOutlet.tag = indexPath.row
             cell.btnAddOutlet.addTarget(self, action: #selector(addSong), for: .touchUpInside)
+            }
         return cell
             
         }
@@ -249,11 +313,34 @@ return cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        resetPlayer()
        TonneruMusicPlayer.shared.initialize()
-       let url = self.playListData?.songs[indexPath.row].path ?? ""
-        
-        self.playListData?.songs[indexPath.row].path = "https://tonnerumusic.com/storage/uploads/" + url
-        let songList = (self.playListData?.songs[indexPath.row])! as SongModel
-        TonneruMusicPlayer.shared.playSong(data: [songList], index: 0)
-       tableView.reloadData()
+        let url = self.arrAlbumSong[indexPath.row].path ?? ""
+        arrAlbumSong[indexPath.row].path = "https://tonnerumusic.com/storage/uploads/" + url
+
+        if isFrom_Album == "Album"{
+            let songAlbum = self.arrAlbumSong[indexPath.row]
+            var songList = SongModel()
+          
+            songList.path = songAlbum.path ?? ""
+            songList.song_id = songAlbum.id ?? ""
+            songList.song_name = songAlbum.name ?? ""
+            songList.image = songAlbum.image ?? ""
+            songList.filetype = songAlbum.filetype ?? ""
+            songList.filesize = songAlbum.filesize ?? ""
+            songList.duration = songAlbum.duration ?? ""
+            songList.artist_name = dict?.name ?? ""
+            songList.artistImage = dict?.image ?? ""
+            
+
+            TonneruMusicPlayer.shared.playSong(data: [songList], index: 0)
+
+        }else{
+            let url = self.playListData?.songs[indexPath.row].path ?? ""
+
+            self.playListData?.songs[indexPath.row].path = "https://tonnerumusic.com/storage/uploads/" + url
+            let songList = (self.playListData?.songs[indexPath.row])! as SongModel
+            TonneruMusicPlayer.shared.playSong(data: [songList], index: 0)
+
+        }
+    //   tableView.reloadData()
     }
 }

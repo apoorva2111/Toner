@@ -45,6 +45,14 @@ class EditSocialViewController: UIViewController {
         setUpTextFields(instagramText, value: "", placeHolder: "Instagram")
         setUpTextFields(tiktokText, value: "", placeHolder: "Tiktok")
         setUpTextFields(trillerText, value: "", placeHolder: "Triller")
+        websiteText.setIcon(#imageLiteral(resourceName: "website"))
+        youtubeText.setIcon(#imageLiteral(resourceName: "youtube"))
+        nuNetworkText.setIcon(#imageLiteral(resourceName: "nu-network"))
+        twitterText.setIcon(#imageLiteral(resourceName: "twitter"))
+        instagramText.setIcon(#imageLiteral(resourceName: "instagram"))
+        vimeoText.setIcon(#imageLiteral(resourceName: "vimeo"))
+        tiktokText.setIcon(#imageLiteral(resourceName: "tiktok"))
+        trillerText.setIcon(#imageLiteral(resourceName: "triller"))
         
         self.submitButton.backgroundColor = ThemeColor.buttonColor
         self.submitButton.layer.cornerRadius = self.submitButton.frame.height / 2

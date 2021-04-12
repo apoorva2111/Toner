@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="430" height="243"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niR-hb-6Z5">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niR-hb-6Z5" customClass="AGVideoPlayerView" customModule="Tonneru" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="243"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>

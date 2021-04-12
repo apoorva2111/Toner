@@ -11,4 +11,6 @@ pod 'NVActivityIndicatorView'
 pod 'Kingfisher', '~> 5.0'
 pod 'IQKeyboardManagerSwift'
 pod 'Alamofire', '4.7.3'
+pod 'PINRemoteImage', '~> 3.0.1'
+
 end

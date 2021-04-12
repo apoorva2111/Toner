@@ -133,6 +133,13 @@ extension AddToPlayListViewController : UITableViewDelegate,UITableViewDataSourc
             {
                 cell.backgroundColor = #colorLiteral(red: 0.2, green: 0.1960784314, blue: 0.2, alpha: 1)
             }
+        
+        if self.playListData[indexPath.row].all_song_id.contains(songId){
+            cell.plusButton.setImage(UIImage.init(named: "Minus"), for: .normal)
+        }else{
+            cell.plusButton.setImage(UIImage.init(named: "plus"), for: .normal)
+
+        }
         cell.songName.text = self.playListData[indexPath.row].name.trimmingCharacters(in: .whitespacesAndNewlines)
         cell.lblPlayListCount.text = self.playListData[indexPath.row].totalsongs
         cell.images.kf.setImage(with: URL(string: self.playListData[indexPath.row].image))
@@ -170,7 +177,7 @@ extension AddToPlayListViewController {
         self.activityIndicator.startAnimating()
 //        Alamofire.request("https://tonnerumusic.com/api/v1/memberplaylist", method: .post, parameters: bodyParams).validate().responseJSON { (response) in
             
-        Alamofire.request("https://tonnerumusic.com/api/v1/memberplaylist", method: .post, parameters: [:]).validate().responseJSON { (response) in
+        Alamofire.request("https://tonnerumusic.com/api/v1/memberplaylist", method: .post, parameters: bodyParams).validate().responseJSON { (response) in
             guard response.result.isSuccess else {
                 self.view.makeToast(message: Message.apiError)
                 self.activityIndicator.stopAnimating()
@@ -182,9 +189,11 @@ extension AddToPlayListViewController {
             
             print(resposeJSON)
             let playlists = resposeJSON["playlists"] as? NSArray ?? NSArray()
+            print(playlists)
             if playlists.count > 0{
-                playlists.forEach { (playList) in
+                for playList in playlists {
                     let currentPlayList = playList as? NSDictionary ?? NSDictionary()
+                    
                     var playListData = PlayListModel()
                     playListData.id = currentPlayList["id"] as? String ?? ""
                     playListData.user_id = currentPlayList["user_id"] as? String ?? ""
@@ -192,8 +201,21 @@ extension AddToPlayListViewController {
                     playListData.name = currentPlayList["name"] as? String ?? ""
                     playListData.totalsongs = String(currentPlayList["totalsongs"] as? Int ?? 0)
                     playListData.image = currentPlayList["image"] as? String ?? ""
+                    playListData.all_song_id = currentPlayList["all_song_id"] as? NSArray as! [String]
                     self.playListData.append(playListData)
                 }
+//                playlists.forEach { (playList) in
+//                    let currentPlayList = playList as? NSDictionary ?? NSDictionary()
+//                    var playListData = PlayListModel()
+//                    playListData.id = currentPlayList["id"] as? String ?? ""
+//                    playListData.user_id = currentPlayList["user_id"] as? String ?? ""
+//                    playListData.member_name = currentPlayList["member_name"] as? String ?? ""
+//                    playListData.name = currentPlayList["name"] as? String ?? ""
+//                    playListData.totalsongs = String(currentPlayList["totalsongs"] as? Int ?? 0)
+//                    playListData.image = currentPlayList["image"] as? String ?? ""
+//                    playListData.all_song_id = currentPlayList["all_song_id"] as? NSArray as! [String]
+//                    self.playListData.append(playListData)
+//                }
             }
             self.tableView.reloadData()
         }

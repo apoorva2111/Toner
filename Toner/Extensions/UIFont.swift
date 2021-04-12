@@ -22,4 +22,5 @@ extension UIFont{
     static var montserratMedium : UIFont{
         return UIFont(name: "Montserrat-Medium", size: 14)!
     }
+    
 }

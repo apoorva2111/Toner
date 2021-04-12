@@ -298,7 +298,7 @@ extension MusicListViewController: UITableViewDataSource, UITableViewDelegate{
             cell.artistName.text = artistDetailsData?.songs[indexPath.row].artist_name
             cell.songName.text = artistDetailsData?.songs[indexPath.row].song_name
             cell.downloadButton.delegate = self
-            cell.downloadButton.downloadImage = UIImage(named: "download")
+            cell.downloadButton.downloadImage = UIImage(named: "download_list")
             cell.downloadButton.downloadCompleteImage = UIImage(named: "downloadComplete")
             cell.downloadButton.tintColor = ThemeColor.buttonColor
             cell.downloadButton.showProgress = true

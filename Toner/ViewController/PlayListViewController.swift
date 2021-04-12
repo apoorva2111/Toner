@@ -44,7 +44,6 @@ class PlayListViewController: UIViewController {
        // self.tableView.backgroundColor = .clear
 //        reloadPlaylist
         NotificationCenter.default.addObserver(self, selector: #selector(getAllPlayList), name: Notification.Name("reloadPlaylist"), object: nil)
-        getAllPlayList()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -53,6 +52,7 @@ class PlayListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        getAllPlayList()
 
     }
     
@@ -193,9 +193,11 @@ class PlayListViewController: UIViewController {
     }
     
     @objc fileprivate func editPlaylist(sender : UIButton){
+        let objPalyList = playListData[sender.tag]
         let alert = UIAlertController(title: "Edit Playlist Name", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
-            textField.placeholder = "New playlist name"
+           // textField.placeholder = "New playlist name"
+            textField.text = objPalyList.name
         }
 
 
@@ -370,7 +372,10 @@ extension PlayListViewController: UITableViewDataSource, UITableViewDelegate{
         if isSelectedTab{
         if indexPath.section == 0{
             let destination = CreatePlayListViewViewController(nibName: "CreatePlayListViewViewController", bundle: nil)
-            self.present(destination, animated: true, completion: nil)
+            destination.strCreate = "Playlist"
+            destination.viewcontroller = self
+           self.present(destination, animated: true, completion: nil)
+//            self.navigationController?.pushViewController(destination, animated: false)
         }
         else{
             let destination = SongsInPlaylistViewController(nibName: "SongsInPlaylistViewController", bundle: nil)

@@ -1,15 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "followers.png",
+      "filename" : "followers copy-1.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "followers.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "followers copy 2-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyAlbumViewController" customModule="Tonneru" customModuleProvider="target">
             <connections>
                 <outlet property="createAlbum" destination="xjW-gZ-2p7" id="vGy-u4-Utc"/>
+                <outlet property="tblAlbums" destination="3Pn-mL-IOg" id="xSg-It-9vN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lU8-rH-I7o"/>
             </connections>
         </placeholder>
@@ -20,16 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Kbf-7A-sje">
-                    <rect key="frame" x="0.0" y="120" width="414" height="755"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wno-yG-bKl">
-                        <size key="itemSize" width="128" height="128"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjW-gZ-2p7">
                     <rect key="frame" x="274" y="76" width="120" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -40,16 +31,20 @@
                         <action selector="createAlbumAction:" destination="-1" eventType="touchUpInside" id="4dT-pM-oJ5"/>
                     </connections>
                 </button>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Pn-mL-IOg">
+                    <rect key="frame" x="0.0" y="122" width="414" height="740"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xjW-gZ-2p7" secondAttribute="trailing" constant="20" id="CMU-ke-4HD"/>
+                <constraint firstItem="3Pn-mL-IOg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="COG-Bo-jvR"/>
+                <constraint firstItem="3Pn-mL-IOg" firstAttribute="top" secondItem="xjW-gZ-2p7" secondAttribute="bottom" constant="10" id="I9J-K7-Ai0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3Pn-mL-IOg" secondAttribute="bottom" id="KHA-Aw-uNB"/>
                 <constraint firstItem="xjW-gZ-2p7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="MGG-1C-qfa"/>
-                <constraint firstItem="Kbf-7A-sje" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="76" id="Mbh-aH-HEL"/>
-                <constraint firstItem="Kbf-7A-sje" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="S0S-To-TOm"/>
-                <constraint firstAttribute="bottom" secondItem="Kbf-7A-sje" secondAttribute="bottom" constant="21" id="Wrr-az-X9l"/>
-                <constraint firstItem="Kbf-7A-sje" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="kz5-5f-DxY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3Pn-mL-IOg" secondAttribute="trailing" id="cRB-bH-iFg"/>
             </constraints>
             <point key="canvasLocation" x="31.884057971014496" y="71.651785714285708"/>
         </view>

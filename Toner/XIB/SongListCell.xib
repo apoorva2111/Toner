@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,16 +18,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="w5e-RS-4PP">
-                        <rect key="frame" x="16" y="15.5" width="42" height="46"/>
+                        <rect key="frame" x="16" y="15.5" width="272" height="46"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZR-Px-y5X">
-                                <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="272" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPE-rS-kxW">
-                                <rect key="frame" x="0.0" y="25.5" width="42" height="20.5"/>
+                                <rect key="frame" x="0.0" y="25.5" width="272" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.6588235294117647" green="0.6588235294117647" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -47,7 +47,7 @@
                                     <constraint firstAttribute="height" constant="30" id="TnE-cA-xQZ"/>
                                     <constraint firstAttribute="width" constant="30" id="vh6-Sw-yvh"/>
                                 </constraints>
-                                <state key="normal" image="playlist"/>
+                                <state key="normal" image="add"/>
                             </button>
                         </subviews>
                         <constraints>
@@ -57,13 +57,14 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="w5e-RS-4PP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0ae-L3-2K5"/>
+                    <constraint firstItem="X19-Z5-V0c" firstAttribute="leading" secondItem="w5e-RS-4PP" secondAttribute="trailing" constant="5" id="Otz-PB-h74"/>
                     <constraint firstItem="w5e-RS-4PP" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dvy-jQ-uHu"/>
                     <constraint firstItem="X19-Z5-V0c" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="hmQ-8q-GIu"/>
                     <constraint firstAttribute="trailing" secondItem="X19-Z5-V0c" secondAttribute="trailing" constant="8" id="iTJ-kF-bmf"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" red="0.12941176470588234" green="0.12941176470588234" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
                 <outlet property="artistName" destination="uPE-rS-kxW" id="Cf9-vS-YP0"/>
                 <outlet property="downloadButton" destination="lio-oB-Txp" id="6Vz-Ve-80V"/>
@@ -74,7 +75,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="like" width="40" height="40"/>
-        <image name="playlist" width="30" height="30"/>
+        <image name="add" width="75" height="75"/>
     </resources>
 </document>

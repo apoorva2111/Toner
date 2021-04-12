@@ -51,7 +51,18 @@ extension UITextField{
             self.rightView = imageView
         }
     }
-    
+    func setIcon(_ image: UIImage) {
+       let iconView = UIImageView(frame:
+                      CGRect(x: 5, y: 5, width: 20, height: 20))
+       iconView.image = image
+       let iconContainerView: UIView = UIView(frame:
+                      CGRect(x: 10, y: 0, width: 30, height: 30))
+        iconView.tintColor = .white
+       iconContainerView.addSubview(iconView)
+       leftView = iconContainerView
+       leftViewMode = .always
+    }
+
     func setPlaceholder(placeholder: String, color: UIColor){
         self.attributedPlaceholder = NSAttributedString(string: placeholder,
         attributes: [NSAttributedString.Key.foregroundColor: color])

@@ -22,11 +22,16 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var phoneText: UITextField!
     @IBOutlet weak var genderPicker: APJTextPickerView!
     @IBOutlet weak var paypalID: UITextField!
-   
+    @IBOutlet weak var btnOutletChangeAvtar: UIButton!
+    @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var selectStation: UITextField!
-    
-    
+    @IBAction func btnChangeAvtarAction(_ sender: UIButton) {
+        presentPhoto()
 
+    }
+    
+    
+    var imagData =  Data()
     var activityIndicator: NVActivityIndicatorView!
     var genderData = ["Male", "Female"]
     var selectedGender = "male"
@@ -43,8 +48,16 @@ class EditProfileViewController: UIViewController {
         self.view.addSubview(activityIndicator)
         initialSetUp()
         self.emailTextField.isEnabled = false
+        profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        profileImage.layer.borderWidth = 1
+        profileImage.layer.borderColor = #colorLiteral(red: 0.9253032804, green: 0.7255734801, blue: 0.146667093, alpha: 1)
+
+        profileImage.clipsToBounds = true
+        btnOutletChangeAvtar.layer.cornerRadius = 5
+        btnOutletChangeAvtar.layer.borderWidth = 1
+        btnOutletChangeAvtar.layer.borderColor = #colorLiteral(red: 0.9253032804, green: 0.7255734801, blue: 0.146667093, alpha: 1)
+        btnOutletChangeAvtar.layer.masksToBounds = true
         getProfileDetails()
-        
         
     }
 
@@ -107,7 +120,7 @@ class EditProfileViewController: UIViewController {
         datePicker.addButtomBorder(color: UIColor.darkGray.cgColor)
         
         self.submitButton.backgroundColor = ThemeColor.buttonColor
-        self.submitButton.layer.cornerRadius = self.submitButton.frame.height / 2
+        self.submitButton.layer.cornerRadius = 10//self.submitButton.frame.height / 2
         self.submitButton.clipsToBounds = true
         self.submitButton.setTitleColor(.white, for: .normal)
         self.submitButton.setTitle("UPDATE", for: .normal)
@@ -202,6 +215,7 @@ class EditProfileViewController: UIViewController {
                 }
                 
                 let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
                 self.activityIndicator.stopAnimating()
                 let memberJSON = resposeJSON["memberinfo"] as? NSDictionary ?? NSDictionary()
                 self.firstName.text = memberJSON["firstname"] as? String ?? ""
@@ -217,6 +231,7 @@ class EditProfileViewController: UIViewController {
                 self.selectedDate = dateText
                 self.paypalID.text = memberJSON["paypal"] as? String ?? ""
                 self.tagLineText.text = memberJSON["tagline"] as? String ?? ""
+                self.lblUserName.text = memberJSON["username"] as? String ?? ""
                 
         }
     }
@@ -236,5 +251,117 @@ extension EditProfileViewController: APJTextPickerViewDataSource, APJTextPickerV
     }
     func textPickerView(_ textPickerView: APJTextPickerView, didSelectDate date: Date?) {
         self.selectedDate = self.datePicker.text ?? ""
+    }
+}
+
+//MARK:- Change Image
+extension EditProfileViewController:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    func presentPhoto() {
+        let actionSheet = UIAlertController(title: "Add Image",
+                                            message: "How would you like to select a picture?",
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Take Photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+                                                
+                                                self?.presentCamera1()
+                                                
+                                            }))
+        actionSheet.addAction(UIAlertAction(title: "Choose Photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+                                                
+                                                //   self?.presentPhotoPicker1()
+                                                let photoPicker = UIImagePickerController()
+                                                photoPicker.delegate = self
+                                                photoPicker.sourceType = .photoLibrary
+                                                self!.present(photoPicker, animated: true, completion: nil)
+                                                
+                                            }))
+        self.present(actionSheet, animated: true)
+        actionSheet.view.superview?.isUserInteractionEnabled = true
+        actionSheet.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissOnTapOutside)))
+    }
+    @objc func dismissOnTapOutside(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    func presentCamera1() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var selectedImageFromPicker: UIImage?
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker {
+            profileImage.image = selectedImage
+            imagData = selectedImage.jpegData(compressionQuality: 0.5)!
+        }
+        
+        //dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            self.uploadImage()
+            
+        }
+    }
+   
+    func uploadImage()
+    {
+        self.activityIndicator.startAnimating()
+
+        if !NetworkReachabilityManager()!.isReachable{
+                  return
+        }
+        let url = "https://tonnerumusic.com/api/v1/profile_image_edit"
+       
+        var headers = HTTPHeaders()
+
+        
+        headers = ["Content-type": "multipart/form-data"]
+
+        
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            // import image to request
+            multipartFormData.append(self.imagData, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpg", mimeType: "image/jpg")
+         
+            let userID:String = UserDefaults.standard.fetchData(forKey: .userId) //"53"
+
+            multipartFormData.append(userID.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"user_id")
+
+        }, to: url,method:HTTPMethod.post,
+           headers:headers,
+           encodingCompletion: { encodingResult in
+            DispatchQueue.main.async {
+                
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        
+                        self.activityIndicator.stopAnimating()
+                    }
+                case .failure(let error):
+                    print(error)
+                    self.activityIndicator.stopAnimating()
+
+                }
+            }
+        })
+      
+
     }
 }

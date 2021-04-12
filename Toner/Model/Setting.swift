@@ -42,4 +42,5 @@ public enum SettingsImage{
     static let myDownload = "download"
     static let edit_social = "edit-social"
     static let change_password = "change-password"
+    static let my_station = "my-station"
 }

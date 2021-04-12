@@ -41,7 +41,7 @@ class MySongViewController: UIViewController {
         lbtMySong.dataSource = self
         lbtMySong.delegate = self
         lbtMySong.register(UINib(nibName: "PlayListTableViewCell", bundle: nil), forCellReuseIdentifier: "PlayListTableViewCell")
-        btnUploadSongOutlet.layer.cornerRadius = 15
+        btnUploadSongOutlet.layer.cornerRadius = 5
         btnUploadSongOutlet.layer.masksToBounds = true
         getSongList()
         // Do any additional setup after loading the view.

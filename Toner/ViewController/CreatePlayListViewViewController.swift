@@ -19,8 +19,11 @@ class CreatePlayListViewViewController: UIViewController,UIGestureRecognizerDele
     @IBOutlet weak var viewDiscription: UIView!
     @IBOutlet weak var txtViewDescription: UITextView!
     @IBOutlet weak var imgCreateAlbmum: UIImageView!
-
+    @IBOutlet weak var imgCameraHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var lblDiscription: UILabel!
+    
+    @IBOutlet weak var viewDiscriptionHeightCOnstraint: NSLayoutConstraint!
     @IBOutlet weak var btnBrowseOutlet: UIButton!
     
     
@@ -28,6 +31,16 @@ class CreatePlayListViewViewController: UIViewController,UIGestureRecognizerDele
     var artistId: String!
     var artistImage: String!
     var imagData =  Data()
+    var strCreate = ""
+    var album_id = ""
+    var album_name = ""
+    var album_description = ""
+    var album_image = "image"
+    
+    var isFromEdit = false
+    var viewcontroller = UIViewController()
+    
+
     @IBAction func textFieldEditBegin(_ sender: Any)
     {
        
@@ -49,12 +62,30 @@ class CreatePlayListViewViewController: UIViewController,UIGestureRecognizerDele
         else
         {
             //self.addToAlbum()
-            self.addToAlbum()
-
+            if strCreate == "Playlist"{
+                self.createPlaylist()
+            }else{
+                if album_id != ""{
+                    album_description = txtViewDescription.text!
+                    album_name = playListNameTextField.text!
+                    if isFromEdit{
+                    
+                    }else{
+                        self.imagData = (imgCreateAlbmum.image?.jpegData(compressionQuality: 0.5)!)!
+                            print(self.imagData)
+                    }
+                    editAlbum()
+                }else{
+                    album_description = txtViewDescription.text!
+                    album_name = playListNameTextField.text!
+                    self.addToAlbum()
+                }
+            }
             
         }
     }
     @IBAction func btnImageBrowseAction(_ sender: UIButton) {
+        isFromEdit = true
         presentPhoto()
     }
 
@@ -107,10 +138,35 @@ class CreatePlayListViewViewController: UIViewController,UIGestureRecognizerDele
         viewDiscription.layer.masksToBounds = true
         
         
+        imgCreateAlbmum.layer.cornerRadius = 10
+        imgCreateAlbmum.layer.masksToBounds = true
+        
         btnBrowseOutlet.layer.borderWidth = 0
         btnBrowseOutlet.layer.cornerRadius = 5
         btnBrowseOutlet.layer.masksToBounds = true
         
+        if strCreate == "Playlist"{
+            imgCreateAlbmum.isHidden = true
+            btnBrowseOutlet.isHidden = true
+            imgCameraHeightConstraint.constant = 0
+            viewDiscription.isHidden = true
+            viewDiscriptionHeightCOnstraint.constant = 0
+            lblDiscription.isHidden = true
+        }else{
+            imgCreateAlbmum.isHidden = false
+            btnBrowseOutlet.isHidden = false
+            imgCameraHeightConstraint.constant = 100
+            viewDiscription.isHidden = false
+            viewDiscriptionHeightCOnstraint.constant = 100
+            lblDiscription.isHidden = false
+        }
+        
+        if album_id != "" {
+            playListNameTextField.text = album_name
+            imgCreateAlbmum.kf.setImage(with: URL(string: album_image ))
+            imgCreateAlbmum.contentMode = .scaleToFill
+
+        }
     }
 }
 
@@ -197,65 +253,123 @@ extension CreatePlayListViewViewController: UIImagePickerControllerDelegate, UIN
          
             let userID:String = UserDefaults.standard.fetchData(forKey: .userId) //"53"
 
-            multipartFormData.append(userID.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"user_id")
+            multipartFormData.append(userID.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"artist_id")
           
-            DispatchQueue.main.async {
-            if let title = self.playListNameTextField.text{
-                multipartFormData.append(title.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"name")
+          
+            
+                multipartFormData.append(self.album_name.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"name")
 
-            }
-            if let disc = self.txtViewDescription.text{
-                multipartFormData.append(disc.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"description")
-            }
-            }
+    
+            
+                multipartFormData.append(self.album_description.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"description")
+            
+          
 
         }, to: url,method:HTTPMethod.post,
            headers:headers,
            encodingCompletion: { encodingResult in
-            DispatchQueue.main.async {
+          //  DispatchQueue.main.async {
                 
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
                         print(response)
                         self.activityIndicator.stopAnimating()
+                       // self.dismiss(animated: true, completion: nil)
+                        self.dismiss(animated: true) {
+                            self.viewcontroller.viewWillAppear(true)
+                        }
                     }
                 case .failure(let error):
                     print(error)
                     self.activityIndicator.stopAnimating()
 
                 }
-            }
+          //  }
         })
       
 
     }
-//    func addToAlbum(){
-//       self.activityIndicator.startAnimating()
-//       self.artistId = UserDefaults.standard.fetchData(forKey: .userId)
-//       self.artistImage = UserDefaults.standard.fetchData(forKey: .userImage)
-//       let apiURL = "https://tonnerumusic.com/api/v1/create_album"
-//       let urlConvertible = URL(string: apiURL)!
-//       Alamofire.request(urlConvertible,
-//                     method: .post,
-//                     parameters: [
-//                       "artist_id": artistId ?? "",
-//                       "name":self.playListNameTextField.text ?? "",
-//                       "description": self.txtViewDescription.text ?? "",
-//                       "image" : artistImage ?? ""
-//           ] as [String: String])
-//       .validate().responseJSON { (response) in
-//
-//           print(response.value)
-//               guard response.result.isSuccess else {
-//                   self.tabBarController?.view.makeToast(message: Message.apiError)
-//                    self.activityIndicator.stopAnimating()
-//                   return
-//               }
-//
-//           let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
-//           print(resposeJSON)
-//           self.activityIndicator.stopAnimating()
-//   }
-//   }
+    func editAlbum() {
+        self.activityIndicator.startAnimating()
+
+        if !NetworkReachabilityManager()!.isReachable{
+                  return
+        }
+        let url = "https://tonnerumusic.com/api/v1/edit_album"
+        var headers = HTTPHeaders()
+
+        
+        headers = ["Content-type": "multipart/form-data"]
+
+        
+        
+        Alamofire.upload(multipartFormData: { [self] multipartFormData in
+            // import image to request
+          
+            multipartFormData.append(self.imagData, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpg", mimeType: "image/jpg")
+                // (album_id, name, description, image {FILE})
+          
+            multipartFormData.append(self.album_id.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"album_id")
+            multipartFormData.append(self.album_name.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"name")
+             
+                
+            multipartFormData.append(self.album_description.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"description")
+            
+     
+
+        }, to: url,method:HTTPMethod.post,
+           headers:headers,
+           encodingCompletion: { encodingResult in
+          //  DispatchQueue.main.async {
+                
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        print(response)
+                        self.activityIndicator.stopAnimating()
+                        self.dismiss(animated: true) {
+                            self.viewcontroller.viewWillAppear(true)
+                        }
+                    }
+                case .failure(let error):
+                    print(error)
+                    self.activityIndicator.stopAnimating()
+
+                }
+          //  }
+        })
+      
+
+    }
+    func createPlaylist(){
+        
+        self.activityIndicator.startAnimating()
+        let bodyParams = [
+            "user_id"    : UserDefaults.standard.fetchData(forKey: .userId),
+            "name"    : self.playListNameTextField.text! ,
+            ] as [String : String]
+        self.activityIndicator.startAnimating()
+        
+        Alamofire.request("https://tonnerumusic.com/api/v1/createplaylist", method: .post, parameters: bodyParams).validate().responseJSON { (response) in
+            
+            guard response.result.isSuccess else {
+                self.view.makeToast(message: Message.apiError)
+                self.activityIndicator.stopAnimating()
+                return
+            }
+            
+            let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+            self.activityIndicator.stopAnimating()
+//            self.showAlertForPlaylist(message: resposeJSON["message"] as! String)
+            print(resposeJSON)
+            self.activityIndicator.stopAnimating()
+            self.dismiss(animated: true) {
+                self.viewcontroller.viewWillAppear(true)
+            }
+          //  self.allPlayListFunc()
+            
+        }
+    }
+
 }

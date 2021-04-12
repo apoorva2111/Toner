@@ -83,6 +83,7 @@ class HomeViewController: UIViewController {
                 }
                 
                 let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
                 self.activityIndicator.stopAnimating()
             
                 if(resposeJSON["status"] as? Bool ?? false){
@@ -116,6 +117,7 @@ class HomeViewController: UIViewController {
                 }
                 
                 let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
                 self.activityIndicator.stopAnimating()
                 let topgenres = resposeJSON["topgenre"] as? NSArray ?? NSArray()
                 for data in topgenres{

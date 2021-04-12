@@ -1260,14 +1260,6 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="fng-je-VDk">
                                                 <rect key="frame" x="4" y="4" width="142" height="142"/>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Camera" translatesAutoresizingMaskIntoConstraints="NO" id="ZmP-BI-Mne">
-                                                <rect key="frame" x="97.5" y="105.5" width="30" height="35"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="35" id="Seh-n9-KJf"/>
-                                                    <constraint firstAttribute="width" constant="30" id="ZIP-Vg-1S8"/>
-                                                </constraints>
-                                            </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vq-Aj-Xf1">
                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1279,10 +1271,8 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="4cs-Uo-cYQ"/>
-                                            <constraint firstItem="ZmP-BI-Mne" firstAttribute="centerY" secondItem="Va5-TN-uUb" secondAttribute="centerY" multiplier="1.64" id="FJn-Qi-nqz"/>
                                             <constraint firstItem="9vq-Aj-Xf1" firstAttribute="top" secondItem="Va5-TN-uUb" secondAttribute="top" id="G2y-qt-zZF"/>
                                             <constraint firstItem="9vq-Aj-Xf1" firstAttribute="leading" secondItem="Va5-TN-uUb" secondAttribute="leading" id="H8s-5B-mNM"/>
-                                            <constraint firstItem="ZmP-BI-Mne" firstAttribute="centerX" secondItem="Va5-TN-uUb" secondAttribute="centerX" multiplier="1.5" id="INw-9j-4yd"/>
                                             <constraint firstAttribute="bottom" secondItem="9vq-Aj-Xf1" secondAttribute="bottom" id="Kdn-kc-bz3"/>
                                             <constraint firstItem="fng-je-VDk" firstAttribute="top" secondItem="Va5-TN-uUb" secondAttribute="top" constant="4" id="LvQ-GV-xLQ"/>
                                             <constraint firstAttribute="height" constant="150" id="MkI-as-51p"/>
@@ -1416,7 +1406,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Camera" width="50" height="50"/>
         <image name="Login_New" width="562.5" height="1218"/>
         <image name="home-bg" width="562.5" height="1218"/>
         <image name="logo" width="512" height="645"/>

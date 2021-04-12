@@ -60,26 +60,26 @@ class SubscriptionTableViewCell: UITableViewCell {
         
         //Format the Labels
         durationLabel.textColor = .black
-        durationLabel.font = UIFont.montserratMedium.withSize(30)
+        //durationLabel.font = UIFont.init(name: "Montserrat-Bold", size: 30)//UIFont.montserratBold.withSize(30)
         
         originalPrice.textColor = .black
         originalPrice.font = UIFont.montserratRegular.withSize(13)
         
         discountPrice.textColor = .black
-        discountPrice.font = UIFont.montserratMedium.withSize(15)
+        //discountPrice.font = UIFont.init(name: "Montserrat-Bold", size: 15)//UIFont.montserratBold.withSize(15)
         
-        fromLabel.textColor = .gray
+        fromLabel.textColor = .black
         fromLabel.font = UIFont.montserratLight.withSize(13)
         
-        toLabel.textColor = .gray
+        toLabel.textColor = .black
         toLabel.font = UIFont.montserratLight.withSize(13)
         
         startDateTimeLabel.textColor = .black
-        startDateTimeLabel.font = UIFont.montserratRegular.withSize(13)
+       // startDateTimeLabel.font = UIFont.init(name: "Montserrat-Bold", size: 13)//UIFont.montserratBold.withSize(13)
         
         endDateTimeLabel.textColor = .black
-        endDateTimeLabel.font = UIFont.montserratRegular.withSize(13)
-        
+      //  endDateTimeLabel.font = UIFont.init(name: "Montserrat-Bold", size: 13)//UIFont.montserratBold.withSize(13)
+    
         
         
     }

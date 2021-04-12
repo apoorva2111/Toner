@@ -37,10 +37,10 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhR-hV-l10">
-                            <rect key="frame" x="10" y="736" width="394" height="60"/>
+                            <rect key="frame" x="10" y="756" width="394" height="50"/>
                             <color key="backgroundColor" red="0.89411764709999997" green="0.72941176470000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="60" id="RRJ-kB-Kut"/>
+                                <constraint firstAttribute="height" constant="50" id="RRJ-kB-Kut"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                             <state key="normal" title="upload Songs">
@@ -51,7 +51,7 @@
                             </connections>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cgu-Ca-JM0">
-                            <rect key="frame" x="15" y="26" width="384" height="710"/>
+                            <rect key="frame" x="15" y="26" width="384" height="730"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
@@ -64,7 +64,7 @@
                         <constraint firstItem="FWU-7G-xzd" firstAttribute="top" secondItem="5lI-xx-acV" secondAttribute="top" constant="10" id="JnK-Qy-EF9"/>
                         <constraint firstAttribute="trailing" secondItem="cgu-Ca-JM0" secondAttribute="trailing" constant="15" id="Kp7-CL-LHM"/>
                         <constraint firstAttribute="trailing" secondItem="FWU-7G-xzd" secondAttribute="trailing" id="Rt8-0C-BAj"/>
-                        <constraint firstAttribute="bottom" secondItem="qhR-hV-l10" secondAttribute="bottom" constant="100" id="Txp-8m-a4e"/>
+                        <constraint firstAttribute="bottom" secondItem="qhR-hV-l10" secondAttribute="bottom" constant="90" id="Txp-8m-a4e"/>
                         <constraint firstItem="qhR-hV-l10" firstAttribute="leading" secondItem="5lI-xx-acV" secondAttribute="leading" constant="10" id="Upd-MW-MHy"/>
                         <constraint firstItem="cgu-Ca-JM0" firstAttribute="top" secondItem="FWU-7G-xzd" secondAttribute="bottom" constant="15" id="myG-ox-ag6"/>
                     </constraints>

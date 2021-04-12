@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func btnUploadImage(_ sender: UIButton) {
-        presentPhoto()
+        //presentPhoto()
         
     }
     var settingMenus = [Setting]()
@@ -98,7 +98,7 @@ class SettingsViewController: UIViewController {
         let followerMenu = Setting(name: SettingsName.followers, image: SettingsImage.followers)
         self.settingMenus.append(followerMenu)
         
-        let myStationMenu = Setting(name: SettingsName.myStation, image: SettingsImage.followers)
+        let myStationMenu = Setting(name: SettingsName.myStation, image: SettingsImage.my_station)
         self.settingMenus.append(myStationMenu)
         
         

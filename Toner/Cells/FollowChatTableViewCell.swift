@@ -18,8 +18,9 @@ class FollowChatTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        let followImage = UIImage(named: "chat")
+        let followImage = UIImage(named: "followers")
         followButton.setImage(followImage, for: UIControl.State())
+        followButton.tintColor = #colorLiteral(red: 0.6470588235, green: 0.6431372549, blue: 0.6431372549, alpha: 1)
         followButton.setTitle(" Follow", for: .normal)
         followButton.setTitle(" Following", for: .selected)
         followButton.titleLabel?.font = UIFont.montserratRegular.withSize(15)
