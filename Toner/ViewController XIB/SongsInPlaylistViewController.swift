@@ -51,7 +51,15 @@ class SongsInPlaylistViewController: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (TonneruMusicPlayer.player?.isPlaying ?? false){
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+
+        }else{
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
+        }
+    }
     func getAllSongFromPlaylist(){
         self.activityIndicator.startAnimating()
         
@@ -242,7 +250,8 @@ class SongsInPlaylistViewController: UIViewController {
         TonneruMusicPlayer.repeatMode = .off
         TonneruMusicPlayer.shuffleModeOn = false
         
-        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+//        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+//        self.tableView.tableFooterView?.backgroundColor = .green
     }
     
 }
@@ -341,6 +350,6 @@ return cell
             TonneruMusicPlayer.shared.playSong(data: [songList], index: 0)
 
         }
-    //   tableView.reloadData()
+       tableView.reloadData()
     }
 }
