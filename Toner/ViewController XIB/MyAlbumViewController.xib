@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MyAlbumViewController" customModule="Tonneru" customModuleProvider="target">
             <connections>
@@ -21,30 +26,35 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Pn-mL-IOg">
+                    <rect key="frame" x="0.0" y="49" width="414" height="758"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xjW-gZ-2p7">
-                    <rect key="frame" x="274" y="76" width="120" height="36"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <rect key="frame" x="16" y="812" width="382" height="50"/>
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.72941176470000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="tL9-OY-sEZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
                     <state key="normal" title="Create Album">
-                        <color key="titleColor" systemColor="systemOrangeColor"/>
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
                         <action selector="createAlbumAction:" destination="-1" eventType="touchUpInside" id="4dT-pM-oJ5"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Pn-mL-IOg">
-                    <rect key="frame" x="0.0" y="122" width="414" height="740"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xjW-gZ-2p7" secondAttribute="trailing" constant="20" id="CMU-ke-4HD"/>
+                <constraint firstItem="3Pn-mL-IOg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="3Vi-di-7s3"/>
                 <constraint firstItem="3Pn-mL-IOg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="COG-Bo-jvR"/>
-                <constraint firstItem="3Pn-mL-IOg" firstAttribute="top" secondItem="xjW-gZ-2p7" secondAttribute="bottom" constant="10" id="I9J-K7-Ai0"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3Pn-mL-IOg" secondAttribute="bottom" id="KHA-Aw-uNB"/>
-                <constraint firstItem="xjW-gZ-2p7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="32" id="MGG-1C-qfa"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3Pn-mL-IOg" secondAttribute="trailing" id="cRB-bH-iFg"/>
+                <constraint firstItem="xjW-gZ-2p7" firstAttribute="top" secondItem="3Pn-mL-IOg" secondAttribute="bottom" constant="5" id="gdb-YB-T9J"/>
+                <constraint firstItem="xjW-gZ-2p7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="gq2-oH-VyB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xjW-gZ-2p7" secondAttribute="trailing" constant="16" id="hnB-g5-mPj"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xjW-gZ-2p7" secondAttribute="bottom" id="zuV-dY-kQz"/>
             </constraints>
             <point key="canvasLocation" x="31.884057971014496" y="71.651785714285708"/>
         </view>
@@ -52,9 +62,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

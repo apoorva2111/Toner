@@ -43,7 +43,7 @@ class EditProfileViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = ThemeColor.backgroundColor
-        self.setNavigationBar(title: "Edit Profile", isBackButtonRequired: true, isTransparent: false)
+        self.setNavigationBar(title: "EDIT PROFILE", isBackButtonRequired: true, isTransparent: false)
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         initialSetUp()

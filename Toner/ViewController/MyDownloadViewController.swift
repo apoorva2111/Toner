@@ -20,7 +20,7 @@ class MyDownloadViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = ThemeColor.backgroundColor
-        self.setNavigationBar(title: "My Downloads", isBackButtonRequired: true, isTransparent: false)
+        self.setNavigationBar(title: "MY DOWNLOADS", isBackButtonRequired: true, isTransparent: false)
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         initialSetUp()

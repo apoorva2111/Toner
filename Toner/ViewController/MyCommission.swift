@@ -15,26 +15,27 @@ class MyCommission: UIViewController{
     var artistId:String!
     var arrArtist = [NSDictionary]()
     
-    @IBOutlet weak var viewSearch: UIView!
+  //  @IBOutlet weak var viewSearch: UIView!
     
     @IBOutlet weak var tableCommision: UITableView!
-    @IBOutlet weak var searchTextFeild: UITextField!
+  //  @IBOutlet weak var searchTextFeild: UITextField!
     @IBOutlet weak var artistCommission: UILabel!
     
     
     override func viewDidLoad() {
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
-        self.setNavigationBar(title: "Artist Commission", isBackButtonRequired: true, isTransparent: false)
+        //Artist Commission
+        self.setNavigationBar(title: "ARTIST COMMISSION", isBackButtonRequired: true, isTransparent: false)
         self.view.backgroundColor = ThemeColor.backgroundColor
       
         self.tableCommision.register(UINib(nibName:"MyCommissionTVCell", bundle: nil), forCellReuseIdentifier: "MyCommissionTVCell")
         self.tableCommision.delegate = self
         self.tableCommision.dataSource = self
-        self.viewSearch.layer.borderWidth = 1
-        self.viewSearch.layer.cornerRadius = 4
-        self.viewSearch.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        self.viewSearch.layer.masksToBounds = true
+//        self.viewSearch.layer.borderWidth = 1
+//        self.viewSearch.layer.cornerRadius = 4
+//        self.viewSearch.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//        self.viewSearch.layer.masksToBounds = true
         
         getArtistCommision()
     }

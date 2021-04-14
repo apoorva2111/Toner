@@ -30,7 +30,7 @@ class ChangePasswordViewController: UIViewController {
         self.view.addSubview(activityIndicator)
         
         self.updateButton.backgroundColor = ThemeColor.buttonColor
-        self.updateButton.layer.cornerRadius = self.updateButton.frame.height / 2
+        self.updateButton.layer.cornerRadius = 10//self.updateButton.frame.height / 2
         self.updateButton.clipsToBounds = true
         self.updateButton.setTitleColor(.white, for: .normal)
         self.updateButton.setTitle("UPDATE", for: .normal)

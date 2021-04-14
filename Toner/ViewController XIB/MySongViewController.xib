@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -23,11 +23,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5lI-xx-acV">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                     <subviews>
                         <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FWU-7G-xzd">
                             <rect key="frame" x="0.0" y="10" width="414" height="1"/>
@@ -37,13 +37,13 @@
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhR-hV-l10">
-                            <rect key="frame" x="10" y="756" width="394" height="50"/>
+                            <rect key="frame" x="10" y="686" width="394" height="50"/>
                             <color key="backgroundColor" red="0.89411764709999997" green="0.72941176470000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="50" id="RRJ-kB-Kut"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
-                            <state key="normal" title="upload Songs">
+                            <state key="normal" title="Upload Songs">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
@@ -51,7 +51,7 @@
                             </connections>
                         </button>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cgu-Ca-JM0">
-                            <rect key="frame" x="15" y="26" width="384" height="730"/>
+                            <rect key="frame" x="15" y="26" width="384" height="660"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
@@ -64,7 +64,7 @@
                         <constraint firstItem="FWU-7G-xzd" firstAttribute="top" secondItem="5lI-xx-acV" secondAttribute="top" constant="10" id="JnK-Qy-EF9"/>
                         <constraint firstAttribute="trailing" secondItem="cgu-Ca-JM0" secondAttribute="trailing" constant="15" id="Kp7-CL-LHM"/>
                         <constraint firstAttribute="trailing" secondItem="FWU-7G-xzd" secondAttribute="trailing" id="Rt8-0C-BAj"/>
-                        <constraint firstAttribute="bottom" secondItem="qhR-hV-l10" secondAttribute="bottom" constant="90" id="Txp-8m-a4e"/>
+                        <constraint firstAttribute="bottom" secondItem="qhR-hV-l10" secondAttribute="bottom" id="Txp-8m-a4e"/>
                         <constraint firstItem="qhR-hV-l10" firstAttribute="leading" secondItem="5lI-xx-acV" secondAttribute="leading" constant="10" id="Upd-MW-MHy"/>
                         <constraint firstItem="cgu-Ca-JM0" firstAttribute="top" secondItem="FWU-7G-xzd" secondAttribute="bottom" constant="15" id="myG-ox-ag6"/>
                     </constraints>
@@ -75,7 +75,7 @@
             <constraints>
                 <constraint firstItem="5lI-xx-acV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7I1-Xw-q8q"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5lI-xx-acV" secondAttribute="trailing" id="BXr-MG-LHL"/>
-                <constraint firstAttribute="bottom" secondItem="5lI-xx-acV" secondAttribute="bottom" id="SqG-2f-xFV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5lI-xx-acV" secondAttribute="bottom" id="SqG-2f-xFV"/>
                 <constraint firstItem="5lI-xx-acV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="yD1-cj-XOD"/>
             </constraints>
             <point key="canvasLocation" x="-201" y="71"/>

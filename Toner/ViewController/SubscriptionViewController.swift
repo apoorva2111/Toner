@@ -28,7 +28,8 @@ class SubscriptionViewController: UIViewController {
         }
         // Do any additional setup after loading the view.
         self.view.backgroundColor = ThemeColor.backgroundColor
-        self.setNavigationBar(title: "Subscription", isBackButtonRequired: true)
+        //Subscription
+        self.setNavigationBar(title: "SUBSCRIPTION", isBackButtonRequired: true)
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         

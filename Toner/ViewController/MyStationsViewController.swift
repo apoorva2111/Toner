@@ -27,7 +27,7 @@ class MyStationsViewController: UIViewController {
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         
-        collectionViewWidth = (Double(self.collectionView.frame.width * 0.5) - 25.0)
+        collectionViewWidth = (Double(self.collectionView.frame.width * 0.5) - 20.0)
         collectionView.dataSource   = self
         collectionView.delegate     = self
         collectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCollectionViewCell")

@@ -67,6 +67,7 @@ class FollowingsViewController: UIViewController {
                 }
                 
                 let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
                 self.activityIndicator.stopAnimating()
                 
                 let newartists = resposeJSON["followed"] as? NSArray ?? NSArray()

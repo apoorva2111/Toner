@@ -29,6 +29,8 @@ class MyAlbumViewController: UIViewController{
         self.view.backgroundColor = ThemeColor.backgroundColor
         self.setNavigationBar(title: "MY ALBUM", isBackButtonRequired: true, isTransparent: false)
         tblAlbums.register(UINib(nibName: "PlayListTableViewCell", bundle: nil), forCellReuseIdentifier: "PlayListTableViewCell")
+        self.createAlbum.layer.cornerRadius = 10
+        self.createAlbum.layer.masksToBounds = true
         tblAlbums.delegate = self
         tblAlbums.dataSource = self
 

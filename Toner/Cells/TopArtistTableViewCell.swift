@@ -33,6 +33,7 @@ class TopArtistTableViewCell: UITableViewCell {
      
     }
     func setartistDatas(arrArtist:[ArtistModel])  {
+        print(arrArtist)
         artistData = arrArtist
         self.collectionView.delegate = self
         self.collectionView.dataSource = self

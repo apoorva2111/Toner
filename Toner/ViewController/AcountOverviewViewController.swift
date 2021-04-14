@@ -32,7 +32,7 @@ class AcountOverviewViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.view.backgroundColor = ThemeColor.backgroundColor
-        self.setNavigationBar(title: "Account Overview", isBackButtonRequired: true, isTransparent: false)
+        self.setNavigationBar(title: "ACCOUNT OVERVIEW", isBackButtonRequired: true, isTransparent: false)
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         viewEditProfile.layer.cornerRadius = 5

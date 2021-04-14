@@ -28,7 +28,8 @@ class EditSocialViewController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = ThemeColor.backgroundColor
-        self.setNavigationBar(title: "Edit Social", isBackButtonRequired: true, isTransparent: false)
+        //Edit Social
+        self.setNavigationBar(title: "EDIT SOCIAL", isBackButtonRequired: true, isTransparent: false)
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         initialSetup()
@@ -55,7 +56,7 @@ class EditSocialViewController: UIViewController {
         trillerText.setIcon(#imageLiteral(resourceName: "triller"))
         
         self.submitButton.backgroundColor = ThemeColor.buttonColor
-        self.submitButton.layer.cornerRadius = self.submitButton.frame.height / 2
+        self.submitButton.layer.cornerRadius = 10//self.submitButton.frame.height / 2
         self.submitButton.clipsToBounds = true
         self.submitButton.setTitleColor(.white, for: .normal)
         self.submitButton.setTitle("Submit", for: .normal)

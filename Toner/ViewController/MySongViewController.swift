@@ -35,7 +35,7 @@ class MySongViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = ThemeColor.backgroundColor
-        self.setNavigationBar(title: "My Songs", isBackButtonRequired: true, isTransparent: false)
+        self.setNavigationBar(title: "MY SONGS", isBackButtonRequired: true, isTransparent: false)
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         lbtMySong.dataSource = self
@@ -188,9 +188,11 @@ extension MySongViewController:UITableViewDelegate, UITableViewDataSource{
         }
     }
     @objc fileprivate func editPlaylist(sender : UIButton){
-        let alert = UIAlertController(title: "Edit Playlist Name", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: "Edit Song Name", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
-            textField.placeholder = "New playlist name"
+           // textField.placeholder = "New Song Name"
+            textField.text = self.arrMySongList[sender.tag].song_name
+            
         }
 
 
@@ -198,7 +200,7 @@ extension MySongViewController:UITableViewDelegate, UITableViewDataSource{
             let newPlaylistName = alert.textFields![0].text
             
             if (newPlaylistName?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) ?? true{
-                self.tabBarController?.view.makeToast(message: "Playlist name should not be blank")
+                self.tabBarController?.view.makeToast(message: "Song name should not be blank")
             }else{
                 self.editPlaylistApiCalled(sender,newPlaylistName!)
             }

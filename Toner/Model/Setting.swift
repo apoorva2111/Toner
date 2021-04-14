@@ -25,7 +25,7 @@ public enum SettingsName{
     static let myCommission = "MY COMMISSION"
     static let support = "SUPPORT/HELP"
     static let logOut = "LOGOUT"
-    static let editSocial = "EDITSOCIAL"
+    static let editSocial = "EDIT SOCIAL"
     static let myDownload = "MY DOWNLOADS"
 }
 
