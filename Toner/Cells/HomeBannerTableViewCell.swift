@@ -51,6 +51,7 @@ extension HomeBannerTableViewCell: UICollectionViewDataSource, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionViewCell", for: indexPath) as! BannerCollectionViewCell
         cell.bannerData = self.banners[indexPath.item]
+       
         cell.backgroundColor = .clear
         return cell
     }

@@ -33,7 +33,7 @@ class StationListViewController: UIViewController {
         
         self.navigationController?.navigationBar.barTintColor = .black
         self.navigationController?.navigationBar.tintColor = ThemeColor.buttonColor
-        self.setNavigationBar(title: stationName, isBackButtonRequired: true)
+        self.setNavigationBar(title: stationName, isBackButtonRequired: true, isTransparent: false)
         playAllButton = UIBarButtonItem(title: "Play All", style: .plain, target: self, action: #selector(PlayAllClicked))
         self.navigationItem.rightBarButtonItems = [playAllButton]
         favButtonClicked()

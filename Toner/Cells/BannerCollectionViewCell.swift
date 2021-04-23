@@ -20,20 +20,7 @@ class BannerCollectionViewCell: UICollectionViewCell {
             }
             BannerCollectionViewCell.isSetBanner = true
             
-            let videoURL = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4")
-//            let asset = AVAsset(url: videoURL!)
-//            let item = AVPlayerItem(asset: asset)
-//            let player = AVPlayer(playerItem: item)
-//            let playerLayer = AVPlayerLayer(player: player)
-//            playerLayer.frame = playerView.layer.bounds
-//            playerLayer.preferredFrameSize()
-//            self.playerView.layer.addSublayer(playerLayer)
-//            player.play()
- //          NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { notification in
-//                player.seek(to: CMTime.zero)
-//                player.play()
-        
-      //      }
+
          
             let urlStr = bannerData.bannerURL.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
 

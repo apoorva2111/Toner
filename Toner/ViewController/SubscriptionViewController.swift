@@ -29,7 +29,7 @@ class SubscriptionViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.view.backgroundColor = ThemeColor.backgroundColor
         //Subscription
-        self.setNavigationBar(title: "SUBSCRIPTION", isBackButtonRequired: true)
+        self.setNavigationBar(title: "SUBSCRIPTION", isBackButtonRequired: true, isTransparent: false)
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         
@@ -61,6 +61,7 @@ class SubscriptionViewController: UIViewController {
             
                 if(resposeJSON["status"] as? Bool ?? false){
                     let allPlans = resposeJSON["plans"] as? NSArray ?? NSArray()
+                    print(allPlans)
                     allPlans.forEach { (plan) in
                         let currentPlan = plan as? NSDictionary ?? NSDictionary()
                         var currentPlanData = SubscriptionPlanModel()
@@ -137,5 +138,12 @@ extension SubscriptionViewController: UITableViewDataSource, UITableViewDelegate
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //
+        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmSubscriptionViewController") as! ConfirmSubscriptionViewController
+        let obj = planList[indexPath.row]
+        destination.plan_id = obj.id
+        self.navigationController!.pushViewController(destination, animated: true)
     }
 }

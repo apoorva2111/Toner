@@ -252,4 +252,5 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate{
         destination.stationID = data.id
         self.navigationController!.pushViewController(destination, animated: true)
     }
+
 }

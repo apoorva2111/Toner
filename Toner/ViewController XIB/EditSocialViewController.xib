@@ -28,6 +28,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg" translatesAutoresizingMaskIntoConstraints="NO" id="J5t-5c-Jwf">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lFd-mZ-jHt">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
@@ -165,18 +168,23 @@
             <constraints>
                 <constraint firstItem="lFd-mZ-jHt" firstAttribute="leading" secondItem="5Zh-40-KES" secondAttribute="leading" id="5II-yd-hKS"/>
                 <constraint firstItem="hKZ-Mk-Y5Y" firstAttribute="width" secondItem="Wcw-7S-77Q" secondAttribute="width" id="7mr-cy-lX8"/>
+                <constraint firstItem="J5t-5c-Jwf" firstAttribute="top" secondItem="Wcw-7S-77Q" secondAttribute="top" id="9T8-4a-0j7"/>
                 <constraint firstItem="5Zh-40-KES" firstAttribute="bottom" secondItem="w0H-yf-WHK" secondAttribute="bottom" id="Mul-cY-4m3"/>
                 <constraint firstItem="5Zh-40-KES" firstAttribute="trailing" secondItem="lFd-mZ-jHt" secondAttribute="trailing" id="Uad-0S-mkt"/>
                 <constraint firstItem="lFd-mZ-jHt" firstAttribute="top" secondItem="Wcw-7S-77Q" secondAttribute="top" id="VzI-sv-OJy"/>
+                <constraint firstItem="5Zh-40-KES" firstAttribute="trailing" secondItem="J5t-5c-Jwf" secondAttribute="trailing" id="bdd-fz-71F"/>
                 <constraint firstItem="hKZ-Mk-Y5Y" firstAttribute="height" secondItem="Wcw-7S-77Q" secondAttribute="height" priority="250" id="f4N-kC-YSX"/>
                 <constraint firstItem="w0H-yf-WHK" firstAttribute="leading" secondItem="5Zh-40-KES" secondAttribute="leading" constant="32" id="iBS-Hx-5lt"/>
+                <constraint firstAttribute="bottom" secondItem="J5t-5c-Jwf" secondAttribute="bottom" id="iBp-dM-uRi"/>
                 <constraint firstItem="5Zh-40-KES" firstAttribute="trailing" secondItem="w0H-yf-WHK" secondAttribute="trailing" constant="32" id="iFk-iN-Ou2"/>
                 <constraint firstAttribute="bottom" secondItem="lFd-mZ-jHt" secondAttribute="bottom" id="ibn-Sd-8n0"/>
+                <constraint firstItem="J5t-5c-Jwf" firstAttribute="leading" secondItem="5Zh-40-KES" secondAttribute="leading" id="ufh-jc-TRb"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="118"/>
+            <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
         </view>
     </objects>
     <resources>
+        <image name="home-bg" width="562.5" height="1218"/>
         <image name="logo" width="512" height="645"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

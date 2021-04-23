@@ -13,8 +13,16 @@ class SongInPlayListTVCell: UITableViewCell {
     @IBOutlet weak var btnAddOutlet: UIButton!
     @IBOutlet weak var btnDownloadOutlet: UIButton!
     @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var downloadButton: TonneruDownloadButton!
     override func awakeFromNib() {
         super.awakeFromNib()
+     
+        downloadButton.downloadImageColor = .gray
+        downloadButton.progressColor = ThemeColor.buttonColor
+        downloadButton.outlineColor = ThemeColor.buttonColor
+        downloadButton.progressTextColor = ThemeColor.headerColor
+        downloadButton.outlineWidth = 2.5
+
         // Initialization code
     }
 

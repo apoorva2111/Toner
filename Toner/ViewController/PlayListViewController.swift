@@ -30,6 +30,8 @@ class PlayListViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.setNavigationBar(title: "My Library", isBackButtonRequired: false, isTransparent: false)
+
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         

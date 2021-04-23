@@ -27,6 +27,7 @@ class ArtistCollectionViewCell: UICollectionViewCell {
     }
     
     func setData(data: ArtistModel){
+        print(data)
         artistImage.kf.setImage(with: URL(string: data.image)!)
         artistImage.contentMode = .scaleAspectFill
         artistNameLabel.text = data.firstname + " " + data.lastname

@@ -68,16 +68,18 @@ class SettingsViewController: UIViewController {
         print(url)
         profileImage.kf.setImage(with: URL(string: UserDefaults.standard.fetchData(forKey: .userImage)))
         profileImage.contentMode = .scaleAspectFill
+     
+        if UserDefaults.standard.fetchData(forKey: .userGroupID) == "3"{
+
         let profileMenu = Setting(name: SettingsName.acountOverview, image: SettingsImage.accountoverview)
         self.settingMenus.append(profileMenu)
         
         let EdiProfileMenu = Setting(name: SettingsName.editProfile, image: SettingsImage.editProfile)
         self.settingMenus.append(EdiProfileMenu)
         
-        if UserDefaults.standard.fetchData(forKey: .userGroupID) == "3"{
-            let editSocial = Setting(name: SettingsName.editSocial, image: SettingsImage.edit_social)
+        let editSocial = Setting(name: SettingsName.editSocial, image: SettingsImage.edit_social)
             self.settingMenus.append(editSocial)
-        }
+        
 
         let subscriptionMenu = Setting(name: SettingsName.subscription, image: SettingsImage.subscription)
         self.settingMenus.append(subscriptionMenu)
@@ -110,7 +112,34 @@ class SettingsViewController: UIViewController {
         
         let logoutMenu = Setting(name: SettingsName.logOut, image: SettingsImage.logOut)
         self.settingMenus.append(logoutMenu)
-        
+        }else{
+            let profileMenu = Setting(name: SettingsName.acountOverview, image: SettingsImage.accountoverview)
+            self.settingMenus.append(profileMenu)
+            
+            let EdiProfileMenu = Setting(name: SettingsName.editProfile, image: SettingsImage.editProfile)
+            self.settingMenus.append(EdiProfileMenu)
+            
+            let subscriptionMenu = Setting(name: SettingsName.subscription, image: SettingsImage.subscription)
+            self.settingMenus.append(subscriptionMenu)
+            
+            let changePasswordMenu = Setting(name: SettingsName.changePassword, image: SettingsImage.change_password)
+            self.settingMenus.append(changePasswordMenu)
+            
+            let followerMenu = Setting(name: SettingsName.followers, image: SettingsImage.followers)
+            self.settingMenus.append(followerMenu)
+            
+            let myStationMenu = Setting(name: SettingsName.myStation, image: SettingsImage.my_station)
+            self.settingMenus.append(myStationMenu)
+            
+            let downloadMenu = Setting(name: SettingsName.myDownload, image: SettingsImage.myDownload)
+            self.settingMenus.append(downloadMenu)
+            
+            let logoutMenu = Setting(name: SettingsName.logOut, image: SettingsImage.logOut)
+            self.settingMenus.append(logoutMenu)
+
+
+            
+        }
     }
     
     func presentPhoto() {
@@ -234,6 +263,9 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate{
             let alertController = UIAlertController(title: "Alert!", message: "Are you sure you want to logout?", preferredStyle: .alert)
             let okAlertAction = UIAlertAction(title: "Yes", style: .destructive) { (_) in
                 UserDefaults.standard.deleteAllData()
+               
+                BannerCollectionViewCell.isSetBanner = false
+                
                 let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
                 self.appD.window?.rootViewController = destination
             }

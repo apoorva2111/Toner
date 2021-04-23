@@ -40,6 +40,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg" translatesAutoresizingMaskIntoConstraints="NO" id="CFy-IJ-TrQ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h9o-h0-BjW">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="802"/>
                     <subviews>
@@ -211,11 +214,15 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="CFy-IJ-TrQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4FB-xY-LBq"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="00R-hf-zlK" secondAttribute="trailing" constant="32" id="5Sl-hq-D3F"/>
                 <constraint firstItem="h9o-h0-BjW" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="RVL-Gr-Clq"/>
+                <constraint firstAttribute="bottom" secondItem="CFy-IJ-TrQ" secondAttribute="bottom" id="TQN-gp-KJz"/>
                 <constraint firstItem="lhN-FB-132" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Vp8-0J-Bmc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h9o-h0-BjW" secondAttribute="trailing" id="YhT-DN-cSB"/>
+                <constraint firstItem="CFy-IJ-TrQ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="mBO-5w-7ye"/>
                 <constraint firstItem="lhN-FB-132" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.921875" priority="250" id="nPh-gV-Vlv"/>
+                <constraint firstItem="CFy-IJ-TrQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="orf-hI-1Ob"/>
                 <constraint firstItem="00R-hf-zlK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="qZX-CI-hJY"/>
                 <constraint firstItem="00R-hf-zlK" firstAttribute="top" secondItem="h9o-h0-BjW" secondAttribute="bottom" constant="10" id="rQB-kX-y7k"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="00R-hf-zlK" secondAttribute="bottom" id="vUH-9D-aZ5"/>
@@ -225,6 +232,7 @@
         </view>
     </objects>
     <resources>
+        <image name="home-bg" width="562.5" height="1218"/>
         <image name="profile-pic" width="150" height="150"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -64,6 +64,10 @@
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruQ-NU-5p5" customClass="TonneruDownloadButton" customModule="Tonneru" customModuleProvider="target">
+                                <rect key="frame" x="267.5" y="13.5" width="41" height="41"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuH-wz-7h2">
                                 <rect key="frame" x="5" y="37.5" width="257.5" height="15"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
@@ -77,12 +81,16 @@
                             <constraint firstItem="usA-Qu-Qm7" firstAttribute="centerX" secondItem="s8U-cp-51Q" secondAttribute="centerX" multiplier="0.97" id="8If-h9-TSh"/>
                             <constraint firstItem="H9V-bI-wQ4" firstAttribute="leading" secondItem="jhw-nT-gEc" secondAttribute="leading" constant="5" id="9vr-vJ-SrD"/>
                             <constraint firstItem="s8U-cp-51Q" firstAttribute="centerY" secondItem="dX0-iD-G7v" secondAttribute="centerY" id="UFy-gK-5Or"/>
+                            <constraint firstItem="ruQ-NU-5p5" firstAttribute="width" secondItem="usA-Qu-Qm7" secondAttribute="width" id="Waz-G5-ERf"/>
                             <constraint firstItem="usA-Qu-Qm7" firstAttribute="centerY" secondItem="s8U-cp-51Q" secondAttribute="centerY" id="Wcw-Nl-YHd"/>
                             <constraint firstAttribute="trailing" secondItem="dX0-iD-G7v" secondAttribute="trailing" id="XxV-rj-3uo"/>
                             <constraint firstItem="fjk-NZ-kjQ" firstAttribute="centerX" secondItem="dX0-iD-G7v" secondAttribute="centerX" id="a9i-aC-2LX"/>
                             <constraint firstItem="dX0-iD-G7v" firstAttribute="centerY" secondItem="jhw-nT-gEc" secondAttribute="centerY" id="cWW-4S-FUV"/>
                             <constraint firstItem="vuH-wz-7h2" firstAttribute="trailing" secondItem="H9V-bI-wQ4" secondAttribute="trailing" id="dav-FT-8C3"/>
                             <constraint firstItem="usA-Qu-Qm7" firstAttribute="leading" secondItem="H9V-bI-wQ4" secondAttribute="trailing" constant="5" id="fxc-mq-h21"/>
+                            <constraint firstItem="ruQ-NU-5p5" firstAttribute="trailing" secondItem="usA-Qu-Qm7" secondAttribute="trailing" id="laf-yY-WqM"/>
+                            <constraint firstItem="ruQ-NU-5p5" firstAttribute="centerY" secondItem="usA-Qu-Qm7" secondAttribute="centerY" id="qHm-In-cOI"/>
+                            <constraint firstItem="ruQ-NU-5p5" firstAttribute="height" secondItem="usA-Qu-Qm7" secondAttribute="height" id="qfw-ee-MGW"/>
                             <constraint firstItem="H9V-bI-wQ4" firstAttribute="top" secondItem="jhw-nT-gEc" secondAttribute="top" constant="15" id="rDJ-LB-Maw"/>
                             <constraint firstItem="vuH-wz-7h2" firstAttribute="leading" secondItem="H9V-bI-wQ4" secondAttribute="leading" id="sTe-Cv-kMA"/>
                             <constraint firstItem="fjk-NZ-kjQ" firstAttribute="leading" secondItem="s8U-cp-51Q" secondAttribute="trailing" constant="5" id="t6c-Hf-Ctk"/>
@@ -103,6 +111,7 @@
             <connections>
                 <outlet property="btnAddOutlet" destination="fjk-NZ-kjQ" id="8bh-7e-fP1"/>
                 <outlet property="btnDownloadOutlet" destination="usA-Qu-Qm7" id="hq6-sy-uaA"/>
+                <outlet property="downloadButton" destination="ruQ-NU-5p5" id="cfu-ea-yYS"/>
                 <outlet property="lblDescription" destination="vuH-wz-7h2" id="b2w-Np-5cZ"/>
                 <outlet property="lblTitle" destination="H9V-bI-wQ4" id="41p-hC-0Pc"/>
             </connections>

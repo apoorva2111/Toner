@@ -10,7 +10,7 @@ import UIKit
 
 class SongInPlayListImageTVCell: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
-    @IBOutlet weak var btnPlaySong: UIButton!
+    @IBOutlet weak var btnPlayAllSong: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

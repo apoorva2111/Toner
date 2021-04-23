@@ -5,7 +5,7 @@
 //  Created by User on 11/09/20.
 //  Copyright © 2020 Users. All rights reserved.
 //
-
+// color code - 222222
 import UIKit
 
 class FollowChatTableViewCell: UITableViewCell {

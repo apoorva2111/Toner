@@ -31,7 +31,7 @@ class CategoryListViewController: UIViewController {
         self.view.backgroundColor = ThemeColor.backgroundColor
         
         self.navigationController?.navigationBar.barTintColor = .black
-        self.setNavigationBar(title: categoryName, isBackButtonRequired: true)
+        self.setNavigationBar(title: categoryName, isBackButtonRequired: true, isTransparent: false)
         self.setNeedsStatusBarAppearanceUpdate()
         
         collectionView.dataSource = self

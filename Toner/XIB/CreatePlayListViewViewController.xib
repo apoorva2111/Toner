@@ -40,6 +40,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N43-a3-nPK">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg" translatesAutoresizingMaskIntoConstraints="NO" id="pdm-bQ-SYg">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CREATE YOUR ALBUM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JM7-od-V54">
                             <rect key="frame" x="91" y="13" width="193.5" height="23"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -234,7 +237,10 @@
                         <constraint firstAttribute="trailing" secondItem="4kO-oK-ir7" secondAttribute="trailing" id="Fwq-Tq-pmb"/>
                         <constraint firstItem="257-Bb-RHm" firstAttribute="height" secondItem="N43-a3-nPK" secondAttribute="height" priority="250" id="Iia-Gr-pDo"/>
                         <constraint firstItem="OOP-l8-gw8" firstAttribute="centerY" secondItem="JM7-od-V54" secondAttribute="centerY" id="JOq-HI-Ixw"/>
+                        <constraint firstAttribute="bottom" secondItem="pdm-bQ-SYg" secondAttribute="bottom" id="OYD-51-XrW"/>
                         <constraint firstItem="JM7-od-V54" firstAttribute="centerX" secondItem="N43-a3-nPK" secondAttribute="centerX" id="TLC-Za-up5"/>
+                        <constraint firstAttribute="trailing" secondItem="pdm-bQ-SYg" secondAttribute="trailing" id="XAJ-Ed-94M"/>
+                        <constraint firstItem="pdm-bQ-SYg" firstAttribute="leading" secondItem="N43-a3-nPK" secondAttribute="leading" id="Yey-Gi-gjr"/>
                         <constraint firstItem="4kO-oK-ir7" firstAttribute="leading" secondItem="N43-a3-nPK" secondAttribute="leading" id="ZtJ-Ad-Qaf"/>
                         <constraint firstItem="Rkq-d3-VAa" firstAttribute="top" secondItem="JM7-od-V54" secondAttribute="bottom" constant="14" id="apc-rZ-Les"/>
                         <constraint firstItem="4k1-zy-IHQ" firstAttribute="leading" secondItem="N43-a3-nPK" secondAttribute="leading" id="eEV-Ut-mqS"/>
@@ -244,6 +250,7 @@
                         <constraint firstItem="JM7-od-V54" firstAttribute="top" secondItem="N43-a3-nPK" secondAttribute="top" constant="13" id="j6s-zg-oPg"/>
                         <constraint firstItem="257-Bb-RHm" firstAttribute="width" secondItem="N43-a3-nPK" secondAttribute="width" id="m1f-Fq-OWr"/>
                         <constraint firstItem="4k1-zy-IHQ" firstAttribute="top" secondItem="N43-a3-nPK" secondAttribute="top" id="mja-o7-aZW"/>
+                        <constraint firstItem="pdm-bQ-SYg" firstAttribute="top" secondItem="N43-a3-nPK" secondAttribute="top" id="nfX-bW-67C"/>
                     </constraints>
                 </view>
             </subviews>
@@ -260,5 +267,6 @@
     <resources>
         <image name="Camera" width="75" height="75"/>
         <image name="back" width="20" height="20"/>
+        <image name="home-bg" width="562.5" height="1218"/>
     </resources>
 </document>

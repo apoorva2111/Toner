@@ -50,13 +50,13 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
-                <outlet property="btnPlaySong" destination="Wap-He-jIm" id="c1O-Be-ELz"/>
+                <outlet property="btnPlayAllSong" destination="Wap-He-jIm" id="iuD-Fa-87R"/>
                 <outlet property="imgView" destination="mXw-67-1lz" id="7it-KL-sqB"/>
             </connections>
             <point key="canvasLocation" x="44.927536231884062" y="51.5625"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="play-yellow" width="1024" height="1024"/>
+        <image name="play-yellow" width="75" height="75"/>
     </resources>
 </document>

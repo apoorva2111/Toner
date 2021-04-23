@@ -30,7 +30,7 @@ class FollowingsViewController: UIViewController {
         self.view.backgroundColor = ThemeColor.backgroundColor
         
         self.navigationController?.navigationBar.barTintColor = .black
-        self.setNavigationBar(title: "FOLLOWING", isBackButtonRequired: true)
+        self.setNavigationBar(title: "FOLLOWING", isBackButtonRequired: true, isTransparent: false)
         self.setNeedsStatusBarAppearanceUpdate()
         
         collectionView.dataSource = self
@@ -107,13 +107,17 @@ extension FollowingsViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var cellWidth = 0.0
-        if UIDevice.current.userInterfaceIdiom == .pad{
-            cellWidth = Double((collectionView.bounds.width / 4) - 10)
-        }else{
-            cellWidth = Double((collectionView.bounds.width / 3) - 10)
-        }
-        return CGSize(width: cellWidth, height: 170)
+     //   var cellWidth = 0.0
+//        if UIDevice.current.userInterfaceIdiom == .pad{
+//            cellWidth = Double((collectionView.bounds.width / 4) - 10)
+//        }else{
+//            cellWidth = Double((collectionView.bounds.width / 3) - 10)
+//        }
+//        return CGSize(width: cellWidth, height: 170)
+        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+        let size:CGFloat = (self.collectionView.frame.size.width - space) / 2.0
+        return CGSize(width: size, height: size)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -26,6 +26,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg" translatesAutoresizingMaskIntoConstraints="NO" id="QZ5-zu-EFG">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Pn-mL-IOg">
                     <rect key="frame" x="0.0" y="49" width="414" height="758"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -50,16 +53,21 @@
             <constraints>
                 <constraint firstItem="3Pn-mL-IOg" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="3Vi-di-7s3"/>
                 <constraint firstItem="3Pn-mL-IOg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="COG-Bo-jvR"/>
+                <constraint firstAttribute="bottom" secondItem="QZ5-zu-EFG" secondAttribute="bottom" id="QQ2-jb-6yG"/>
+                <constraint firstItem="QZ5-zu-EFG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="T2I-XK-kef"/>
+                <constraint firstItem="QZ5-zu-EFG" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Uiz-7x-eUZ"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3Pn-mL-IOg" secondAttribute="trailing" id="cRB-bH-iFg"/>
                 <constraint firstItem="xjW-gZ-2p7" firstAttribute="top" secondItem="3Pn-mL-IOg" secondAttribute="bottom" constant="5" id="gdb-YB-T9J"/>
                 <constraint firstItem="xjW-gZ-2p7" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="gq2-oH-VyB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xjW-gZ-2p7" secondAttribute="trailing" constant="16" id="hnB-g5-mPj"/>
+                <constraint firstItem="QZ5-zu-EFG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="od2-LA-d56"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="xjW-gZ-2p7" secondAttribute="bottom" id="zuV-dY-kQz"/>
             </constraints>
             <point key="canvasLocation" x="31.884057971014496" y="71.651785714285708"/>
         </view>
     </objects>
     <resources>
+        <image name="home-bg" width="562.5" height="1218"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

