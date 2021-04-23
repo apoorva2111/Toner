@@ -26,7 +26,8 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var txtCard: UITextField!
     @IBAction func btnPayNowAction(_ sender: UIButton) {
-        getmembersubscribtion()
+        getMembership()
+        
     }
     
     
@@ -79,31 +80,28 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
         return count <= 3
     }
     
-    func getmembersubscribtion(){
+    
+    func getMembership() {
         self.activityIndicator.startAnimating()
-        self.artistId = UserDefaults.standard.fetchData(forKey: .userId) //"53"
-        // {plan_id, user_id, payment_method}
-        let apiURL = "https://tonnerumusic.com/api/v1/membersubscribtion"
-        let urlConvertible = URL(string: apiURL)!
-        Alamofire.request(urlConvertible,
-                      method: .post,
-                      parameters: [
-                        "user_id": artistId ?? "",
-                        "plan_id": plan_id,
-                        "payment_method":txtCard.text
-            ] as [String: String])
-        .validate().responseJSON { (response) in
-                print(response)
-
-                
-            let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
-           
-          print(resposeJSON)
-            self.activityIndicator.stopAnimating()
-            
-            
+        let userId:String = UserDefaults.standard.fetchData(forKey: .userId)
+        let apiUrl = "https://tonnerumusic.com/api/v1/membersubscribtion"
+        let urlConvertible = URL(string: apiUrl)!
+        let param:[String:Any] = ["user_id": userId,
+                                "plan_id": plan_id,
+                                "payment_method":txtCard.text!]
+        
+        Alamofire.request(urlConvertible,method: .post,parameters: param).validate().responseJSON { (response) in
+                        print(response)
+        
+        
+                    let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+        
+                  print(resposeJSON)
+                    self.activityIndicator.stopAnimating()
+        
+        
+            }
     }
-}
 }
 
 // MARK: UIPickerView Delegation

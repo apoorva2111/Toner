@@ -1830,14 +1830,6 @@
             <point key="canvasLocation" x="1413" y="1213"/>
         </scene>
     </scenes>
-    <designables>
-        <designable name="VPy-JE-Ztf">
-            <size key="intrinsicContentSize" width="68" height="30"/>
-        </designable>
-        <designable name="afs-Ry-Scq">
-            <size key="intrinsicContentSize" width="25.5" height="17"/>
-        </designable>
-    </designables>
     <resources>
         <image name="Login_New" width="562.5" height="1218"/>
         <image name="home-bg" width="562.5" height="1218"/>
