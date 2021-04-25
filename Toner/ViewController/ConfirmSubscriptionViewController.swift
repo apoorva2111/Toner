@@ -88,7 +88,7 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
         let urlConvertible = URL(string: apiUrl)!
         let param:[String:Any] = ["user_id": userId,
                                 "plan_id": plan_id,
-                                "payment_method":txtCard.text!]
+                                "payment_method":"Paypal"]
         
         Alamofire.request(urlConvertible,method: .post,parameters: param).validate().responseJSON { (response) in
                         print(response)

