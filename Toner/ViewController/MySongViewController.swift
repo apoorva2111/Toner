@@ -20,10 +20,13 @@ class MySongViewController: UIViewController {
        
 
              
-        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeAudio)], in: .import)
-            importMenu.delegate = self
-            importMenu.modalPresentationStyle = .formSheet
-            self.present(importMenu, animated: true, completion: nil)
+//        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeAudio)], in: .import)
+//            importMenu.delegate = self
+//            importMenu.modalPresentationStyle = .formSheet
+//            self.present(importMenu, animated: true, completion: nil)
+        
+        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UploadSongViewController") as! UploadSongViewController
+        self.navigationController!.pushViewController(destination, animated: true)
     }
     
     @IBOutlet weak var btnUploadSongOutlet: UIButton!

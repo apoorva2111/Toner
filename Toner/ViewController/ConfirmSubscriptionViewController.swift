@@ -23,7 +23,9 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
     var artistId:String!
     var plan_id = ""
     
-
+    @IBOutlet weak var imgRadioPaypal: UIImageView!
+    @IBOutlet weak var imgRadioCoin: UIImageView!
+   
     @IBOutlet weak var txtCard: UITextField!
     @IBAction func btnPayNowAction(_ sender: UIButton) {
         getMembership()
@@ -89,6 +91,7 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
         let param:[String:Any] = ["user_id": userId,
                                 "plan_id": plan_id,
                                 "payment_method":"Paypal"]
+        print(param)
         
         Alamofire.request(urlConvertible,method: .post,parameters: param).validate().responseJSON { (response) in
                         print(response)
@@ -102,6 +105,19 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
         
             }
     }
+  
+    @IBAction func btnRadioAction(_ sender: UIButton) {
+        if sender.tag == 10{
+            imgRadioPaypal.image = #imageLiteral(resourceName: "radioSelect")
+            imgRadioCoin.image = #imageLiteral(resourceName: "radioUnselect")
+            
+            
+        }else{
+            imgRadioCoin.image = #imageLiteral(resourceName: "radioSelect")
+            imgRadioPaypal.image = #imageLiteral(resourceName: "radioUnselect")
+        }
+    }
+    
 }
 
 // MARK: UIPickerView Delegation

