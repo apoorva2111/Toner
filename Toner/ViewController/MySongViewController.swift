@@ -17,16 +17,11 @@ import MediaPlayer
 class MySongViewController: UIViewController {
     
     @IBAction func uploadSongAction(_ sender: UIButton) {
-       
-
              
-//        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeAudio)], in: .import)
-//            importMenu.delegate = self
-//            importMenu.modalPresentationStyle = .formSheet
-//            self.present(importMenu, animated: true, completion: nil)
-        
-        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UploadSongViewController") as! UploadSongViewController
-        self.navigationController!.pushViewController(destination, animated: true)
+        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeAudio)], in: .import)
+            importMenu.delegate = self
+            importMenu.modalPresentationStyle = .formSheet
+            self.present(importMenu, animated: true, completion: nil)
     }
     
     @IBOutlet weak var btnUploadSongOutlet: UIButton!
@@ -271,17 +266,19 @@ extension MySongViewController : UIDocumentMenuDelegate,UIDocumentPickerDelegate
     }
     
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        print(urls)
         guard let myURL = urls.first else {
             return
         }
         print("import result : \(myURL)")
+        
+        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UploadSongViewController") as! UploadSongViewController
+        destination.url = myURL
+        self.navigationController!.pushViewController(destination, animated: true)
     }
           
 
-//    func documentMenu(_ documentMenu: UIDocumentMenuViewController, didPickDocumentPicker documentPicker: UIDocumentPickerViewController) {
-//        documentPicker.delegate = self
-//        present(documentPicker, animated: true, completion: nil)
-//    }
+
 
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

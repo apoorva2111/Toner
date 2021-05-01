@@ -251,17 +251,21 @@ class MusicListViewController: UIViewController {
             }
         }else{
             let alert = UIAlertController(title: "Alert", message: downloadStatus.message, preferredStyle: .alert)
-            
+
             let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (UIAlertAction) in
-                self.callWebserviceArtistPaymentSong(song_id: song_id)
-                print("add purchase code")
+               // self.callWebserviceArtistPaymentSong(song_id: song_id)
+                let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmSubscriptionViewController") as! ConfirmSubscriptionViewController
+                self.navigationController!.pushViewController(destination, animated: true)
+
             }
-            
+
             alert.addAction(okAction)
             alert.addAction(purchaseAction)
-            
+
             self.present(alert, animated: true, completion: nil)
+            
+            
         }
     }
     

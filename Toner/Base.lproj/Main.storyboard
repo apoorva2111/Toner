@@ -1182,6 +1182,9 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="btnSelectImgAction:" destination="wVl-h2-BEi" eventType="touchUpInside" id="sKL-0K-QZu"/>
+                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="4rL-DU-WWL">
                                                 <rect key="frame" x="20" y="200" width="374" height="705"/>
@@ -1600,7 +1603,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="btnPayNowAction:" destination="CXa-l9-y1z" eventType="touchUpInside" id="b6A-9c-rHq"/>
+                                    <action selector="btnPublishAction:" destination="wVl-h2-BEi" eventType="touchUpInside" id="RKV-cs-2eL"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -28,8 +28,7 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
    
     @IBOutlet weak var txtCard: UITextField!
     @IBAction func btnPayNowAction(_ sender: UIButton) {
-        getMembership()
-        
+validation()
     }
     
     
@@ -81,7 +80,35 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
         let count = textFieldText.count - substringToReplace.count + string.count
         return count <= 3
     }
-    
+    func validation(){
+        if txtNameOnCard.text == "" && txtCardNumber.text == "" && txtCard.text == "" && txtcvv.text == "",txtYear.text == "" && txtMonth.text == ""{
+            showAlert(message: "All feilds are required")
+        }else if  txtNameOnCard.text == ""{
+        showAlert(message: "Please Enter Card Name")
+
+        }else if txtCardNumber.text == ""{
+            showAlert(message: "Please Enter Card Number")
+
+        }else if txtCard.text == ""{
+            showAlert(message: "Please Select Card Type")
+
+        }else if txtcvv.text == ""{
+            showAlert(message: "Please Enter Card CVV")
+
+        }else if txtYear.text == ""{
+            showAlert(message: "Please Select Card Expire Year")
+
+        }else if txtMonth.text == ""{
+            showAlert(message: "Please Select Card Expire Month")
+
+        }else if txtCardNumber.text!.count < 12 {
+            showAlert(message: "Card Number Should be greater than 12")
+        }
+        else{
+            getMembership()
+
+        }
+    }
     
     func getMembership() {
         self.activityIndicator.startAnimating()
@@ -90,7 +117,12 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
         let urlConvertible = URL(string: apiUrl)!
         let param:[String:Any] = ["user_id": userId,
                                 "plan_id": plan_id,
-                                "payment_method":"Paypal"]
+                                "payment_method":"Paypal",
+                                "card_type":txtCard.text!,
+                                "card_number":txtCardNumber.text!,
+                                "cc_expire_date_month": "2",
+                                "cc_expire_date_year":txtYear.text!,
+                                "cc_cvv2":txtcvv.text!]
         print(param)
         
         Alamofire.request(urlConvertible,method: .post,parameters: param).validate().responseJSON { (response) in
@@ -100,6 +132,14 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
                     let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
         
                   print(resposeJSON)
+            if let status = resposeJSON["status"]{
+                if status as! Int == 0 {
+                    self.navigationController?.popViewController(animated: true)
+                            self.activityIndicator.stopAnimating()
+                }else{
+                            self.activityIndicator.stopAnimating()
+                }
+            }
                     self.activityIndicator.stopAnimating()
         
         
