@@ -19,13 +19,21 @@ class UploadSongViewController: UIViewController {
     @IBOutlet weak var txtAlbum: UITextField!
     @IBOutlet weak var txtPrice: UITextField!
     @IBOutlet weak var txtAllowDownload: UITextField!
+    @IBOutlet weak var imgSongThumnilImg: RCustomImageView!
+    var genreData = [TopGenreModel]()
+    var arrStatus = ["Yes","No"]
     
     var activityIndicator: NVActivityIndicatorView!
     var url : URL?
-    
+    var imagData =  Data()
+    let stationPicker = UIPickerView()
+    let statusPicker = UIPickerView()
+    let releaseDatePicker = UIDatePicker()
+
     @IBAction func btnPublishAction(_ sender: UIButton) {
     }
     @IBAction func btnSelectImgAction(_ sender: UIButton) {
+        presentPhoto()
     }
   
     override func viewDidLoad() {
@@ -46,21 +54,44 @@ class UploadSongViewController: UIViewController {
                    
                 }
             }
+        genreData = appD.genreData
     }
    
     func setUI() {
+        
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         self.setNavigationBar(title: "Upload Song", isBackButtonRequired: true, isTransparent: false)
-
+        txtStation.inputView = stationPicker
+        stationPicker.delegate = self
+        stationPicker.dataSource = self
+        txtStatus.inputView = statusPicker
+        statusPicker.delegate = self
+        statusPicker.dataSource = self
         
+        
+        self.txtReleaseDate.setInputViewDatePicker(target: self, selector: #selector(tapDone)) //1
+        if #available(iOS 13.4, *) {
+            releaseDatePicker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
     }
-
-    //        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeAudio)], in: .import)
-    //            importMenu.delegate = self
-    //            importMenu.modalPresentationStyle = .formSheet
-    //            self.present(importMenu, animated: true, completion: nil)
-     
+    
+    
+    @objc func tapDone() {
+           if let datePicker = self.txtReleaseDate.inputView as? UIDatePicker {
+            if #available(iOS 13.4, *) {
+                      datePicker.preferredDatePickerStyle = .wheels
+                  } else {
+                      // Fallback on earlier versions
+                  }
+            let dateformatter = DateFormatter()
+         dateformatter.dateFormat = "yyyy-MM-dd"
+               self.txtReleaseDate.text = dateformatter.string(from: datePicker.date) //2-4
+           }
+           self.txtReleaseDate.resignFirstResponder() // 2-5
+       }
 }
 
 extension UploadSongViewController : UIDocumentMenuDelegate,UIDocumentPickerDelegate,UINavigationControllerDelegate{
@@ -91,8 +122,155 @@ extension UploadSongViewController : UIDocumentMenuDelegate,UIDocumentPickerDele
     
 }
 
+//MARK:- Change Image
+extension UploadSongViewController:UIImagePickerControllerDelegate{
+    func presentPhoto() {
+        let actionSheet = UIAlertController(title: "Add Image",
+                                            message: "How would you like to select a picture?",
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Take Photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+                                                
+                                                self?.presentCamera1()
+                                                
+                                            }))
+        actionSheet.addAction(UIAlertAction(title: "Choose Photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+                                                
+                                                //   self?.presentPhotoPicker1()
+                                                let photoPicker = UIImagePickerController()
+                                                photoPicker.delegate = self
+                                                photoPicker.sourceType = .photoLibrary
+                                                self!.present(photoPicker, animated: true, completion: nil)
+                                                
+                                            }))
+        self.present(actionSheet, animated: true)
+        actionSheet.view.superview?.isUserInteractionEnabled = true
+        actionSheet.view.superview?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.dismissOnTapOutside)))
+    }
+    @objc func dismissOnTapOutside(){
+        self.dismiss(animated: true, completion: nil)
+    }
+    func presentCamera1() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        var selectedImageFromPicker: UIImage?
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        
+        if let selectedImage = selectedImageFromPicker {
+            imgSongThumnilImg.image = selectedImage
+            imagData = selectedImage.jpegData(compressionQuality: 0.5)!
+        }
+        
+        //dismiss(animated: true, completion: nil)
+        dismiss(animated: true) {
+            self.uploadImage()
+            
+        }
+    }
+   
+    func uploadImage()
+    {
+        self.activityIndicator.startAnimating()
 
+        if !NetworkReachabilityManager()!.isReachable{
+                  return
+        }
+        let url = "https://tonnerumusic.com/api/v1/profile_image_edit"
+       
+        var headers = HTTPHeaders()
 
+        
+        headers = ["Content-type": "multipart/form-data"]
+
+        
+        
+        Alamofire.upload(multipartFormData: { multipartFormData in
+            // import image to request
+            multipartFormData.append(self.imagData, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpg", mimeType: "image/jpg")
+         
+            let userID:String = UserDefaults.standard.fetchData(forKey: .userId) //"53"
+
+            multipartFormData.append(userID.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"user_id")
+
+        }, to: url,method:HTTPMethod.post,
+           headers:headers,
+           encodingCompletion: { encodingResult in
+            DispatchQueue.main.async {
+                
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        
+                        self.activityIndicator.stopAnimating()
+                    }
+                case .failure(let error):
+                    print(error)
+                    self.activityIndicator.stopAnimating()
+
+                }
+            }
+        })
+      
+
+    }
+}
+extension UploadSongViewController{
+    
+}
+
+// MARK: UIPickerView Delegation
+
+extension UploadSongViewController : UIPickerViewDelegate, UIPickerViewDataSource{
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView( _ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if pickerView == stationPicker{
+        return genreData.count
+        }
+        else{
+            return self.arrStatus.count
+        }
+    }
+
+    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if pickerView == stationPicker{
+        return genreData[row].name
+        }
+        else{
+            return arrStatus[row]
+        }
+    }
+
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == stationPicker{
+        txtStation.text = genreData[row].name
+        }else{
+            txtStatus.text =  arrStatus[row]
+        }
+    }
+}
 /*
  uploadsong (POST)
 
@@ -106,3 +284,31 @@ extension UploadSongViewController : UIDocumentMenuDelegate,UIDocumentPickerDele
  "price"=>'price',
  "allow_download"=>'allow_download', (should be 1 or 0)
  */
+extension UITextField {
+    
+    func setInputViewDatePicker(target: Any, selector: Selector) {
+        // Create a UIDatePicker object and assign to inputView
+        let screenWidth = UIScreen.main.bounds.width
+        let datePicker = UIDatePicker(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 216))//1
+        datePicker.datePickerMode = .date //2
+        // iOS 14 and above
+        if #available(iOS 14, *) {// Added condition for iOS 14
+          datePicker.preferredDatePickerStyle = .wheels
+          datePicker.sizeToFit()
+        }
+        self.inputView = datePicker //3
+        
+        // Create a toolbar and assign it to inputAccessoryView
+        let toolBar = UIToolbar(frame: CGRect(x: 0.0, y: 0.0, width: screenWidth, height: 44.0)) //4
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil) //5
+        let cancel = UIBarButtonItem(title: "Cancel", style: .plain, target: nil, action: #selector(tapCancel)) // 6
+        let barButton = UIBarButtonItem(title: "Done", style: .plain, target: target, action: selector) //7
+        toolBar.setItems([cancel, flexible, barButton], animated: false) //8
+        self.inputAccessoryView = toolBar //9
+    }
+    
+    @objc func tapCancel() {
+        self.resignFirstResponder()
+    }
+    
+}
