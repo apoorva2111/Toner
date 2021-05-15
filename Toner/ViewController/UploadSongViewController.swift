@@ -21,6 +21,7 @@ class UploadSongViewController: UIViewController {
     @IBOutlet weak var txtAllowDownload: UITextField!
     @IBOutlet weak var imgSongThumnilImg: RCustomImageView!
     var genreData = [TopGenreModel]()
+    var arrAblum = [AlbumModel]()
     var arrStatus = ["Yes","No"]
     
     var activityIndicator: NVActivityIndicatorView!
@@ -29,6 +30,7 @@ class UploadSongViewController: UIViewController {
     let stationPicker = UIPickerView()
     let statusPicker = UIPickerView()
     let releaseDatePicker = UIDatePicker()
+    let AlbumPicker = UIPickerView()
 
     @IBAction func btnPublishAction(_ sender: UIButton) {
     }
@@ -55,6 +57,7 @@ class UploadSongViewController: UIViewController {
                 }
             }
         genreData = appD.genreData
+        getArtistAlbumData()
     }
    
     func setUI() {
@@ -68,7 +71,9 @@ class UploadSongViewController: UIViewController {
         txtStatus.inputView = statusPicker
         statusPicker.delegate = self
         statusPicker.dataSource = self
-        
+        txtAlbum.inputView = AlbumPicker
+        AlbumPicker.delegate = self
+        AlbumPicker.dataSource = self
         
         self.txtReleaseDate.setInputViewDatePicker(target: self, selector: #selector(tapDone)) //1
         if #available(iOS 13.4, *) {
@@ -182,7 +187,7 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
         
         //dismiss(animated: true, completion: nil)
         dismiss(animated: true) {
-            self.uploadImage()
+            //self.uploadImage()
             
         }
     }
@@ -232,6 +237,47 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
       
 
     }
+    
+    
+    func getArtistAlbumData(){
+        self.activityIndicator.startAnimating()
+        let artistId: String = UserDefaults.standard.fetchData(forKey: .userId)
+        let apiURL = "https://tonnerumusic.com/api/v1/artist_album"
+        let urlConvertible = URL(string: apiURL)!
+        Alamofire.request(urlConvertible,
+                      method: .post,
+                      parameters: [
+                        "artist_id": artistId ?? ""
+            ] as [String: String])
+        .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                     self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+            let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+            print(resposeJSON)
+            let allAlbums = resposeJSON["albums"] as? NSArray ?? NSArray()
+            if self.arrAblum.count>0{
+                self.arrAblum.removeAll()
+            }
+            for objAlbum in allAlbums{
+                let obj = objAlbum as? NSDictionary ?? NSDictionary()
+                var currentData = AlbumModel()
+                currentData.id = obj["id"] as? String ?? ""
+                currentData.image = obj["image"] as? String ?? ""
+                currentData.name = obj["name"] as? String ?? ""
+                currentData.totalsongs = obj["totalsongs"] as? Int ?? 0
+                currentData.user_id = obj["user_id"] as? String ?? ""
+                self.arrAblum.append(currentData)
+            }
+            self.AlbumPicker.reloadAllComponents()
+            self.activityIndicator.stopAnimating()
+           
+        }
+    }
 }
 extension UploadSongViewController{
     
@@ -248,6 +294,8 @@ extension UploadSongViewController : UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView( _ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == stationPicker{
         return genreData.count
+        }else if pickerView == AlbumPicker{
+            return arrAblum.count
         }
         else{
             return self.arrStatus.count
@@ -257,6 +305,9 @@ extension UploadSongViewController : UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == stationPicker{
         return genreData[row].name
+        }else if pickerView == AlbumPicker{
+            return arrAblum[row].name
+            
         }
         else{
             return arrStatus[row]
@@ -266,7 +317,10 @@ extension UploadSongViewController : UIPickerViewDelegate, UIPickerViewDataSourc
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == stationPicker{
         txtStation.text = genreData[row].name
-        }else{
+        }else if pickerView == AlbumPicker{
+            txtAlbum.text = arrAblum[row].name
+            
+        } else{
             txtStatus.text =  arrStatus[row]
         }
     }
