@@ -27,12 +27,22 @@ class UploadSongViewController: UIViewController {
     var activityIndicator: NVActivityIndicatorView!
     var url : URL?
     var imagData =  Data()
+    var songData_ = Data()
+    var songName = ""
+    var album_id = ""
+    var release_date = ""
+    var price = ""
+    var allow_download = ""
+    
+    
     let stationPicker = UIPickerView()
     let statusPicker = UIPickerView()
     let releaseDatePicker = UIDatePicker()
     let AlbumPicker = UIPickerView()
+    let allDownloadPicker = UIPickerView()
 
     @IBAction func btnPublishAction(_ sender: UIButton) {
+        uploadImage()
     }
     @IBAction func btnSelectImgAction(_ sender: UIButton) {
         presentPhoto()
@@ -51,6 +61,7 @@ class UploadSongViewController: UIViewController {
                     if item.commonKey?.rawValue == "title" {
                         print(stringValue)
                         lblSongName.text = stringValue
+                        songName = stringValue
                         txtSongName.text = stringValue
                     }
                    
@@ -74,6 +85,9 @@ class UploadSongViewController: UIViewController {
         txtAlbum.inputView = AlbumPicker
         AlbumPicker.delegate = self
         AlbumPicker.dataSource = self
+        txtAllowDownload.inputView = allDownloadPicker
+        allDownloadPicker.delegate = self
+        allDownloadPicker.dataSource = self
         
         self.txtReleaseDate.setInputViewDatePicker(target: self, selector: #selector(tapDone)) //1
         if #available(iOS 13.4, *) {
@@ -94,6 +108,7 @@ class UploadSongViewController: UIViewController {
             let dateformatter = DateFormatter()
          dateformatter.dateFormat = "yyyy-MM-dd"
                self.txtReleaseDate.text = dateformatter.string(from: datePicker.date) //2-4
+            release_date = dateformatter.string(from: datePicker.date)
            }
            self.txtReleaseDate.resignFirstResponder() // 2-5
        }
@@ -111,6 +126,9 @@ extension UploadSongViewController : UIDocumentMenuDelegate,UIDocumentPickerDele
             return
         }
         print("import result : \(myURL)")
+        songData_ = try! Data(contentsOf: myURL)
+        print(songData_)
+
     }
           
 
@@ -199,15 +217,27 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
         if !NetworkReachabilityManager()!.isReachable{
                   return
         }
-        let url = "https://tonnerumusic.com/api/v1/profile_image_edit"
+        let url = "https://tonnerumusic.com/api/v1/uploadsong"
        
         var headers = HTTPHeaders()
 
         
         headers = ["Content-type": "multipart/form-data"]
 
-        
-        
+        /*/*
+         uploadsong (POST)
+
+         BODY
+
+         "user_id"=>100,
+         "album_id"=>1,
+         "image"=>'thumbnail image',
+         "track"=>'song strack',
+         "release_date"=>'release_date',
+         "price"=>'price',
+         "allow_download"=>'allow_download', (should be 1 or 0)
+         */*/
+        let price = txtPrice.text
         Alamofire.upload(multipartFormData: { multipartFormData in
             // import image to request
             multipartFormData.append(self.imagData, withName: "image", fileName: "\(Date().timeIntervalSince1970).jpg", mimeType: "image/jpg")
@@ -215,6 +245,12 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
             let userID:String = UserDefaults.standard.fetchData(forKey: .userId) //"53"
 
             multipartFormData.append(userID.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"user_id")
+            multipartFormData.append(self.album_id.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"album_id")
+            multipartFormData.append(self.release_date.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"release_date")
+            multipartFormData.append(price!.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"price")
+            multipartFormData.append(self.allow_download.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"allow_download")
+            multipartFormData.append(self.songData_ as Data, withName: "audio", fileName: self.songName, mimeType: "audio/mp3")//
+            multipartFormData.append(self.songName.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"track")
 
         }, to: url,method:HTTPMethod.post,
            headers:headers,
@@ -224,8 +260,10 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        
+                        print(response)
                         self.activityIndicator.stopAnimating()
+                        self.navigationController?.popViewController(animated: true)
+
                     }
                 case .failure(let error):
                     print(error)
@@ -247,7 +285,7 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
         Alamofire.request(urlConvertible,
                       method: .post,
                       parameters: [
-                        "artist_id": artistId ?? ""
+                        "artist_id": artistId
             ] as [String: String])
         .validate().responseJSON { (response) in
                 
@@ -296,8 +334,9 @@ extension UploadSongViewController : UIPickerViewDelegate, UIPickerViewDataSourc
         return genreData.count
         }else if pickerView == AlbumPicker{
             return arrAblum.count
-        }
-        else{
+        }else if pickerView == allDownloadPicker{
+            return arrStatus.count
+        }else{
             return self.arrStatus.count
         }
     }
@@ -307,9 +346,9 @@ extension UploadSongViewController : UIPickerViewDelegate, UIPickerViewDataSourc
         return genreData[row].name
         }else if pickerView == AlbumPicker{
             return arrAblum[row].name
-            
-        }
-        else{
+        }else if pickerView == allDownloadPicker{
+            return arrStatus[row]
+        }else{
             return arrStatus[row]
         }
     }
@@ -319,25 +358,22 @@ extension UploadSongViewController : UIPickerViewDelegate, UIPickerViewDataSourc
         txtStation.text = genreData[row].name
         }else if pickerView == AlbumPicker{
             txtAlbum.text = arrAblum[row].name
-            
-        } else{
+            album_id = arrAblum[row].id
+        } else if pickerView == allDownloadPicker{
+            txtAllowDownload.text =  arrStatus[row]
+            let download = arrStatus[row]
+            if download == "yes"{
+                allow_download = "1"
+            }else{
+                allow_download = "0"
+            }
+        }else{
             txtStatus.text =  arrStatus[row]
+            
         }
     }
 }
-/*
- uploadsong (POST)
 
- BODY
-
- "user_id"=>100,
- "album_id"=>1,
- "image"=>'thumbnail image',
- "track"=>'song strack',
- "release_date"=>'release_date',
- "price"=>'price',
- "allow_download"=>'allow_download', (should be 1 or 0)
- */
 extension UITextField {
     
     func setInputViewDatePicker(target: Any, selector: Selector) {

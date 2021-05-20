@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
     var collectionViewWidth = 0.0
     var arrFilterArray:[TopGenreModel] = []
     var searching:Bool = false
-
+    var homeData: HomePageDataModel?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,7 +61,7 @@ class SearchViewController: UIViewController {
         genreData = self.appD.genreData
         
         //name
-        
+        callWebserviceForArtise()
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
     }
@@ -85,7 +85,63 @@ class SearchViewController: UIViewController {
         }
     }
     
-
+    func callWebserviceForArtise()  {
+        self.activityIndicator.startAnimating()
+        let reuestURL = "https://tonnerumusic.com/api/v1/getallartists"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .get,
+                          parameters: nil)
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                self.activityIndicator.stopAnimating()
+            print(resposeJSON)
+               
+                    
+                   let allArtist = resposeJSON["allartists"] as? NSArray ?? NSArray()
+                    print(allArtist)
+                    
+                    for data in allArtist{
+                        let topgenre = data as? NSDictionary ?? NSDictionary()
+                        let genreId = topgenre["id"] as? String ?? ""
+                        var genreName = topgenre["username"] as? String ?? ""
+                        genreName = genreName.replacingOccurrences(of: "&amp;", with: " & ")
+                        let genreIcon = topgenre["image"] as? String ?? ""
+                        let genreColor = topgenre["color"] as? String ?? ""
+                        
+                        let genreData = TopGenreModel(id: genreId, name: genreName, icon: genreIcon, color: genreColor)
+                        self.homeData?.topgenre.append(genreData)
+                    }
+                    
+//                    if self.arrMySongList.count>0{
+//                        self.arrMySongList.removeAll()
+//                    }
+//                    allSongs.forEach { (song) in
+//                        let currentSong = song as? NSDictionary ?? NSDictionary()
+//                        print(currentSong)
+//                        var currentSongData = SongModel()
+//                        currentSongData.artist_name = currentSong["artist_name"] as? String ?? ""
+//                        currentSongData.duration = currentSong["duration"] as? String ?? ""
+//                        currentSongData.filesize = currentSong["filesize"] as? String ?? ""
+//                        currentSongData.filetype = currentSong["filetype"] as? String ?? ""
+//                        currentSongData.image = currentSong["image"] as? String ?? ""
+//                        currentSongData.path = currentSong["path"] as? String ?? ""
+//                        currentSongData.song_id = currentSong["song_id"] as? String ?? ""
+//                        currentSongData.song_name = currentSong["song_name"] as? String ?? ""
+//
+//                        self.arrMySongList.append(currentSongData)
+//                    }
+                
+          //  self.lbtMySong.reloadData()
+        }
+    }
 }
 
 extension SearchViewController : UITextFieldDelegate{

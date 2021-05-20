@@ -353,6 +353,7 @@ extension EditProfileViewController:UIImagePickerControllerDelegate, UINavigatio
                     upload.responseJSON { response in
                         
                         self.activityIndicator.stopAnimating()
+                        
                     }
                 case .failure(let error):
                     print(error)

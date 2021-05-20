@@ -33,7 +33,7 @@ class DownloadTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        backView.backgroundColor = UIColor.init(hexString: "#000000", alpha: 0.6)
+        backView.backgroundColor = .clear//UIColor.init(hexString: "#000000", alpha: 0.6)
         
         songName.textColor = ThemeColor.headerColor
         artistName.textColor = ThemeColor.subHeadingColor

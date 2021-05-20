@@ -185,6 +185,11 @@ class MusicListViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    @objc func chatButtonAction(sender: UIButton){
+        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+        self.navigationController!.pushViewController(destination, animated: true)
+
+    }
     func callWebserviceArtistPaymentSong(song_id:String) {
         let user:String = UserDefaults.standard.fetchData(forKey: .userId)
         print(user)
@@ -338,6 +343,9 @@ extension MusicListViewController: UITableViewDataSource, UITableViewDelegate{
                 self.followButton = cell.followButton
                 self.followButton.isSelected = artistDetailsData?.followStatus == 1
                 self.followButton.addTarget(self, action: #selector(self.followButtonAction), for: .touchUpInside)
+                cell.chatButton.tag = indexPath.row
+                cell.chatButton.addTarget(self, action: #selector(self.chatButtonAction), for: .touchUpInside)
+
                 return cell
             }
             

@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.7.3)
   - AudioPlayerManager (1.2.3)
+  - GoogleWebRTC (1.1.29229)
   - IQKeyboardManagerSwift (6.5.6)
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
@@ -23,6 +24,8 @@ PODS:
   - PINRemoteImage/PINCache (3.0.3):
     - PINCache (~> 3.0.3)
     - PINRemoteImage/Core
+  - WKWebViewRTC (0.4.0):
+    - GoogleWebRTC (= 1.1.29229)
 
 DEPENDENCIES:
   - Alamofire (= 4.7.3)
@@ -31,28 +34,33 @@ DEPENDENCIES:
   - Kingfisher (~> 5.0)
   - NVActivityIndicatorView
   - PINRemoteImage (~> 3.0.1)
+  - WKWebViewRTC
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - AudioPlayerManager
+    - GoogleWebRTC
     - IQKeyboardManagerSwift
     - Kingfisher
     - NVActivityIndicatorView
     - PINCache
     - PINOperation
     - PINRemoteImage
+    - WKWebViewRTC
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AudioPlayerManager: 02601ac29abb8efc0043c851ee5f5c79e69d77fa
+  GoogleWebRTC: ffbf2dca3bdef0fbeebcff497e0a659bd69761c8
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
+  WKWebViewRTC: 52a6440ea6fbc8e220802a8cc7ace79ece32cf52
 
-PODFILE CHECKSUM: e6fb11ee853e2481ad67ef3158b9984e50577ee8
+PODFILE CHECKSUM: 384f7bcff825e3544964c5506293bbeee5a12c36
 
 COCOAPODS: 1.10.1
