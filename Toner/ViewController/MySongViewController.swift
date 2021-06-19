@@ -141,12 +141,13 @@ extension MySongViewController:UITableViewDelegate, UITableViewDataSource{
         
         let alert = UIAlertController(
             title: "Delete Playlist!",
-            message: "Are you sure want to delete this playlist?",
+            message: "Are you sure want to delete this Song?",
             preferredStyle: UIAlertController.Style.alert
         )
         
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive) { _ in
             self.activityIndicator.startAnimating()
+            
             self.deletePlaylistApiCAlled(sender.tag)
         })
         
@@ -164,12 +165,16 @@ extension MySongViewController:UITableViewDelegate, UITableViewDataSource{
             
     }
     fileprivate func deletePlaylistApiCAlled(_ index : Int) {
+//        let bodyParams = [
+//            "playlist_id": self.arrMySongList[index].song_id
+//            ] as [String : String]
         let bodyParams = [
-            "playlist_id": self.arrMySongList[index].song_id
+            "song_id": self.arrMySongList[index].song_id
             ] as [String : String]
         self.activityIndicator.startAnimating()
-        Alamofire.request("https://tonnerumusic.com/api/v1/playlistdelete", method: .post, parameters: bodyParams).validate().responseJSON { (response) in
+        Alamofire.request("https://tonnerumusic.com/api/v1/deletesong", method: .post, parameters: bodyParams).validate().responseJSON { (response) in
             
+            //"https://tonnerumusic.com/api/v1/playlistdelete"
             guard response.result.isSuccess else {
                 self.view.makeToast(message: Message.apiError)
                 self.activityIndicator.stopAnimating()

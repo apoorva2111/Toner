@@ -27,6 +27,8 @@ public enum SettingsName{
     static let logOut = "LOGOUT"
     static let editSocial = "EDIT SOCIAL"
     static let myDownload = "MY DOWNLOADS"
+    static let MyChatroom = "My Chatroom"
+
 }
 
 public enum SettingsImage{
@@ -36,6 +38,7 @@ public enum SettingsImage{
     static let followers = "followers"
     static let support = "support"
     static let logOut = "logout"
+    static let notification = "notification"
     static let myalbum = "my-album"
     static let mysongs = "my-songs"
     static let mycommission = "my-commission"

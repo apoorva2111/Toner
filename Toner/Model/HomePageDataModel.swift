@@ -37,6 +37,7 @@ struct ArtistModel{
     var phone: String
     var image: String
     var type: String
+    var is_online: String
    // var songData : SongModel
 }
 

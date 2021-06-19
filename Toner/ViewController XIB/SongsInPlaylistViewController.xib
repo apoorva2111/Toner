@@ -8,10 +8,17 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SongsInPlaylistViewController" customModule="Tonneru" customModuleProvider="target">
             <connections>
+                <outlet property="btnUploadsongOutlet" destination="o7B-UQ-Rqv" id="7Bo-K3-F1h"/>
                 <outlet property="tableView" destination="HPb-Pn-3ah" id="NiE-1S-jl1"/>
+                <outlet property="uploadsongbtnHeightConstraint" destination="8pq-wS-ngn" id="TME-AO-hck"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,23 +31,40 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HPb-Pn-3ah">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="763"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o7B-UQ-Rqv">
+                    <rect key="frame" x="16" y="812" width="382" height="50"/>
+                    <color key="backgroundColor" red="0.89411764709999997" green="0.72941176470000002" blue="0.28627450980000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="8pq-wS-ngn"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="17"/>
+                    <state key="normal" title="Upload Song">
+                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="uploadSongBtnAction:" destination="-1" eventType="touchUpInside" id="GEA-SR-8R6"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HPb-Pn-3ah" secondAttribute="trailing" id="2hz-wX-Swu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HPb-Pn-3ah" secondAttribute="bottom" id="3mB-ze-ndM"/>
                 <constraint firstItem="4qD-67-zD5" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="6ZA-SM-SeW"/>
+                <constraint firstItem="o7B-UQ-Rqv" firstAttribute="top" secondItem="HPb-Pn-3ah" secondAttribute="bottom" constant="5" id="DQT-uG-4r5"/>
                 <constraint firstItem="4qD-67-zD5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IHO-e8-Jn8"/>
                 <constraint firstItem="HPb-Pn-3ah" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ib4-VW-MYm"/>
                 <constraint firstAttribute="bottom" secondItem="4qD-67-zD5" secondAttribute="bottom" id="XRX-tZ-8Jn"/>
+                <constraint firstItem="HPb-Pn-3ah" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="c6G-Hh-GxV"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o7B-UQ-Rqv" secondAttribute="trailing" constant="16" id="dj6-JM-BNY"/>
                 <constraint firstItem="4qD-67-zD5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eoO-2N-viE"/>
-                <constraint firstItem="HPb-Pn-3ah" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="p4w-14-orZ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="o7B-UQ-Rqv" secondAttribute="bottom" id="rFM-HN-I8n"/>
+                <constraint firstItem="o7B-UQ-Rqv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="v86-Hj-H0l"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="125"/>
+            <point key="canvasLocation" x="137.68115942028987" y="124.55357142857142"/>
         </view>
     </objects>
     <resources>

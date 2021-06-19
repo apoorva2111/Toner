@@ -153,7 +153,7 @@ class StationListViewController: UIViewController {
                     
                     
                     
-                    let artistData = ArtistModel(id: artistId, firstname: artistFirstName, lastname: artistLastName, email: artistEmail, username: artistUserName, phone: artistPhone, image: artistImage, type: artistType)
+                    let artistData = ArtistModel(id: artistId, firstname: artistFirstName, lastname: artistLastName, email: artistEmail, username: artistUserName, phone: artistPhone, image: artistImage, type: artistType, is_online: "0")
                     self.artistData.append(artistData)
                 }
                 

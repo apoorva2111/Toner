@@ -110,6 +110,9 @@ class SettingsViewController: UIViewController {
         let downloadMenu = Setting(name: SettingsName.myDownload, image: SettingsImage.myDownload)
         self.settingMenus.append(downloadMenu)
         
+        let chatRoom = Setting(name: SettingsName.MyChatroom, image: SettingsImage.notification)
+        self.settingMenus.append(chatRoom)
+
         let logoutMenu = Setting(name: SettingsName.logOut, image: SettingsImage.logOut)
         self.settingMenus.append(logoutMenu)
         }else{
@@ -259,6 +262,11 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate{
         case SettingsName.myDownload:
             let destination = MyDownloadViewController(nibName: "MyDownloadViewController", bundle: nil)
             self.navigationController?.pushViewController(destination, animated: false)
+            
+        case SettingsName.MyChatroom:
+            let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+            self.navigationController!.pushViewController(destination, animated: true)
+
         case SettingsName.logOut:
             let alertController = UIAlertController(title: "Alert!", message: "Are you sure you want to logout?", preferredStyle: .alert)
             let okAlertAction = UIAlertAction(title: "Yes", style: .destructive) { (_) in

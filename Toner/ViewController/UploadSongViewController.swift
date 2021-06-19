@@ -33,7 +33,8 @@ class UploadSongViewController: UIViewController {
     var release_date = ""
     var price = ""
     var allow_download = ""
-    
+    var status = ""
+
     
     let stationPicker = UIPickerView()
     let statusPicker = UIPickerView()
@@ -212,6 +213,8 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
    
     func uploadImage()
     {
+        
+        songData_ = try! Data(contentsOf: self.url!)
         self.activityIndicator.startAnimating()
 
         if !NetworkReachabilityManager()!.isReachable{
@@ -224,19 +227,7 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
         
         headers = ["Content-type": "multipart/form-data"]
 
-        /*/*
-         uploadsong (POST)
-
-         BODY
-
-         "user_id"=>100,
-         "album_id"=>1,
-         "image"=>'thumbnail image',
-         "track"=>'song strack',
-         "release_date"=>'release_date',
-         "price"=>'price',
-         "allow_download"=>'allow_download', (should be 1 or 0)
-         */*/
+        
         let price = txtPrice.text
         Alamofire.upload(multipartFormData: { multipartFormData in
             // import image to request
@@ -249,8 +240,8 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
             multipartFormData.append(self.release_date.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"release_date")
             multipartFormData.append(price!.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"price")
             multipartFormData.append(self.allow_download.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"allow_download")
-            multipartFormData.append(self.songData_ as Data, withName: "audio", fileName: self.songName, mimeType: "audio/mp3")//
-            multipartFormData.append(self.songName.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"track")
+            multipartFormData.append(self.songData_ as Data, withName: "track", fileName: self.songName, mimeType: "audio/mp3")
+//            multipartFormData.append(self.songName.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"track")
 
         }, to: url,method:HTTPMethod.post,
            headers:headers,
@@ -268,7 +259,6 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
                 case .failure(let error):
                     print(error)
                     self.activityIndicator.stopAnimating()
-
                 }
             }
         })

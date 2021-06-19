@@ -15,8 +15,13 @@ import MediaPlayer
 
 class SongsInPlaylistViewController: UIViewController {
 
+    @IBOutlet weak var btnUploadsongOutlet: UIButton!
     @IBOutlet weak var tableView : UITableView!
+    @IBAction func uploadSongBtnAction(_ sender: UIButton) {
+    }
     
+    @IBOutlet weak var uploadsongbtnHeightConstraint: NSLayoutConstraint!
+   
     var playListData:PlaylistViewModel?
     var activityIndicator: NVActivityIndicatorView!
     var plyalist_id = ""
@@ -37,6 +42,7 @@ class SongsInPlaylistViewController: UIViewController {
         self.tableView.backgroundColor = .clear//ThemeColor.backgroundColor
         self.tableView.separatorStyle = .none
         self.setNavigationBar(title: playlist_name, isBackButtonRequired: true , isTransparent: false)
+
         self.setNeedsStatusBarAppearanceUpdate()
         
         tableView.dataSource = self
@@ -44,10 +50,14 @@ class SongsInPlaylistViewController: UIViewController {
         tableView.register(UINib(nibName: "SongInPlayListTVCell", bundle: nil), forCellReuseIdentifier: "SongInPlayListTVCell")
         tableView.register(UINib(nibName: "SongInPlayListImageTVCell", bundle: nil), forCellReuseIdentifier: "SongInPlayListImageTVCell")
         if isFrom_Album == "Album"{
+            btnUploadsongOutlet.isHidden = false
+            uploadsongbtnHeightConstraint.constant = 50
             getAllSongFromAlbum()
         }else{
+            btnUploadsongOutlet.isHidden = true
+            uploadsongbtnHeightConstraint.constant = 0
             getAllSongFromPlaylist()
-            
+
         }
         
         // Do any additional setup after loading the view.
@@ -101,6 +111,7 @@ class SongsInPlaylistViewController: UIViewController {
                 songsList.append(songData)
             }
             let playlistSongDetails = PlaylistViewModel(playlist_id: playlist_id, playlist_name: playlist_name, totalsongs: totalsongs, image: image, songs: songsList)
+            
             self.playListData = playlistSongDetails
             //show alert for no content
             self.tableView.reloadData()

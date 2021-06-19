@@ -187,10 +187,11 @@ class MusicListViewController: UIViewController {
     }
     @objc func chatButtonAction(sender: UIButton){
         let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+        destination.artistId = artistId
         self.navigationController!.pushViewController(destination, animated: true)
 
     }
-    func callWebserviceArtistPaymentSong(song_id:String) {
+    func callWebserviceArtistPaymentSong(song_id:String, data: SongModel, sender: TonneruDownloadButton) {
         let user:String = UserDefaults.standard.fetchData(forKey: .userId)
         print(user)
         print(song_id)
@@ -215,8 +216,15 @@ class MusicListViewController: UIViewController {
             let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
             print(resposeJSON)
             self.activityIndicator.stopAnimating()
+
+            if let error = resposeJSON["error"] as? String{
+                self.showAlert(message: error)
+            }else{
+                self.downloadAudio(data: data, sender: sender)
+
+            }
             
-            
+
 //            let results = resposeJSON["text"] as? String ?? ""
 //
 //            if results == "Follow"{
@@ -242,7 +250,8 @@ class MusicListViewController: UIViewController {
             case .download:
                 if (artistDetailsData?.songs.count ?? 0) > 0{
                     guard let currentSong = artistDetailsData?.songs[index] else {return}
-                    downloadAudio(data: currentSong, sender: sender)
+                    self.callWebserviceArtistPaymentSong(song_id: song_id, data: currentSong, sender: sender)
+
                 }
                 break
             case .intermediate, .downloading:
@@ -259,7 +268,7 @@ class MusicListViewController: UIViewController {
 
             let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (UIAlertAction) in
-               // self.callWebserviceArtistPaymentSong(song_id: song_id)
+               //
                 let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmSubscriptionViewController") as! ConfirmSubscriptionViewController
                 self.navigationController!.pushViewController(destination, animated: true)
 
@@ -285,8 +294,8 @@ class MusicListViewController: UIViewController {
                         "song_id": song_id
                    ] as [String: String]
 //        let params =  [
-//                        "user_id": "48",
-//                        "song_id": "24"
+//                       "user_id": "48",
+//                       "song_id": "24"
 //                   ] as [String: String]
         Alamofire.request(urlConvertible,
                       method: .post,
