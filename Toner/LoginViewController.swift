@@ -109,7 +109,8 @@ class LoginViewController: UIViewController {
                     let image = user["image"] as? String ?? ""
                     let phone = user["phone"] as? String ?? ""
                     let user_group_id = user["user_group_id"] as? String ?? ""
-                    
+                    //        email = "sid@testing.com";
+
                     UserDefaults.standard.saveData(value: id, key: .userId)
                     UserDefaults.standard.saveData(value: firstname, key: .userFirstName)
                     UserDefaults.standard.saveData(value: lastname, key: .userLastName)

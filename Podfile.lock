@@ -24,6 +24,9 @@ PODS:
   - PINRemoteImage/PINCache (3.0.3):
     - PINCache (~> 3.0.3)
     - PINRemoteImage/Core
+  - Stripe (21.6.0):
+    - Stripe/Stripe3DS2 (= 21.6.0)
+  - Stripe/Stripe3DS2 (21.6.0)
   - WKWebViewRTC (0.4.0):
     - GoogleWebRTC (= 1.1.29229)
 
@@ -34,6 +37,7 @@ DEPENDENCIES:
   - Kingfisher (~> 5.0)
   - NVActivityIndicatorView
   - PINRemoteImage (~> 3.0.1)
+  - Stripe
   - WKWebViewRTC
 
 SPEC REPOS:
@@ -47,6 +51,7 @@ SPEC REPOS:
     - PINCache
     - PINOperation
     - PINRemoteImage
+    - Stripe
     - WKWebViewRTC
 
 SPEC CHECKSUMS:
@@ -59,8 +64,9 @@ SPEC CHECKSUMS:
   PINCache: 7a8fc1a691173d21dbddbf86cd515de6efa55086
   PINOperation: 00c935935f1e8cf0d1e2d6b542e75b88fc3e5e20
   PINRemoteImage: f1295b29f8c5e640e25335a1b2bd9d805171bd01
+  Stripe: 6cc7bb348f4b1fad111129f6ee40eb6682deaefb
   WKWebViewRTC: 52a6440ea6fbc8e220802a8cc7ace79ece32cf52
 
-PODFILE CHECKSUM: 384f7bcff825e3544964c5506293bbeee5a12c36
+PODFILE CHECKSUM: d4bd1190b87be0f7d877d6fd3f973d86431a936b
 
 COCOAPODS: 1.10.1

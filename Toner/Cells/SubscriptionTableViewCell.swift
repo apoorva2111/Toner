@@ -22,8 +22,8 @@ class SubscriptionTableViewCell: UITableViewCell {
     
     var data: SubscriptionPlanModel!{
         didSet{
-            durationLabel.text = data.duration
-            frequencyLabel.text = data.frequency
+            durationLabel.text = "1"
+            frequencyLabel.text = data.frequency.uppercased()
             originalPrice.text = ""
             discountPrice.text = "$" + data.price
             

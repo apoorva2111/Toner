@@ -18,10 +18,11 @@ class MySongViewController: UIViewController {
     
     @IBAction func uploadSongAction(_ sender: UIButton) {
              
-        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeAudio)], in: .import)
-            importMenu.delegate = self
-            importMenu.modalPresentationStyle = .formSheet
-            self.present(importMenu, animated: true, completion: nil)
+//        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeAudio)], in: .import)
+//            importMenu.delegate = self
+//            importMenu.modalPresentationStyle = .formSheet
+//            self.present(importMenu, animated: true, completion: nil)
+        myPlanWebservice()
     }
     
     @IBOutlet weak var btnUploadSongOutlet: UIButton!
@@ -85,6 +86,28 @@ class MySongViewController: UIViewController {
                     }
                 }
             self.lbtMySong.reloadData()
+        }
+    }
+    func myPlanWebservice() {
+        self.activityIndicator.startAnimating()
+        
+        let bodyParams = [
+            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+            ] as [String : String]
+        self.activityIndicator.startAnimating()
+        Alamofire.request("https://tonnerumusic.com/api/v1/myplans", method: .post, parameters: bodyParams).validate().responseJSON { (response) in
+            
+            guard response.result.isSuccess else {
+                self.view.makeToast(message: Message.apiError)
+                self.activityIndicator.stopAnimating()
+                return
+            }
+            
+            let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+            self.activityIndicator.stopAnimating()
+            
+            print(resposeJSON)
+           
         }
     }
     private func resetPlayer(){

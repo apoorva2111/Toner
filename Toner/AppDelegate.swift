@@ -12,6 +12,7 @@ import AudioPlayerManager
 import AVFoundation
 import CoreData
 import UserNotifications
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -24,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
+        
+        StripeAPI.defaultPublishableKey = "pk_test_51IyKkkGZwms8klUwrCKGzBP0DfyIrmV4YOs1BVSLkqGxsf8Wp22t2knBfCyJkXesUXSglIAL2MixI9bgev71KqSQ00WYyqUxXh" //"pk_live_51IyKkkGZwms8klUwXg3n6zSp6EI9A3xfhNx25d5yEK5UgN0QEb2Mb0HBzv8YZxzVJvT32yRhz0HIe13iC3KKJEZd00qNMUhNjC"
         
         print("Document Dir: \(DocumentDirectory)")
         if #available(iOS 10, *)

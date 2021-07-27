@@ -66,6 +66,21 @@ class ForgotPasswordViewController: UIViewController {
             print(resposeJSON)
             if(resposeJSON["status"] as? Int ?? 0) == 1{
                 //Success Action
+              if let msg = resposeJSON["message"] as? String{
+                let alertController = UIAlertController(title: "Alert", message: msg, preferredStyle: .alert)
+
+                    // Create the actions
+                let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                        UIAlertAction in
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    
+
+                    // Add the actions
+                    alertController.addAction(okAction)
+
+                    // Present the controller
+                self.present(alertController, animated: true, completion: nil)              }
             }else{
                 let error = resposeJSON["warning"] as? String ?? ""
                 self.view.makeToast(message: error)

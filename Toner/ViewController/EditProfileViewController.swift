@@ -29,7 +29,9 @@ class EditProfileViewController: UIViewController {
         presentPhoto()
 
     }
+    @IBOutlet weak var txtStripHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var txtStripToConstraint: NSLayoutConstraint!
     
     var imagData =  Data()
     var activityIndicator: NVActivityIndicatorView!
@@ -58,7 +60,14 @@ class EditProfileViewController: UIViewController {
         btnOutletChangeAvtar.layer.borderColor = #colorLiteral(red: 0.9253032804, green: 0.7255734801, blue: 0.146667093, alpha: 1)
         btnOutletChangeAvtar.layer.masksToBounds = true
         getProfileDetails()
-        
+        //
+        if UserDefaults.standard.fetchData(forKey: .userGroupID) == "4"{
+            txtStripHeightConstraint.constant = 0
+            txtStripToConstraint.constant = 0
+        }else{
+            txtStripHeightConstraint.constant = 50
+            txtStripToConstraint.constant = 16
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +85,7 @@ class EditProfileViewController: UIViewController {
         setUpTextFields(lastName, value: UserDefaults.standard.fetchData(forKey: .userLastName), placeHolder: "Last Name")
         setUpTextFields(emailTextField, value: UserDefaults.standard.fetchData(forKey: .userEmail), placeHolder: "Email Address")
         setUpTextFields(phoneText, value: UserDefaults.standard.fetchData(forKey: .userPhone), placeHolder: "Phone Number")
-        setUpTextFields(paypalID, value: "", placeHolder: "Paypal ID")
+        setUpTextFields(paypalID, value: "", placeHolder: "Strip ID")
         setUpTextFields(tagLineText, value: "", placeHolder: "Tag Line")
         
         if UserDefaults.standard.fetchData(forKey: .userGroupID) == "3" {
@@ -150,7 +159,8 @@ class EditProfileViewController: UIViewController {
     }
     
     @objc func updateButtonAction(){
-        
+        var parameters : [String: Any]
+
         if (firstName.text?.isBlank ?? true){
             self.tabBarController?.view.makeToast(message: "Please enter first name.")
             return
@@ -160,25 +170,47 @@ class EditProfileViewController: UIViewController {
         }
         
     
-        var parameters : [String: Any] = [
-            "email": emailTextField.text ?? "",
-            "firstname": self.firstName.text ?? "",
-            "lastname": self.firstName.text ?? "",
-            "phone": self.phoneText.text ?? "",
-            "gender": self.selectedGender,
-            "paypal": self.paypalID.text ?? "",
-            "dob": self.selectedDate,
-            "tagline": self.tagLineText.text ?? "",
-        ]
+//        var parameters : [String: Any] = [
+//            "email": emailTextField.text ?? "",
+//            "firstname": self.firstName.text ?? "",
+//            "lastname": self.firstName.text ?? "",
+//            "phone": self.phoneText.text ?? "",
+//            "gender": self.selectedGender,
+//            "strip": self.paypalID.text ?? "",
+//            "dob": self.selectedDate,
+//            "tagline": self.tagLineText.text ?? "",
+//        ]
         
         self.activityIndicator.startAnimating()
         var reuestURL = "https://tonnerumusic.com/api/v1/artist_profile_edit"
         if UserDefaults.standard.fetchData(forKey: .userGroupID) == "4"{
             reuestURL = "https://tonnerumusic.com/api/v1/profile_edit"
-            parameters["member_id"] = UserDefaults.standard.string(forKey: "userId")
+        //    parameters["member_id"] = UserDefaults.standard.string(forKey: "userId")
+             parameters = [
+                "email": emailTextField.text ?? "",
+                "firstname": self.firstName.text ?? "",
+                "lastname": self.firstName.text ?? "",
+                "phone": self.phoneText.text ?? "",
+                "gender": self.selectedGender,
+                "strip": self.paypalID.text ?? "",
+                "dob": self.selectedDate,
+                "tagline": self.tagLineText.text ?? "",
+                "member_id" : UserDefaults.standard.string(forKey: "userId") ?? ""
+            ]
         }else{
-            parameters["user_id"] = UserDefaults.standard.string(forKey: "userId")
-            parameters["genre_id"] = SelectStationViewController.selectedStationName
+//            parameters["user_id"] = UserDefaults.standard.string(forKey: "userId")
+//            parameters["genre_id"] = SelectStationViewController.selectedStationName
+             parameters = [
+                "email": emailTextField.text ?? "",
+                "firstname": self.firstName.text ?? "",
+                "lastname": self.firstName.text ?? "",
+                "phone": self.phoneText.text ?? "",
+                "gender": self.selectedGender,
+                "dob": self.selectedDate,
+                "tagline": self.tagLineText.text ?? "",
+                "genre_id": SelectStationViewController.selectedStationName,
+                "user_id" : UserDefaults.standard.string(forKey: "userId") ?? ""
+            ] as [String : Any]
         }
         Alamofire.request(reuestURL, method: .post, parameters: parameters)
             .validate().responseJSON { (response) in

@@ -24,6 +24,9 @@ class MusicListViewController: UIViewController {
     var selectedIndex = -1
     var followButton: UIButton!
     var checkDownloadStatus = (download_status: false, message: "")
+    var btnTapDownloadSong : TonneruDownloadButton?
+    var btnState : DownloadButtonStatus?
+    var btnSenderTag : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +62,18 @@ class MusicListViewController: UIViewController {
         }else{
             self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         }
+        if stripToken != ""{
+            if let songId = UserDefaults.standard.value(forKey: "songId"){
+               // self.checkDownloadStatus(song_id: songId as! String , download_state : btnState! , index: btnSenderTag! , sender : btnTapDownloadSong!)
+                //func callWebserviceArtistPaymentSong(song_id:String, data: SongModel, sender: TonneruDownloadButton) {
+                if (artistDetailsData?.songs.count ?? 0) > 0{
+                    guard let currentSong = artistDetailsData?.songs[btnSenderTag!] else {return}
+                    self.callWebserviceArtistPaymentSong(song_id: songId as! String, data: currentSong, sender: btnTapDownloadSong!)
+
+                }
+            }
+        }
+        
     }
     
     func getArtistData(){
@@ -192,20 +207,17 @@ class MusicListViewController: UIViewController {
 
     }
     func callWebserviceArtistPaymentSong(song_id:String, data: SongModel, sender: TonneruDownloadButton) {
-        let user:String = UserDefaults.standard.fetchData(forKey: .userId)
-        print(user)
-        print(song_id)
         self.activityIndicator.startAnimating()
         let apiURL = "https://tonnerumusic.com/api/v1/paymentsong"
         let urlConvertible = URL(string: apiURL)!
+        let userID : String = UserDefaults.standard.fetchData(forKey: .userId)
         Alamofire.request(urlConvertible,
                       method: .post,
                       parameters: [
                         "song_id": song_id,
-                        "user_id": UserDefaults.standard.fetchData(forKey: .userId)
-            ] as [String: String])
-           
-        .validate().responseJSON { (response) in
+                        "user_id": userID,
+                        "stripe_token": stripToken,
+            ] as [String: Any]).validate().responseJSON { (response) in
                 
                 guard response.result.isSuccess else {
                     self.tabBarController?.view.makeToast(message: Message.apiError)
@@ -264,22 +276,29 @@ class MusicListViewController: UIViewController {
                 break
             }
         }else{
-            let alert = UIAlertController(title: "Alert", message: downloadStatus.message, preferredStyle: .alert)
-
-            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (UIAlertAction) in
-               //
-                let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmSubscriptionViewController") as! ConfirmSubscriptionViewController
-                self.navigationController!.pushViewController(destination, animated: true)
-
-            }
-
-            alert.addAction(okAction)
-            alert.addAction(purchaseAction)
-
-            self.present(alert, animated: true, completion: nil)
+//            let alert = UIAlertController(title: "Alert", message: downloadStatus.message, preferredStyle: .alert)
+//
+//            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+//            let purchaseAction = UIAlertAction(title: "Purchase", style: .default) { (UIAlertAction) in
+//               //
+//                let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmSubscriptionViewController") as! ConfirmSubscriptionViewController
+//                self.navigationController!.pushViewController(destination, animated: true)
+//
+//            }
+//
+//            alert.addAction(okAction)
+//            alert.addAction(purchaseAction)
+//
+//            self.present(alert, animated: true, completion: nil)
+            UserDefaults.standard.setValue(song_id, forKey: "songId")
+//            UserDefaults.standard.setValue(state, forKey: "state")
+//            UserDefaults.standard.setValue(index, forKey: "index")
+//            UserDefaults.standard.setValue(index, forKey: "sender")
+            UserDefaults.standard.synchronize()
             
-            
+            let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmSubscriptionViewController") as! ConfirmSubscriptionViewController
+            self.navigationController!.pushViewController(destination, animated: true)
+
         }
     }
     
@@ -297,11 +316,12 @@ class MusicListViewController: UIViewController {
 //                       "user_id": "48",
 //                       "song_id": "24"
 //                   ] as [String: String]
+        print(params)
         Alamofire.request(urlConvertible,
                       method: .post,
                       parameters: params)
         .validate().responseJSON { (response) in
-                
+                print(response)
                 guard response.result.isSuccess else {
                     self.tabBarController?.view.makeToast(message: Message.apiError)
                      self.activityIndicator.stopAnimating()
@@ -438,7 +458,14 @@ extension MusicListViewController: TonneruDownloadManagerDelegate, TonneruDownlo
     func tapAction(state: DownloadButtonStatus, sender: TonneruDownloadButton) {
         print("Download Button State: \(state)")
         
-        
+        UserDefaults.standard.removeObject(forKey: "songId")
+        UserDefaults.standard.synchronize()
+        print(sender.tag)
+        print(state)
+        print(sender)
+        btnTapDownloadSong = sender
+        btnState = state
+        btnSenderTag = sender.tag
         self.checkDownloadStatus(song_id: self.artistDetailsData?.songs[sender.tag].song_id ?? "" , download_state : state , index: sender.tag , sender : sender)
     }
 }

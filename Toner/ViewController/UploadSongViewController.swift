@@ -267,6 +267,50 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
     }
     
     
+    func callWebserviceArtistPaymentSong(song_id:String) {
+        let user:String = UserDefaults.standard.fetchData(forKey: .userId)
+        print(user)
+        print(song_id)
+        self.activityIndicator.startAnimating()
+        let apiURL = "https://tonnerumusic.com/api/v1/paymentsong"
+        let urlConvertible = URL(string: apiURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "song_id": song_id,
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+                          ] as [String: String])
+            
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+                
+                
+                //            let results = resposeJSON["text"] as? String ?? ""
+                //
+                //            if results == "Follow"{
+                //                self.tabBarController?.view.makeToast(message: "You have successfully unfollow the artist.")
+                //                self.followButton.isSelected = false
+                //                self.artistDetailsData?.followStatus = 0
+                //            }else{
+                //                self.tabBarController?.view.makeToast(message: "You have successfully follow the artist.")
+                //                self.followButton.isSelected = true
+                //                self.artistDetailsData?.followStatus = 1
+                //            }
+                //
+                //            NotificationCenter.default.post(name: .UpdateFollowingList, object: nil)
+                //
+                //            self.tableView.reloadData()
+            }
+    }
     func getArtistAlbumData(){
         self.activityIndicator.startAnimating()
         let artistId: String = UserDefaults.standard.fetchData(forKey: .userId)

@@ -582,6 +582,12 @@ extension SongsInPlaylistViewController: TonneruDownloadManagerDelegate, Tonneru
                     break
                 }
             }else{
+                UserDefaults.standard.setValue(song_id, forKey: "songId")
+                UserDefaults.standard.setValue(state, forKey: "state")
+                UserDefaults.standard.setValue(index, forKey: "index")
+                UserDefaults.standard.setValue(index, forKey: "sender")
+                UserDefaults.standard.synchronize()
+                
                 let alert = UIAlertController(title: "Alert", message: downloadStatus.message, preferredStyle: .alert)
                 
                 let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)

