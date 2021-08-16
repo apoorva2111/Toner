@@ -14,14 +14,10 @@ import UniformTypeIdentifiers
 import AudioPlayerManager
 import AVKit
 import MediaPlayer
+import AVFoundation
 class MySongViewController: UIViewController {
     
     @IBAction func uploadSongAction(_ sender: UIButton) {
-             
-//        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeAudio)], in: .import)
-//            importMenu.delegate = self
-//            importMenu.modalPresentationStyle = .formSheet
-//            self.present(importMenu, animated: true, completion: nil)
         myPlanWebservice()
     }
     
@@ -90,26 +86,45 @@ class MySongViewController: UIViewController {
     }
     func myPlanWebservice() {
         self.activityIndicator.startAnimating()
-        
-        let bodyParams = [
-            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
-            ] as [String : String]
-        self.activityIndicator.startAnimating()
-        Alamofire.request("https://tonnerumusic.com/api/v1/myplans", method: .post, parameters: bodyParams).validate().responseJSON { (response) in
-            
-            guard response.result.isSuccess else {
-                self.view.makeToast(message: Message.apiError)
+        let reuestURL = "https://tonnerumusic.com/api/v1/myplans"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+            ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
                 self.activityIndicator.stopAnimating()
-                return
+                
+                if(resposeJSON["status"] as? Bool ?? false){
+                    let allPlans = resposeJSON["subscriptions"] as? NSArray ?? NSArray()
+                    if allPlans.count>0{
+                        let importMenu = UIDocumentPickerViewController(documentTypes: [String(kUTTypeAudio)], in: .import)
+                        importMenu.delegate = self
+                        importMenu.modalPresentationStyle = .formSheet
+                        self.present(importMenu, animated: true, completion: nil)
+                    }else{
+                        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                        self.navigationController!.pushViewController(destination, animated: true)
+                        
+                    }
+                    
+                }else{
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                    self.navigationController!.pushViewController(destination, animated: true)
+                    
+                }
             }
-            
-            let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
-            self.activityIndicator.stopAnimating()
-            
-            print(resposeJSON)
-           
         }
-    }
     private func resetPlayer(){
         TonneruMusicPlayer.shared.currentIndex = -1
         TonneruMusicPlayer.shared.songList.removeAll()
@@ -295,6 +310,9 @@ extension MySongViewController : UIDocumentMenuDelegate,UIDocumentPickerDelegate
     
     public func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         print(urls)
+        let systemSoundID: SystemSoundID = 1013
+        AudioServicesPlaySystemSound(systemSoundID)
+
         guard let myURL = urls.first else {
             return
         }

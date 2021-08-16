@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,7 +62,7 @@
                             <rect key="frame" x="0.0" y="11" width="414" height="885"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kY5-7Q-urH">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="693.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="494"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NGt-pP-u6b">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
@@ -297,7 +297,7 @@
                                                         </view>
                                                     </subviews>
                                                 </stackView>
-                                                <view alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-3i-tKd">
+                                                <view hidden="YES" alpha="0.40000000596046448" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8Y-3i-tKd">
                                                     <rect key="frame" x="25" y="413" width="364" height="1"/>
                                                     <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -321,16 +321,16 @@
                                                 <constraint firstAttribute="width" secondItem="NGt-pP-u6b" secondAttribute="height" multiplier="5:5" id="jKu-RJ-3l4"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGt-tB-zYk">
-                                            <rect key="frame" x="20" y="434" width="374" height="199.5"/>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eGt-tB-zYk">
+                                            <rect key="frame" x="20" y="434" width="374" height="0.0"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY PLAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B3-ua-IdY">
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MY PLAN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B3-ua-IdY">
                                                     <rect key="frame" x="0.0" y="0.0" width="94.5" height="24.5"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4SO-se-z2y">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4SO-se-z2y">
                                                     <rect key="frame" x="0.0" y="44.5" width="374" height="150"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTE-rU-OPI">
@@ -475,11 +475,11 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" id="0Fl-fx-EHd"/>
                                                 <constraint firstItem="4SO-se-z2y" firstAttribute="top" secondItem="2B3-ua-IdY" secondAttribute="bottom" constant="20" id="8C7-hp-VWq"/>
                                                 <constraint firstItem="2B3-ua-IdY" firstAttribute="top" secondItem="eGt-tB-zYk" secondAttribute="top" id="RyO-M3-ywR"/>
                                                 <constraint firstItem="2B3-ua-IdY" firstAttribute="leading" secondItem="eGt-tB-zYk" secondAttribute="leading" id="VIi-Qr-WjP"/>
                                                 <constraint firstAttribute="trailing" secondItem="4SO-se-z2y" secondAttribute="trailing" id="mFA-v1-Rd2"/>
-                                                <constraint firstAttribute="width" secondItem="eGt-tB-zYk" secondAttribute="height" multiplier="15:8" id="nT0-yJ-gUd"/>
                                                 <constraint firstItem="4SO-se-z2y" firstAttribute="leading" secondItem="eGt-tB-zYk" secondAttribute="leading" id="yHj-TK-DH2"/>
                                             </constraints>
                                         </view>

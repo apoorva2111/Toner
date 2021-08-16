@@ -55,13 +55,14 @@ class SearchViewController: UIViewController {
         print("collectionViewWidth:  \(collectionViewWidth)")
         collectionView.dataSource   = self
         collectionView.delegate     = self
-        //collectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCollectionViewCell")//
+        collectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCollectionViewCell")//
         collectionView.register(UINib(nibName: "ArtistCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ArtistCollectionViewCell")//ArtistCollectionViewCell
+        collectionView.register(MyHeaderFooterClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
 
         collectionView.backgroundColor = .clear
         searchTextField.delegate = self
         genreData = self.appD.genreData
-        
+        print(genreData)
         //name
         callWebserviceForArtise()
         collectionView.reloadData()
@@ -227,41 +228,104 @@ extension SearchViewController : UITextFieldDelegate{
             callWebserviceForArtise()
         }else{
             webserviceCallSearch(searchText: textField.text!)
-
         }
+        let filteredArray = genreData.filter { $0.name == textField.text! }
+        print(filteredArray)
+
     }
+    
 }
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0{
         return arrArtistList.count
+        }else{
+            return genreData.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        if indexPath.section == 0{
         let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "ArtistCollectionViewCell", for: indexPath) as! ArtistCollectionViewCell
         cell.setData(data: arrArtistList[indexPath.item])
         cell.artistImage.layer.cornerRadius = 10
         cell.artistImage.clipsToBounds = true
 //        topArtistLabel.text = topArtistLabelText.uppercased()
         return cell
+        }else{
+            
+            let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCell", for: indexPath) as! GenreCollectionViewCell
+            cell.setData(data: genreData[indexPath.item])
+            return cell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         //return CGSize(width: 130, height: 170)
+        if indexPath.section == 0{
         let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
         let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
         let size:CGFloat = (self.collectionView.frame.size.width - space) / 2.0
         return CGSize(width: size, height: size)
+        }else{
+            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+            let size:CGFloat = (self.collectionView.frame.size.width - space) / 2.0
+            return CGSize(width: size, height: 75)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0{
         let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MusicListViewController") as! MusicListViewController
         let data = arrArtistList[indexPath.row]
         destination.artistId = data.id
         destination.artistType = data.type
         self.navigationController!.pushViewController(destination, animated: true)
+        }else{
+            let destination = StationListViewController(nibName: "StationListViewController", bundle: nil)
+            let data = genreData[indexPath.row]
+            destination.stationName = data.name
+            destination.stationID = data.id
+            self.navigationController!.pushViewController(destination, animated: true)
+
+        }
     }
-   
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            return CGSize(width: collectionView.frame.width, height: 50)
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! MyHeaderFooterClass
+            headerView.backgroundColor = UIColor.green//#colorLiteral(red: 0.08235294118, green: 0.08235294118, blue: 0.08235294118, alpha: 1)
+            
+            if indexPath.section == 0{
+                headerView.setHeaderName(name: "ARTISTS")
+//                headerView.lblHeader.text = "ARTISTS"
+//
+//                headerView.lblHeader.textColor = ThemeColor.headerColor
+//                headerView.lblHeader.font = UIFont.montserratMedium.withSize(17)
+//
+            }else{
+                headerView.setHeaderName(name: "STATIONS")
+//                headerView.lblHeader.text = "STATIONS"
+//                headerView.lblHeader.textColor = ThemeColor.headerColor
+//                headerView.lblHeader.font = UIFont.montserratMedium.withSize(17)
+           }
+            
+            
+            return headerView
+            
+        default:
+            assert(false, "Unexpected element kind")
+        }
+    }
 }
 //{
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -303,3 +367,12 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 //        self.navigationController?.pushViewController(destination, animated: true)
 //    }
 //}
+class MyHeaderFooterClass: UICollectionReusableView {
+
+    @IBOutlet weak var lblHeader: UILabel!
+    func setHeaderName(name:String)  {
+        print(name)
+//        lblHeader.text = name
+    }
+
+}

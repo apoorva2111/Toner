@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +24,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGs-F2-hGb">
-                        <rect key="frame" x="8" y="8" width="445" height="185"/>
+                        <rect key="frame" x="24" y="2" width="413" height="197"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ct3-3w-hYV">
                                 <rect key="frame" x="20" y="20" width="82.5" height="37"/>
@@ -33,13 +33,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DzE-u6-RMA">
-                                <rect key="frame" x="323" y="28" width="42" height="21"/>
+                                <rect key="frame" x="291" y="28" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exr-PC-86K">
-                                <rect key="frame" x="381" y="28.5" width="44" height="20"/>
+                                <rect key="frame" x="349" y="28.5" width="44" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="16"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -69,7 +69,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wh-Ug-vIW">
-                                <rect key="frame" x="1" y="65" width="443" height="1"/>
+                                <rect key="frame" x="1" y="65" width="411" height="1"/>
                                 <color key="backgroundColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.20784313725490194" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="loA-af-g67"/>
@@ -109,10 +109,10 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="MGs-F2-hGb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="P4z-jc-wEQ"/>
-                    <constraint firstAttribute="trailing" secondItem="MGs-F2-hGb" secondAttribute="trailing" constant="8" id="dJH-yG-9sF"/>
-                    <constraint firstItem="MGs-F2-hGb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="er2-P7-9oB"/>
-                    <constraint firstAttribute="bottom" secondItem="MGs-F2-hGb" secondAttribute="bottom" constant="8" id="mem-Pb-B6I"/>
+                    <constraint firstItem="MGs-F2-hGb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="P4z-jc-wEQ"/>
+                    <constraint firstAttribute="trailing" secondItem="MGs-F2-hGb" secondAttribute="trailing" constant="24" id="dJH-yG-9sF"/>
+                    <constraint firstItem="MGs-F2-hGb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="24" id="er2-P7-9oB"/>
+                    <constraint firstAttribute="bottom" secondItem="MGs-F2-hGb" secondAttribute="bottom" constant="2" id="mem-Pb-B6I"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

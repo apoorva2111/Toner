@@ -142,7 +142,6 @@ class RegisterViewController: UIViewController {
             print("parameters::\(bodyParams)")
             self.activityIndicator.startAnimating()
             Alamofire.request((API_BASE_URL + "register"), method: .post, parameters: bodyParams).validate().responseJSON { (response) in
-                
                 guard response.result.isSuccess else {
                     self.view.makeToast(message: Message.apiError)
                     self.activityIndicator.stopAnimating()
@@ -162,6 +161,7 @@ class RegisterViewController: UIViewController {
                     let image = user["image"] as? String ?? ""
                     let phone = user["phone"] as? String ?? ""
                     let user_group_id = user["user_group_id"] as? String ?? ""
+                    let is_subscribed = user["is_subscribed"] as? Int ?? 0
                     
                     UserDefaults.standard.saveData(value: id, key: .userId)
                     UserDefaults.standard.saveData(value: firstname, key: .userFirstName)
@@ -170,9 +170,12 @@ class RegisterViewController: UIViewController {
                     UserDefaults.standard.saveData(value: phone, key: .userPhone)
                     UserDefaults.standard.saveData(value: image, key: .userImage)
                     UserDefaults.standard.saveData(value: user_group_id, key: .userGroupID)
+                    UserDefaults.standard.setValue(is_subscribed, forKey: "userSubscribed")
                     UserDefaults.standard.synchronize()
                     
-                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+//                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navSub") as! UINavigationController
+
                     self.appD.window?.rootViewController = destination
                 }else{
                     self.view.makeToast(message: "Invalid Credential")

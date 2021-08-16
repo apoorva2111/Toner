@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SupportAndHelpViewController" customModule="Tonneru" customModuleProvider="target">
             <connections>
@@ -22,13 +27,56 @@
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-bg" translatesAutoresizingMaskIntoConstraints="NO" id="VmK-2A-fXO">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rhU-k7-OWC">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TON'NERU MUSIC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4H-dn-w6e">
+                            <rect key="frame" x="20" y="50" width="374" height="24.5"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqP-a3-y5M">
+                            <rect key="frame" x="20" y="94.5" width="374" height="31"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                            <state key="normal" title="SUPPORT@TONNERUMUSIC.COM"/>
+                            <connections>
+                                <action selector="btnContactUsAction:" destination="-1" eventType="touchUpInside" id="bfo-jl-Kh0"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" tag="20" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XiC-BQ-VZv">
+                            <rect key="frame" x="20" y="135.5" width="374" height="31"/>
+                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                            <state key="normal" title="INFO@TONNERUMUSIC.COM"/>
+                            <connections>
+                                <action selector="btnContactUsAction:" destination="-1" eventType="touchUpInside" id="aLH-Dt-NFo"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="F4H-dn-w6e" secondAttribute="trailing" constant="20" id="1xQ-Ta-OyO"/>
+                        <constraint firstItem="XiC-BQ-VZv" firstAttribute="top" secondItem="cqP-a3-y5M" secondAttribute="bottom" constant="10" id="5fd-Ea-HaM"/>
+                        <constraint firstItem="cqP-a3-y5M" firstAttribute="leading" secondItem="F4H-dn-w6e" secondAttribute="leading" id="QNN-Lg-rQE"/>
+                        <constraint firstItem="F4H-dn-w6e" firstAttribute="top" secondItem="rhU-k7-OWC" secondAttribute="top" constant="50" id="cWZ-Pk-ti4"/>
+                        <constraint firstItem="cqP-a3-y5M" firstAttribute="top" secondItem="F4H-dn-w6e" secondAttribute="bottom" constant="20" id="m1y-EC-ZF2"/>
+                        <constraint firstItem="XiC-BQ-VZv" firstAttribute="width" secondItem="cqP-a3-y5M" secondAttribute="width" id="mmM-Z7-kg4"/>
+                        <constraint firstItem="F4H-dn-w6e" firstAttribute="leading" secondItem="rhU-k7-OWC" secondAttribute="leading" constant="20" id="nu0-XZ-SmE"/>
+                        <constraint firstItem="cqP-a3-y5M" firstAttribute="trailing" secondItem="F4H-dn-w6e" secondAttribute="trailing" id="qyO-nC-N6V"/>
+                        <constraint firstItem="XiC-BQ-VZv" firstAttribute="centerX" secondItem="rhU-k7-OWC" secondAttribute="centerX" id="z1b-lX-2pS"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rhU-k7-OWC" secondAttribute="bottom" id="7d8-K3-nRd"/>
+                <constraint firstItem="rhU-k7-OWC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="82u-qc-qPN"/>
                 <constraint firstAttribute="bottom" secondItem="VmK-2A-fXO" secondAttribute="bottom" id="9xu-Nm-bbh"/>
+                <constraint firstItem="rhU-k7-OWC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="E5T-6o-kvW"/>
                 <constraint firstItem="VmK-2A-fXO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QPY-za-PZz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="VmK-2A-fXO" secondAttribute="trailing" id="WUE-jF-Yf9"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rhU-k7-OWC" secondAttribute="trailing" id="eLT-Aj-m86"/>
                 <constraint firstItem="VmK-2A-fXO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zf5-RR-U4E"/>
             </constraints>
             <point key="canvasLocation" x="41" y="74"/>

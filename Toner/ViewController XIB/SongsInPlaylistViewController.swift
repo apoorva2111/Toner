@@ -30,7 +30,10 @@ class SongsInPlaylistViewController: UIViewController {
     var arrAlbumSong = [Album_Songs]()
     var dict = AlbumSongList(dictionary: [:])
     var checkDownloadStatus = (download_status: false, message: "")
-
+    var btnTapDownloadSong : TonneruDownloadButton?
+    var btnState : DownloadButtonStatus?
+    var btnSenderTag : Int?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +72,31 @@ class SongsInPlaylistViewController: UIViewController {
 
         }else{
             self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
+        }
+        if stripToken != ""{
+            if let songId = UserDefaults.standard.value(forKey: "songId"){
+               // self.checkDownloadStatus(song_id: songId as! String , download_state : btnState! , index: btnSenderTag! , sender : btnTapDownloadSong!)
+                //func callWebserviceArtistPaymentSong(song_id:String, data: SongModel, sender: TonneruDownloadButton) {
+//                if (arrAlbumSong.count) > 0{
+//
+//                    if isFrom_Album == "Album"{
+//                        guard let currentSong = self.arrAlbumSong[btnSenderTag!] else {return}
+//                        self.callWebserviceArtistPaymentSong(song_id: songId as! String, data: currentSong, sender: btnTapDownloadSong!)
+//
+//                    }else{
+//
+//
+//
+//                        UserDefaults.standard.synchronize()
+//                        guard let currentSong = self.playListData?.songs[btnSenderTag!] else {return}
+//                        self.callWebserviceArtistPaymentSong(song_id: songId as! String, data: currentSong, sender: btnTapDownloadSong!)
+//
+//
+//
+//
+//                    }
+//                }
+            }
         }
     }
     func getAllSongFromPlaylist(){
@@ -511,12 +539,25 @@ extension SongsInPlaylistViewController: TonneruDownloadManagerDelegate, Tonneru
     
     func tapAction(state: DownloadButtonStatus, sender: TonneruDownloadButton) {
         print("Download Button State: \(state)")
-        
+        UserDefaults.standard.removeObject(forKey: "songId")
+        UserDefaults.standard.synchronize()
+        print(sender.tag)
+        print(state)
+        print(sender)
+        btnTapDownloadSong = sender
+        btnState = state
+        btnSenderTag = sender.tag
         if isFrom_Album == "Album"{
             self.checkDownloadStatus(song_id: self.arrAlbumSong[sender.tag].album_id ?? "" , download_state : state , index: sender.tag , sender : sender)
+            UserDefaults.standard.setValue(self.arrAlbumSong[sender.tag].album_id ?? "", forKey: "songId")
+            UserDefaults.standard.synchronize()
 
         }else{
             self.checkDownloadStatus(song_id: self.playListData?.songs[sender.tag].song_id ?? "" , download_state : state , index: sender.tag , sender : sender)
+            UserDefaults.standard.setValue(self.playListData?.songs[sender.tag].song_id ?? "", forKey: "songId")
+
+            UserDefaults.standard.synchronize()
+
 
             
         }

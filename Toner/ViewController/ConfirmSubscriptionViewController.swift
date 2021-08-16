@@ -17,6 +17,9 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtMonth: UITextField!
     @IBOutlet weak var txtYear: UITextField!
     @IBOutlet weak var txtcvv: UITextField!
+    @IBOutlet weak var viewHeaderHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var btnBackOutlet: UIButton!
+
     let thePicker = UIPickerView()
     let yearPicker = UIPickerView()
     let cardType = UIPickerView()
@@ -41,7 +44,16 @@ validation()
         super.viewDidLoad()
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
-        self.setNavigationBar(title: "Confirm Subscription", isBackButtonRequired: true, isTransparent: false)
+        //Subscription
+        if  UserDefaults.standard.value(forKey: "userSubscribed") as! Int == 0{
+            viewHeaderHeightConstraint.constant = 70.5
+            self.setNavigationBar(title: "Confirm Subscription", isBackButtonRequired: true, isTransparent: false)
+            btnBackOutlet.isHidden = false
+        }else{
+            viewHeaderHeightConstraint.constant = 0
+            btnBackOutlet.isHidden = false
+            self.setNavigationBar(title: "Confirm Subscription", isBackButtonRequired: true, isTransparent: false)
+        }
         txtYear.delegate = self
         txtMonth.delegate = self
         txtCard.delegate = self
@@ -72,15 +84,15 @@ validation()
         }
      
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard let textFieldText = txtcvv.text,
-            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
-                return false
-        }
-        let substringToReplace = textFieldText[rangeOfTextToReplace]
-        let count = textFieldText.count - substringToReplace.count + string.count
-        return count <= 3
-    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        guard let textFieldText = txtcvv.text,
+//            let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+//                return false
+//        }
+//        let substringToReplace = textFieldText[rangeOfTextToReplace]
+//        let count = textFieldText.count - substringToReplace.count + string.count
+//        return count <= 3
+//    }
     func validation(){
         if txtNameOnCard.text == "" && txtCardNumber.text == "" && txtCard.text == "" && txtcvv.text == "",txtYear.text == "" && txtMonth.text == ""{
             showAlert(message: "All feilds are required")
@@ -102,9 +114,10 @@ validation()
         }else if txtMonth.text == ""{
             showAlert(message: "Please Select Card Expire Month")
 
-        }else if txtCardNumber.text!.count < 12 {
-            showAlert(message: "Card Number Should be greater than 12")
         }
+//        else if txtCardNumber.text!.count < 12 {
+//            showAlert(message: "Card Number Should be greater than 12")
+//        }
         else{
             getStripToken()
 
@@ -155,6 +168,8 @@ validation()
             } else {
                 
                 //failed
+                self.activityIndicator.stopAnimating()
+                self.showAlert(message: "Please check your Card Detail")
                 print("Failed")
             }
         }
@@ -181,7 +196,22 @@ validation()
                     if status as! Int == 0 {
                                 self.activityIndicator.stopAnimating()
                     }else{
-                        self.navigationController?.popViewController(animated: true)
+//                        UserDefaults.standard.setValue(1, forKey: "userSubscribed")
+//                        UserDefaults.standard.synchronize()
+//
+//                        self.navigationController?.popViewController(animated: true)
+                        
+                            if UserDefaults.standard.value(forKey: "userSubscribed")as! Int == 0 {
+                                UserDefaults.standard.setValue(1, forKey: "userSubscribed")
+                                UserDefaults.standard.synchronize()
+                                self.activityIndicator.stopAnimating()
+                                let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                                self.appD.window?.rootViewController = destination
+                                
+                            }else{
+                                self.navigationController?.popViewController(animated: true)
+                            }
+                        
                                 self.activityIndicator.stopAnimating()
                     }
                 }
@@ -190,7 +220,7 @@ validation()
     
                 }
         }
-  
+
     
     func getMembershipForArtist(){
 //            self.activityIndicator.startAnimating()
@@ -212,10 +242,20 @@ validation()
                       print(resposeJSON)
                 if let status = resposeJSON["status"]{
                     if status as! Int == 0 {
-                                self.activityIndicator.stopAnimating()
+                        self.showAlert(message: "Something went Wrong")
+                    self.activityIndicator.stopAnimating()
                     }else{
-                        self.navigationController?.popViewController(animated: true)
-                                self.activityIndicator.stopAnimating()
+                        if UserDefaults.standard.value(forKey: "userSubscribed")as! Int == 0 {
+                            UserDefaults.standard.setValue(1, forKey: "userSubscribed")
+                            UserDefaults.standard.synchronize()
+                            self.activityIndicator.stopAnimating()
+                            let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                            self.appD.window?.rootViewController = destination
+                            
+                        }else{
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                       
                     }
                 }
                         self.activityIndicator.stopAnimating()
@@ -234,7 +274,9 @@ validation()
             imgRadioPaypal.image = #imageLiteral(resourceName: "radioUnselect")
         }
     }
-    
+    @IBAction func btnBackAction(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 // MARK: UIPickerView Delegation

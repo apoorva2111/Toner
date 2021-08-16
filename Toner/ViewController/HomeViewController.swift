@@ -20,6 +20,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        if UserDefaults.standard.value(forKey: "userSubscribed")as! Int == 0 {
+//        self.tabBarController?.selectedIndex = 3
+//        }
+      
         NotificationCenter.default.addObserver(self, selector: #selector(itemsAdded), name: NSNotification.Name(rawValue: "itemCount"), object: nil)
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
@@ -44,6 +48,7 @@ class HomeViewController: UIViewController {
         tableView.register(UINib(nibName: "GenresTableViewCell", bundle: nil), forCellReuseIdentifier: "GenresTableViewCell")
         getHomeBanner()
         getHomePageData()
+       
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

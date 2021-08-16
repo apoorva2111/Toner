@@ -48,13 +48,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.backgroundColor = .black
         
+    
         if (UserDefaults.standard.fetchData(forKey: .userId) != ""){
-            let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-            self.window?.rootViewController = destination
+            if  UserDefaults.standard.value(forKey: "userSubscribed") as! Int == 0{
+                
+                let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navSub") as! UINavigationController
+                self.appD.window?.rootViewController = destination
+                
+            }else{
+                let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                self.window?.rootViewController = destination
+            }
         }else{
+            
             let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ViewController") as! ViewController
             self.window?.rootViewController = destination
         }
+        
+        
         self.window?.makeKeyAndVisible()
    
         do {

@@ -30,6 +30,17 @@ class SettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileImageBackView.layer.cornerRadius = profileImageBackView.frame.height / 2
+        profileImageBackView.clipsToBounds = true
+        
+        profileImage.layer.cornerRadius = profileImage.frame.height / 2
+        profileImage.clipsToBounds = true
+        
+        if UserDefaults.standard.value(forKey: "userSubscribed")as! Int == 0 {
+            let destination = SubscriptionViewController(nibName: "SubscriptionViewController", bundle: nil)
+            self.navigationController?.pushViewController(destination, animated: false)
+
+        }
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         // Do any additional setup after loading the view.
@@ -232,7 +243,8 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate{
             let destination = EditProfileViewController(nibName: "EditProfileViewController", bundle: nil)
             self.navigationController?.pushViewController(destination, animated: false)
         case SettingsName.subscription:
-            let destination = SubscriptionViewController(nibName: "SubscriptionViewController", bundle: nil)
+           // let destination = SubscriptionViewController(nibName: "SubscriptionViewController", bundle: nil)
+            let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
             self.navigationController?.pushViewController(destination, animated: false)
         case SettingsName.myStation:
             let destination = MyStationsViewController(nibName: "MyStationsViewController", bundle: nil)
@@ -262,9 +274,11 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate{
         case SettingsName.myDownload:
             let destination = MyDownloadViewController(nibName: "MyDownloadViewController", bundle: nil)
             self.navigationController?.pushViewController(destination, animated: false)
-            
         case SettingsName.MyChatroom:
             let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+            self.navigationController!.pushViewController(destination, animated: true)
+        case SettingsName.support:
+            let destination = SupportAndHelpViewController(nibName: "SupportAndHelpViewController", bundle: nil)
             self.navigationController!.pushViewController(destination, animated: true)
 
         case SettingsName.logOut:

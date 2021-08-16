@@ -110,7 +110,8 @@ class LoginViewController: UIViewController {
                     let phone = user["phone"] as? String ?? ""
                     let user_group_id = user["user_group_id"] as? String ?? ""
                     //        email = "sid@testing.com";
-
+                    let is_subscribed = user["is_subscribed"] as? Int ?? 0
+                    
                     UserDefaults.standard.saveData(value: id, key: .userId)
                     UserDefaults.standard.saveData(value: firstname, key: .userFirstName)
                     UserDefaults.standard.saveData(value: lastname, key: .userLastName)
@@ -118,10 +119,20 @@ class LoginViewController: UIViewController {
                     UserDefaults.standard.saveData(value: phone, key: .userPhone)
                     UserDefaults.standard.saveData(value: image, key: .userImage)
                     UserDefaults.standard.saveData(value: user_group_id, key: .userGroupID)
+                    
+                    UserDefaults.standard.setValue(is_subscribed, forKey: "userSubscribed")
                     UserDefaults.standard.synchronize()
                     
-                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-                    self.appD.window?.rootViewController = destination
+                    //                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                    // self.appD.window?.rootViewController = destination
+                    if is_subscribed == 0{
+                        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "navSub") as! UINavigationController
+                        self.appD.window?.rootViewController = destination
+                    }else{
+                        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                        self.appD.window?.rootViewController = destination
+                    }
+                    
                 }else{
                     self.view.makeToast(message: "Invalid Credential")
                 }

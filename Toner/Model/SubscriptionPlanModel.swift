@@ -42,31 +42,29 @@ struct MyPlanModel {
     var status: String = ""
     var user_id: String = ""
     var zip: String = ""
-    
-    
-    //    {
-    //address = "";
-    //"artist_package_status_id" = 1;
-    //city = "<null>";
-    //comment = "";
-    //country = "United States";
-    //"date_added" = "2021-07-23";
-    //email = "sid@testing.com";
-    //firstname = sid;
-    //id = 418;
-    //lastname = sid;
-    //"package_description" = "Access to the website and app completely";
-    //"package_id" = 1;
-    //"package_name" = Yearly;
-    //"package_no_of_songs" = 720;
-    //"package_price" = "23.8800";
-    //phone = 1234567899;
-    //state = "<null>";
-    //status = 1;
-    //"user_id" = 142;
-    //zip = 90003;
-    //}
-    
-    
+        
+}
+
+struct MemberPlanModel {
+    var address = ""
+    var city = ""
+    var comment = ""
+    var country = ""
+    var date_added = ""
+    var email = ""
+    var firstname = ""
+    var id = ""
+    var lastname = ""
+    var phone = ""
+    var plan_cycle = ""
+    var plan_description = ""
+    var plan_frequency = ""
+    var plan_id = ""
+    var plan_name = ""
+    var plan_price = ""
+    var state = ""
+    var status = ""
+    var user_id = ""
+    var zip = ""
     
 }

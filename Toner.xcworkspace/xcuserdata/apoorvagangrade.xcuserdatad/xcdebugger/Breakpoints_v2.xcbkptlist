@@ -7,144 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "467B9FA5-D392-4B05-ADD9-AA99DE2C87BE"
+            uuid = "4A6E78B1-3FD1-4CDC-972E-0B14658D793E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Toner/ViewController/SubscriptionViewController.swift"
+            filePath = "Toner/ViewController/SupportAndHelpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "myplans()"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "btnContactUsAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "32F8BCCA-8198-4950-B2B6-284696DAFCFC"
+            uuid = "FD6BEE0D-326D-4447-892F-873388AD9EAA"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Toner/ViewController/SubscriptionViewController.swift"
+            filePath = "Toner/ViewController/SupportAndHelpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "getArtisPlantList()"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "configureMailComposer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "89E6D1F1-3B39-412B-A335-84CB151338CA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Toner/ViewController/SubscriptionViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "112"
-            endingLineNumber = "112"
-            landmarkName = "myplans()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "89E6D1F1-3B39-412B-A335-84CB151338CA - 9c2ed418b002a83a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Tonneru.SubscriptionViewController.(myplans in _1DDD0620C917A912876C0AC1948CD459)() -&gt; ()"
-                  moduleName = "Tonneru"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apoorvagangrade/Documents/Diggity/Diggity/Toner_Github/Toner/Toner/ViewController/SubscriptionViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "112"
-                  endingLineNumber = "112"
-                  offsetFromSymbolStart = "2008">
-               </Location>
-               <Location
-                  uuid = "89E6D1F1-3B39-412B-A335-84CB151338CA - 91945241a2a82abe"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Any) -&gt; () in closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Tonneru.SubscriptionViewController.(myplans in _1DDD0620C917A912876C0AC1948CD459)() -&gt; ()"
-                  moduleName = "Tonneru"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/apoorvagangrade/Documents/Diggity/Diggity/Toner_Github/Toner/Toner/ViewController/SubscriptionViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "160">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "86A82840-82CC-4E96-92A0-31FEDF3C488A"
+            uuid = "5E423494-FF06-4B94-A1EB-D425B7C90593"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Toner/Cells/MyPlanTableViewCell.swift"
+            filePath = "Toner/ViewController/SearchViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "data"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AEB5D7E6-FC5B-46DF-8BC8-554F5A2ED3E3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Toner/ViewController/ForgotPasswordViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "submitButtonAction()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "22FD4777-EEE7-4790-B716-54BACF13493B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Toner/ViewController/ForgotPasswordViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "submitButtonAction()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "407EFEAA-4C9D-48AA-BB22-CF29511E8269"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Toner/ViewController/EditProfileViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
-            landmarkName = "updateButtonAction()"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "textFieldDidEndEditing(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

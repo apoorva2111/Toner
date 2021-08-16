@@ -126,7 +126,7 @@ extension UserDefaults{
     
     enum keys: String, CaseIterable{
         
-        case userId, userFirstName, userLastName, userEmail,userPhone, userStatus, userSocialLogin, userSocialLoginId, userImage, userGroupID, cart
+        case userId, userFirstName, userLastName, userEmail,userPhone, userStatus, userSocialLogin, userSocialLoginId, userImage, userGroupID, cart, userSubscribed
         var value: String{
             return self.rawValue
         }

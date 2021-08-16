@@ -103,6 +103,7 @@ class TabBarController: UITabBarController {
         hideMiniView()
         
         
+        
     }
     
     public func showTabBar(){

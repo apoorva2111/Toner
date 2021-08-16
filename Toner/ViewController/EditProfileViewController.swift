@@ -59,14 +59,15 @@ class EditProfileViewController: UIViewController {
         btnOutletChangeAvtar.layer.borderWidth = 1
         btnOutletChangeAvtar.layer.borderColor = #colorLiteral(red: 0.9253032804, green: 0.7255734801, blue: 0.146667093, alpha: 1)
         btnOutletChangeAvtar.layer.masksToBounds = true
-        getProfileDetails()
         //
         if UserDefaults.standard.fetchData(forKey: .userGroupID) == "4"{
             txtStripHeightConstraint.constant = 0
             txtStripToConstraint.constant = 0
+            getMemberProfileDetails()
         }else{
             txtStripHeightConstraint.constant = 50
             txtStripToConstraint.constant = 16
+            getArtistProfileDetails()
         }
     }
 
@@ -192,7 +193,6 @@ class EditProfileViewController: UIViewController {
                 "lastname": self.firstName.text ?? "",
                 "phone": self.phoneText.text ?? "",
                 "gender": self.selectedGender,
-                "strip": self.paypalID.text ?? "",
                 "dob": self.selectedDate,
                 "tagline": self.tagLineText.text ?? "",
                 "member_id" : UserDefaults.standard.string(forKey: "userId") ?? ""
@@ -208,6 +208,7 @@ class EditProfileViewController: UIViewController {
                 "gender": self.selectedGender,
                 "dob": self.selectedDate,
                 "tagline": self.tagLineText.text ?? "",
+                "strip": self.paypalID.text ?? "",
                 "genre_id": SelectStationViewController.selectedStationName,
                 "user_id" : UserDefaults.standard.string(forKey: "userId") ?? ""
             ] as [String : Any]
@@ -229,7 +230,7 @@ class EditProfileViewController: UIViewController {
         }
     }
     
-    fileprivate func getProfileDetails(){
+    fileprivate func getMemberProfileDetails(){
         let parameters = [
             "user_id": UserDefaults.standard.fetchData(forKey: .userId)
             ] as [String: String]
@@ -262,6 +263,45 @@ class EditProfileViewController: UIViewController {
                 self.datePicker.text = formatter.string(from: self.datePicker.currentDate ?? Date())
                 self.selectedDate = dateText
                 self.paypalID.text = memberJSON["paypal"] as? String ?? ""
+                self.tagLineText.text = memberJSON["tagline"] as? String ?? ""
+                self.lblUserName.text = memberJSON["username"] as? String ?? ""
+                
+        }
+    }
+    
+    fileprivate func getArtistProfileDetails(){
+        let parameters = [
+            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+            ] as [String: String]
+        
+        self.activityIndicator.startAnimating()
+        let reuestURL = "https://www.tonnerumusic.com/api/v1/artist_profile"
+        
+        Alamofire.request(reuestURL, method: .post, parameters: parameters)
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+                let memberJSON = resposeJSON["artistinfo"] as? NSDictionary ?? NSDictionary()
+                self.firstName.text = memberJSON["firstname"] as? String ?? ""
+                self.lastName.text = memberJSON["lastname"] as? String ?? ""
+                self.emailTextField.text = memberJSON["email"] as? String ?? ""
+                self.phoneText.text = memberJSON["phone"] as? String ?? ""
+                self.genderPicker.currentIndexSelected = ((memberJSON["gender"] as? String ?? "male") == "male" ? 0 : 1)
+                let dateText = memberJSON["dob"] as? String ?? "1970-01-01"
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyy-MM-dd"
+                self.datePicker.currentDate = formatter.date(from: dateText)
+                self.datePicker.text = formatter.string(from: self.datePicker.currentDate ?? Date())
+                self.selectedDate = dateText
+                self.paypalID.text = memberJSON["state_id"] as? String ?? ""
                 self.tagLineText.text = memberJSON["tagline"] as? String ?? ""
                 self.lblUserName.text = memberJSON["username"] as? String ?? ""
                 

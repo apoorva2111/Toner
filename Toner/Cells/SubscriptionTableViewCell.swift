@@ -26,7 +26,6 @@ class SubscriptionTableViewCell: UITableViewCell {
             frequencyLabel.text = data.frequency.uppercased()
             originalPrice.text = ""
             discountPrice.text = "$" + data.price
-            
             if data.package_no_of_songs != ""{
                 fromLabel.text = "Package Name:"
                 startDateTimeLabel.text = data.name
@@ -34,16 +33,22 @@ class SubscriptionTableViewCell: UITableViewCell {
                 endDateTimeLabel.text = data.package_no_of_songs
                 
             }else{
-                let duration = Int(data.duration) ?? 0
+//                let duration = Int(data.duration) ?? 0
                 
                 let dateFormat = DateFormatter()
                 dateFormat.dateFormat = "dd MMM yyyy 'at' hh:mm a"
                 startDateTimeLabel.text = dateFormat.string(from: Date())
-                if data.frequency == "month"{
-                    endDateTimeLabel.text = dateFormat.string(from: Calendar.current.date(byAdding: .month, value: duration, to: Date()) ?? Date())
+                if data.frequency == "monthly"{
+                    let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date())
+                    endDateTimeLabel.text = dateFormat.string(from: nextMonth ?? Date())
                 }else if data.frequency == "year"{
-                     endDateTimeLabel.text = dateFormat.string(from: Calendar.current.date(byAdding: .year, value: duration, to: Date()) ?? Date())
+                     endDateTimeLabel.text = dateFormat.string(from: Calendar.current.date(byAdding: .year, value: 1, to: Date()) ?? Date())
+                }else if data.frequency == "month"{
+                    let nextMonth = Calendar.current.date(byAdding: .month, value: 1, to: Date())
+                    endDateTimeLabel.text = dateFormat.string(from: nextMonth ?? Date())
+
                 }
+                
             }
         }
     }

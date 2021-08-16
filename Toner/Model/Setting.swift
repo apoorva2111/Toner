@@ -27,7 +27,7 @@ public enum SettingsName{
     static let logOut = "LOGOUT"
     static let editSocial = "EDIT SOCIAL"
     static let myDownload = "MY DOWNLOADS"
-    static let MyChatroom = "My Chatroom"
+    static let MyChatroom = "MY CHATROOM"//"My Chatroom"
 
 }
 

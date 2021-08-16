@@ -55,7 +55,11 @@ class AcountOverviewViewController: UIViewController {
  
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if UserDefaults.standard.fetchData(forKey: .userGroupID) == "4"{
         getProfileDetails()
+        }else{
+            getArtostProfileDetails()
+        }
 
     }
     
@@ -79,6 +83,37 @@ class AcountOverviewViewController: UIViewController {
                 let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
                 self.activityIndicator.stopAnimating()
                 let memberJSON = resposeJSON["memberinfo"] as? NSDictionary ?? NSDictionary()
+               self.lblUsername.text = memberJSON["username"] as? String ?? ""
+                self.lblFirstName.text = (memberJSON["firstname"] as? String ?? "") + " " + (memberJSON["lastname"] as? String ?? "")
+                self.lblEmail.text = memberJSON["email"] as? String ?? ""
+                self.lblPhone.text = memberJSON["phone"] as? String ?? ""
+                self.lblGender.text = memberJSON["gender"] as? String ?? "male"
+                self.lblCountry.text = memberJSON["country"] as? String ?? ""
+        
+    }
+    }
+    
+    
+    fileprivate func getArtostProfileDetails(){
+        let parameters = [
+            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+            ] as [String: String]
+        
+        self.activityIndicator.startAnimating()
+        let reuestURL = "https://www.tonnerumusic.com/api/v1/artist_profile"
+        
+        Alamofire.request(reuestURL, method: .post, parameters: parameters)
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                self.activityIndicator.stopAnimating()
+                let memberJSON = resposeJSON["artistinfo"] as? NSDictionary ?? NSDictionary()
                self.lblUsername.text = memberJSON["username"] as? String ?? ""
                 self.lblFirstName.text = (memberJSON["firstname"] as? String ?? "") + " " + (memberJSON["lastname"] as? String ?? "")
                 self.lblEmail.text = memberJSON["email"] as? String ?? ""
