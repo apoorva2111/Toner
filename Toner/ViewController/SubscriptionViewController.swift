@@ -54,6 +54,11 @@ class SubscriptionViewController: UIViewController {
         tableView.register(UINib.init(nibName: "MyPlanTableViewCell", bundle: nil), forCellReuseIdentifier: "MyPlanTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
+       
+//        getArtisPlantList()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if UserDefaults.standard.fetchData(forKey: .userGroupID) == "4"{
             getPlanList(playFor: "memberplan")
             isMember = true
@@ -64,9 +69,7 @@ class SubscriptionViewController: UIViewController {
 
         }
         myplans()
-//        getArtisPlantList()
     }
-    
     fileprivate func getPlanList(playFor:String){
         self.activityIndicator.startAnimating()
         planList = [SubscriptionPlanModel]()
@@ -266,7 +269,7 @@ extension SubscriptionViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if indexPath.section == 0 {
-            return 150
+            return 170
         }else{
             return 180
         }

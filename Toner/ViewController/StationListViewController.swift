@@ -184,7 +184,7 @@ extension StationListViewController: UICollectionViewDataSource, UICollectionVie
         }else{
             cellWidth = Double((collectionView.bounds.width / 3) - 10)
         }
-        return CGSize(width: cellWidth, height: 92.5)
+        return CGSize(width: cellWidth, height: 150)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

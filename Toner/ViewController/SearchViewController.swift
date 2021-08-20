@@ -19,8 +19,10 @@ class SearchViewController: UIViewController {
     
     var activityIndicator: NVActivityIndicatorView!
     var genreData = [TopGenreModel]()
+    var filterGenreData = [TopGenreModel]()
     var collectionViewWidth = 0.0
     var homeData: HomePageDataModel?
+    var arrHeader = ["ArtistModel","ArtistModelddjkdfkjkj"]
     var arrArtistList = [ArtistModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +134,12 @@ class SearchViewController: UIViewController {
                         let objModel = ArtistModel(id: genreId, firstname: firstname, lastname: lastname, email: email, username: username, phone: phone, image: genreIcon, type: type, is_online: is_online!)
                         self.arrArtistList.append(objModel)
                     }
-                
+                if self.arrArtistList.count>0{
+                    self.chooseGenreLabel.isHidden = true
+                }else{
+                    self.chooseGenreLabel.isHidden = false
+
+                }
                 self.collectionView.reloadData()
         }
     }
@@ -156,7 +163,9 @@ class SearchViewController: UIViewController {
                 self.activityIndicator.stopAnimating()
                 print(resposeJSON)
                 
-                
+                if self.arrArtistList.count>0{
+                    self.arrArtistList.removeAll()
+                }
                 let allArtist = resposeJSON["allartists"] as? NSArray ?? NSArray()
                 print(allArtist)
                 
@@ -176,9 +185,7 @@ class SearchViewController: UIViewController {
                     let is_online = topgenre["is_online"] as? String
                     
                     let objModel = ArtistModel(id: genreId, firstname: firstname, lastname: lastname, email: email, username: username, phone: phone, image: genreIcon, type: type, is_online: is_online!)
-                    if self.arrArtistList.count>0{
-                        self.arrArtistList.removeAll()
-                    }
+                   
                  self.arrArtistList.append(objModel)
                 }
                 
@@ -224,14 +231,18 @@ extension SearchViewController : UITextFieldDelegate{
 //      return true
 //    }
     func textFieldDidEndEditing(_ textField: UITextField) {
+
+         let filteredArray = genreData.filter { ($0.name.contains(textField.text ?? ""))}
+        print(filteredArray)
+        filterGenreData = filteredArray
+        collectionView.reloadData()
         if textField.text == ""{
             callWebserviceForArtise()
         }else{
             webserviceCallSearch(searchText: textField.text!)
         }
-        let filteredArray = genreData.filter { $0.name == textField.text! }
-        print(filteredArray)
-
+       
+       
     }
     
 }
@@ -243,7 +254,11 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         if section == 0{
         return arrArtistList.count
         }else{
-            return genreData.count
+            if filterGenreData.count > 0{
+                return filterGenreData.count
+            }else{
+                return genreData.count
+            }
         }
     }
     
@@ -258,7 +273,12 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         }else{
             
             let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "GenreCollectionViewCell", for: indexPath) as! GenreCollectionViewCell
-            cell.setData(data: genreData[indexPath.item])
+            if filterGenreData.count > 0{
+                cell.setData(data: filterGenreData[indexPath.item])
+
+            }else{
+                cell.setData(data: genreData[indexPath.item])
+            }
             return cell
         }
     }
@@ -286,45 +306,75 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         destination.artistType = data.type
         self.navigationController!.pushViewController(destination, animated: true)
         }else{
-            let destination = StationListViewController(nibName: "StationListViewController", bundle: nil)
-            let data = genreData[indexPath.row]
-            destination.stationName = data.name
-            destination.stationID = data.id
-            self.navigationController!.pushViewController(destination, animated: true)
+            if filterGenreData.count > 0{
+                let destination = StationListViewController(nibName: "StationListViewController", bundle: nil)
+                let data = filterGenreData[indexPath.row]
+                destination.stationName = data.name
+                destination.stationID = data.id
+                self.navigationController!.pushViewController(destination, animated: true)
 
+            }else{
+                let destination = StationListViewController(nibName: "StationListViewController", bundle: nil)
+                let data = genreData[indexPath.row]
+                destination.stationName = data.name
+                destination.stationID = data.id
+                self.navigationController!.pushViewController(destination, animated: true)
+
+            }
+            
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 {
+            return CGSize(width: collectionView.frame.width, height: 0)
+
+        }else{
             return CGSize(width: collectionView.frame.width, height: 50)
+
+        }
     }
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        switch kind {
-        
-        case UICollectionView.elementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! MyHeaderFooterClass
-            headerView.backgroundColor = UIColor.green//#colorLiteral(red: 0.08235294118, green: 0.08235294118, blue: 0.08235294118, alpha: 1)
-            
-            if indexPath.section == 0{
-                headerView.setHeaderName(name: "ARTISTS")
-//                headerView.lblHeader.text = "ARTISTS"
+//        switch kind {
 //
-//                headerView.lblHeader.textColor = ThemeColor.headerColor
-//                headerView.lblHeader.font = UIFont.montserratMedium.withSize(17)
+//        case UICollectionView.elementKindSectionHeader:
 //
-            }else{
-                headerView.setHeaderName(name: "STATIONS")
-//                headerView.lblHeader.text = "STATIONS"
-//                headerView.lblHeader.textColor = ThemeColor.headerColor
-//                headerView.lblHeader.font = UIFont.montserratMedium.withSize(17)
-           }
+//            if indexPath.section == 0{
+//                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! MyHeaderFooterClass
+//                headerView.backgroundColor = UIColor.green//#colorLiteral(red: 0.08235294118, green: 0.08235294118, blue: 0.08235294118, alpha: 1)
+//                headerView.setHeaderName(name: "ARTISTS")
+//                let label = UILabel(frame: headerView.frame)
+//              //  label.center = CGPoint(x: 160, y: 285)
+//                label.textAlignment = .center
+//                label.text = "I'm a test label"
+//                headerView.addSubview(label)
+////                headerView.lblHeader.text = "ARTISTS"
+////
+////                headerView.lblHeader.textColor = ThemeColor.headerColor
+////                headerView.lblHeader.font = UIFont.montserratMedium.withSize(17)
+//           return headerView
+//
+//            }else{
+                let headerView1 = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! MyHeaderFooterClass
+                headerView1.backgroundColor = UIColor.clear//#colorLiteral(red: 0.08235294118, green: 0.08235294118, blue: 0.08235294118, alpha: 1)
+                headerView1.setHeaderName(name: "STATIONS")
+            
+                let label = UILabel(frame: headerView1.frame)
+                label.textAlignment = .left
+                label.text = "STATIONS"
+        label.textColor = ThemeColor.headerColor
+        label.font = UIFont.montserratMedium.withSize(17)
+
+                headerView1.addSubview(label)
+                return headerView1
+
+        //   }
             
             
-            return headerView
             
-        default:
-            assert(false, "Unexpected element kind")
-        }
+//        default:
+//            assert(false, "Unexpected element kind")
+//        }
     }
 }
 //{

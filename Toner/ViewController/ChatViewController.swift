@@ -21,6 +21,7 @@ class ChatViewController: UIViewController {
         super.viewDidLoad()
 
         WKWebViewRTC(wkwebview: chatWebview, contentController: chatWebview.configuration.userContentController)
+      
         self.setNavigationBar(title: "", isBackButtonRequired: true, isTransparent: false)
 
         if UserDefaults.standard.fetchData(forKey: .userGroupID) == "3" {
