@@ -9,9 +9,15 @@
 import UIKit
 import NVActivityIndicatorView
 import Alamofire
-import Stripe
-var stripToken =  ""
+//import Stripe
+//var stripToken =  ""
+
+protocol ConfirmSubscriptionDelegate {
+    func backWithData(param : [String:Any])
+}
+
 class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
+    var delegate : ConfirmSubscriptionDelegate?
     @IBOutlet weak var txtNameOnCard: UITextField!
     @IBOutlet weak var txtCardNumber: UITextField!
     @IBOutlet weak var txtMonth: UITextField!
@@ -19,14 +25,17 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtcvv: UITextField!
     @IBOutlet weak var viewHeaderHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var btnBackOutlet: UIButton!
-
+    
+    
     let thePicker = UIPickerView()
     let yearPicker = UIPickerView()
     let cardType = UIPickerView()
     var activityIndicator: NVActivityIndicatorView!
     var artistId:String!
     var plan_id = ""
-    
+    var isPaypal = false
+    var isFromCheckSub = false
+    var monthIndex = 1
     @IBOutlet weak var imgRadioPaypal: UIImageView!
     @IBOutlet weak var imgRadioCoin: UIImageView!
    
@@ -34,16 +43,44 @@ class ConfirmSubscriptionViewController: UIViewController, UITextFieldDelegate {
     @IBAction func btnPayNowAction(_ sender: UIButton) {
 validation()
     }
+    @IBOutlet weak var imgSong: UIImageView!
+    @IBOutlet weak var lblSongName: UILabel!
+    @IBOutlet weak var lblSongAmount: UILabel!
+    @IBOutlet weak var lblArtistName: UILabel!
+    @IBOutlet weak var lblDuration: UILabel!
     
-    
+    var subArtistName = ""
+    var subArtistAmount = ""
+    var subArtistSongName = ""
+    var subArtistDuration = ""
+    var subArtistImage = ""
     var arrYear = [String]()
     let arrMonth = ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     let arrCard = ["Visa","Master Card", "Discover Card", "American Express", "Maestro", "SOLO"]
 
+    @IBOutlet weak var viewSong: UIView!
+    @IBOutlet weak var viewSongHeight: NSLayoutConstraint!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
+        if subArtistName != "" {
+            viewSongHeight.constant = 300
+            viewSong.isHidden = false
+            lblDuration.text = "Duration: " + subArtistDuration
+            lblSongName.text = subArtistSongName
+            lblSongAmount.text = "$ " + subArtistAmount
+            lblArtistName.text = "Artist: " + subArtistName
+         let artistURL = URL(string: subArtistImage)
+            imgSong.kf.setImage(with: artistURL)
+            imgSong.contentMode = .scaleToFill
+
+        }else{
+            viewSongHeight.constant = 0
+            viewSong.isHidden = true
+        }
+        
         //Subscription
         if  UserDefaults.standard.value(forKey: "userSubscribed") as! Int == 0{
             viewHeaderHeightConstraint.constant = 70.5
@@ -82,7 +119,6 @@ validation()
             arrYear.append(strDate)
 
         }
-     
     }
 //    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 //        guard let textFieldText = txtcvv.text,
@@ -115,169 +151,198 @@ validation()
             showAlert(message: "Please Select Card Expire Month")
 
         }
-//        else if txtCardNumber.text!.count < 12 {
-//            showAlert(message: "Card Number Should be greater than 12")
-//        }
+        else if txtCardNumber.text!.count < 12 {
+            showAlert(message: "Card Number Should be greater than 12")
+        }
         else{
-            getStripToken()
-
+            paypalToken()
         }
     }
     
-    func getStripToken(){
-        //card parameters
-        self.activityIndicator.startAnimating()
-
-        let stripeCardParams = STPCardParams()
-        stripeCardParams.number = txtCardNumber.text
-        let df = DateFormatter()
-        df.locale = Locale(identifier: "en_US_POSIX")
-        df.dateFormat = "LLLL"  // if you need 3 letter month just use "LLL"
-        if let date = df.date(from: txtMonth.text!) {
-            let month = Calendar.current.component(.month, from: date)
-            print(month)  // 5
-        
-            stripeCardParams.expMonth = UInt(month) //UInt(expiryParameters?.first ?? "0") ?? 0
+    func paypalToken(){
+        if self.plan_id != ""{
+            if UserDefaults.standard.fetchData(forKey: .userGroupID) == "3" {
+                self.getMembershipForArtist()
+            }else{
+                self.getMembership()
+            }
+        }else{
+            let userId:String = UserDefaults.standard.fetchData(forKey: .userId)
+            let param:[String:Any] = ["user_id": Int(userId) ?? 0,
+                                      "payment_method": isPaypal ? "paypal" : "coinpayment",
+                                      "card_type": txtCard.text ?? "",
+                                      "card_number": txtCardNumber.text ?? "",
+                                      "cc_expire_date_month": String(monthIndex),
+                                      "cc_expire_date_year": txtYear.text ?? "",
+                                      "cc_cvv2": txtcvv.text ?? "",
+            ]
+            delegate?.backWithData(param: param)
+            self.navigationController?.popViewController(animated: true)
         }
-        stripeCardParams.expYear = UInt(txtYear.text ?? "0") ?? 0//UInt(expiryParameters?.last ?? "0") ?? 0
-        stripeCardParams.cvc = txtcvv.text
-        stripeCardParams.name = txtNameOnCard.text!
+    }
+    
+//    func getStripToken(){
+//        //card parameters
+//        self.activityIndicator.startAnimating()
+//
+//        let stripeCardParams = STPCardParams()
+//        stripeCardParams.number = txtCardNumber.text
+//        let df = DateFormatter()
+//        df.locale = Locale(identifier: "en_US_POSIX")
+//        df.dateFormat = "LLLL"  // if you need 3 letter month just use "LLL"
+//        if let date = df.date(from: txtMonth.text!) {
+//            let month = Calendar.current.component(.month, from: date)
+//            print(month)  // 5
+//
+//            stripeCardParams.expMonth = UInt(month) //UInt(expiryParameters?.first ?? "0") ?? 0
+//        }
+//        stripeCardParams.expYear = UInt(txtYear.text ?? "0") ?? 0//UInt(expiryParameters?.last ?? "0") ?? 0
+//        stripeCardParams.cvc = txtcvv.text
+//        stripeCardParams.name = txtNameOnCard.text!
+//
+//        //converting into token
+//        let config = STPPaymentConfiguration.shared
+//        let stpApiClient = STPAPIClient.init(configuration: config)
+//        stpApiClient.createToken(withCard: stripeCardParams) { (token, error) in
+//            if error == nil {
+//
+//                //Success
+//                DispatchQueue.main.async {
+//
+//                    stripToken = token!.tokenId
+//                    if self.plan_id != ""{
+//                        if UserDefaults.standard.fetchData(forKey: .userGroupID) == "3" {
+//                            self.getMembershipForArtist()
+//                        }else{
+//                            self.getMembership()
+//                        }
+//                    }else{
+//                        self.navigationController?.popViewController(animated: true)
+//                    }
+////
+//                }
+//
+//            } else {
+//
+//                //failed
+//                self.activityIndicator.stopAnimating()
+//                self.showAlert(message: "Please check your Card Detail")
+//                print("Failed")
+//            }
+//        }
+//    }
+    func getMembership(){
+        //            self.activityIndicator.startAnimating()
         
-        //converting into token
-        let config = STPPaymentConfiguration.shared
-        let stpApiClient = STPAPIClient.init(configuration: config)
-        stpApiClient.createToken(withCard: stripeCardParams) { (token, error) in
-            if error == nil {
-                
-                //Success
-                DispatchQueue.main.async {
-                   
-                    stripToken = token!.tokenId
-                    if self.plan_id != ""{
-                        if UserDefaults.standard.fetchData(forKey: .userGroupID) == "3" {
-                            self.getMembershipForArtist()
-                        }else{
-                            self.getMembership()
-                        }
+        let userId:String = UserDefaults.standard.fetchData(forKey: .userId)
+        let apiUrl = "https://tonnerumusic.com/api/v1/membersubscribtion"
+        let urlConvertible = URL(string: apiUrl)!
+        let param:[String:Any] = ["user_id": Int(userId) ?? 0,
+                                  "plan_id": Int(plan_id)!,
+                                  "payment_method": isPaypal ? "paypal" : "coinpayment",
+                                  "card_type": txtCard.text ?? "",
+                                  "card_number": txtCardNumber.text ?? "",
+                                  "cc_expire_date_month": String(monthIndex),
+                                  "cc_expire_date_year": txtYear.text ?? "",
+                                  "cc_cvv2": txtcvv.text ?? "",
+//                                  "stripe_token":stripToken
+        ]
+        print(param)
+        
+        Alamofire.request(urlConvertible,method: .post,parameters: param).validate().responseJSON { (response) in
+            print(response)
+            
+            
+            let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+            
+            print(resposeJSON)
+            if let status = resposeJSON["status"]{
+                if status as! Int == 0 {
+                    self.activityIndicator.stopAnimating()
+                }else{
+                    //                        UserDefaults.standard.setValue(1, forKey: "userSubscribed")
+                    //                        UserDefaults.standard.synchronize()
+                    //
+                    //                        self.navigationController?.popViewController(animated: true)
+                    
+                    if UserDefaults.standard.value(forKey: "userSubscribed")as! Int == 0 {
+                        UserDefaults.standard.setValue(1, forKey: "userSubscribed")
+                        UserDefaults.standard.synchronize()
+                        self.activityIndicator.stopAnimating()
+                        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                        self.appD.window?.rootViewController = destination
+                        
                     }else{
                         self.navigationController?.popViewController(animated: true)
                     }
-//
+                    
+                    self.activityIndicator.stopAnimating()
                 }
-                
-            } else {
-                
-                //failed
-                self.activityIndicator.stopAnimating()
-                self.showAlert(message: "Please check your Card Detail")
-                print("Failed")
             }
+            self.activityIndicator.stopAnimating()
         }
     }
-    func getMembership(){
-//            self.activityIndicator.startAnimating()
-       
-            let userId:String = UserDefaults.standard.fetchData(forKey: .userId)
-            let apiUrl = "https://tonnerumusic.com/api/v1/membersubscribtion"
-            let urlConvertible = URL(string: apiUrl)!
-        let param:[String:Any] = ["user_id": Int(userId) ?? 0,
-                                  "plan_id": Int(plan_id)!,
-                                    "stripe_token":stripToken]
-            print(param)
-    
-            Alamofire.request(urlConvertible,method: .post,parameters: param).validate().responseJSON { (response) in
-                            print(response)
-    
-    
-                        let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
-    
-                      print(resposeJSON)
-                if let status = resposeJSON["status"]{
-                    if status as! Int == 0 {
-                                self.activityIndicator.stopAnimating()
-                    }else{
-//                        UserDefaults.standard.setValue(1, forKey: "userSubscribed")
-//                        UserDefaults.standard.synchronize()
-//
-//                        self.navigationController?.popViewController(animated: true)
-                        
-                            if UserDefaults.standard.value(forKey: "userSubscribed")as! Int == 0 {
-                                UserDefaults.standard.setValue(1, forKey: "userSubscribed")
-                                UserDefaults.standard.synchronize()
-                                self.activityIndicator.stopAnimating()
-                                let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-                                self.appD.window?.rootViewController = destination
-                                
-                            }else{
-                                self.navigationController?.popViewController(animated: true)
-                            }
-                        
-                                self.activityIndicator.stopAnimating()
-                    }
-                }
-                        self.activityIndicator.stopAnimating()
-    
-    
-                }
-        }
 
     
     func getMembershipForArtist(){
-//            self.activityIndicator.startAnimating()
-       
-            let userId:String = UserDefaults.standard.fetchData(forKey: .userId)
-            let apiUrl = "https://tonnerumusic.com/api/v1/artistsubscription"
-            let urlConvertible = URL(string: apiUrl)!
+        
+        let userId:String = UserDefaults.standard.fetchData(forKey: .userId)
+        let apiUrl = "https://tonnerumusic.com/api/v1/artistsubscription"
+        let urlConvertible = URL(string: apiUrl)!
         let param:[String:Any] = ["user_id": Int(userId) ?? 0,
                                   "plan_id": Int(plan_id)!,
-                                    "stripe_token":stripToken]
-            print(param)
-    
-            Alamofire.request(urlConvertible,method: .post,parameters: param).validate().responseJSON { (response) in
-                            print(response)
-    
-    
-                        let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
-    
-                      print(resposeJSON)
-                if let status = resposeJSON["status"]{
-                    if status as! Int == 0 {
-                        self.showAlert(message: "Something went Wrong")
+                                  "payment_method": isPaypal ? "paypal" : "coinpayment",
+                                  "card_type": txtCard.text ?? "",
+                                  "card_number": txtCardNumber.text ?? "",
+                                  "cc_expire_date_month": String(monthIndex),
+                                  "cc_expire_date_year": txtYear.text ?? "",
+                                  "cc_cvv2": txtcvv.text ?? "",
+//                                  "stripe_token":stripToken
+        ]
+        print(param)
+        
+        Alamofire.request(urlConvertible,method: .post,parameters: param).validate().responseJSON { (response) in
+            print(response)
+            let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+            print(resposeJSON)
+            if let status = resposeJSON["status"]{
+                if status as! Int == 0 {
+                    self.showAlert(message: "Something went Wrong")
                     self.activityIndicator.stopAnimating()
+                }else{
+                    if UserDefaults.standard.value(forKey: "userSubscribed")as! Int == 0 {
+                        UserDefaults.standard.setValue(1, forKey: "userSubscribed")
+                        UserDefaults.standard.synchronize()
+                        self.activityIndicator.stopAnimating()
+                        let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
+                        self.appD.window?.rootViewController = destination
+                        
                     }else{
-                        if UserDefaults.standard.value(forKey: "userSubscribed")as! Int == 0 {
-                            UserDefaults.standard.setValue(1, forKey: "userSubscribed")
-                            UserDefaults.standard.synchronize()
-                            self.activityIndicator.stopAnimating()
-                            let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as! TabBarController
-                            self.appD.window?.rootViewController = destination
-                            
-                        }else{
-                            self.navigationController?.popViewController(animated: true)
-                        }
-                       
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
-                        self.activityIndicator.stopAnimating()
-    
-    
-                }
+            }
+            self.activityIndicator.stopAnimating()
         }
+    }
     @IBAction func btnRadioAction(_ sender: UIButton) {
         if sender.tag == 10{
             imgRadioPaypal.image = #imageLiteral(resourceName: "radioSelect")
             imgRadioCoin.image = #imageLiteral(resourceName: "radioUnselect")
-            
+            isPaypal = true
             
         }else{
             imgRadioCoin.image = #imageLiteral(resourceName: "radioSelect")
             imgRadioPaypal.image = #imageLiteral(resourceName: "radioUnselect")
+            isPaypal = false
         }
     }
     @IBAction func btnBackAction(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    
 }
+
 
 // MARK: UIPickerView Delegation
 
@@ -310,6 +375,7 @@ extension ConfirmSubscriptionViewController : UIPickerViewDelegate, UIPickerView
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == thePicker{
         txtMonth.text = arrMonth[row]
+            monthIndex = row + 1
         }else if pickerView == yearPicker {
             txtYear.text = arrYear[row]
         }else{

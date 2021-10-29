@@ -68,36 +68,36 @@ class SongsInPlaylistViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (TonneruMusicPlayer.player?.isPlaying ?? false){
-            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
 
         }else{
             self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         }
-        if stripToken != ""{
-            if let songId = UserDefaults.standard.value(forKey: "songId"){
-               // self.checkDownloadStatus(song_id: songId as! String , download_state : btnState! , index: btnSenderTag! , sender : btnTapDownloadSong!)
-                //func callWebserviceArtistPaymentSong(song_id:String, data: SongModel, sender: TonneruDownloadButton) {
-//                if (arrAlbumSong.count) > 0{
-//
-//                    if isFrom_Album == "Album"{
-//                        guard let currentSong = self.arrAlbumSong[btnSenderTag!] else {return}
-//                        self.callWebserviceArtistPaymentSong(song_id: songId as! String, data: currentSong, sender: btnTapDownloadSong!)
-//
-//                    }else{
-//
-//
-//
-//                        UserDefaults.standard.synchronize()
-//                        guard let currentSong = self.playListData?.songs[btnSenderTag!] else {return}
-//                        self.callWebserviceArtistPaymentSong(song_id: songId as! String, data: currentSong, sender: btnTapDownloadSong!)
-//
-//
-//
-//
-//                    }
-//                }
-            }
-        }
+//        if stripToken != ""{
+//            if let songId = UserDefaults.standard.value(forKey: "songId"){
+//               // self.checkDownloadStatus(song_id: songId as! String , download_state : btnState! , index: btnSenderTag! , sender : btnTapDownloadSong!)
+//                //func callWebserviceArtistPaymentSong(song_id:String, data: SongModel, sender: TonneruDownloadButton) {
+////                if (arrAlbumSong.count) > 0{
+////
+////                    if isFrom_Album == "Album"{
+////                        guard let currentSong = self.arrAlbumSong[btnSenderTag!] else {return}
+////                        self.callWebserviceArtistPaymentSong(song_id: songId as! String, data: currentSong, sender: btnTapDownloadSong!)
+////
+////                    }else{
+////
+////
+////
+////                        UserDefaults.standard.synchronize()
+////                        guard let currentSong = self.playListData?.songs[btnSenderTag!] else {return}
+////                        self.callWebserviceArtistPaymentSong(song_id: songId as! String, data: currentSong, sender: btnTapDownloadSong!)
+////
+////
+////
+////
+////                    }
+////                }
+//            }
+//        }
     }
     func getAllSongFromPlaylist(){
         self.activityIndicator.startAnimating()
@@ -344,7 +344,7 @@ class SongsInPlaylistViewController: UIViewController {
         TonneruMusicPlayer.repeatMode = .off
         TonneruMusicPlayer.shuffleModeOn = false
         
-//        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+//        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
 //        self.tableView.tableFooterView?.backgroundColor = .green
     }
     

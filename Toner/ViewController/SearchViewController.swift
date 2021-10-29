@@ -26,51 +26,37 @@ class SearchViewController: UIViewController {
     var arrArtistList = [ArtistModel]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        activityIndicator = addActivityIndicator()
-        self.view.addSubview(activityIndicator)
-        self.setNeedsStatusBarAppearanceUpdate()
-        self.view.backgroundColor = ThemeColor.backgroundColor
-        
-        self.setNavigationBar(title: "Search", isBackButtonRequired: false)
-        self.setNeedsStatusBarAppearanceUpdate()
-        
-        searchLabelText.text = "SEARCH"
-        searchLabelText.textColor = .white
-        searchLabelText.font = UIFont.montserratMedium.withSize(30)
-        
-//        chooseGenreLabel.text = "STATIONS"
-        chooseGenreLabel.text = "ARTISTS"
-
-        chooseGenreLabel.textColor = ThemeColor.headerColor
-        chooseGenreLabel.font = UIFont.montserratMedium.withSize(17)
-        
-        
-        searchTextField.placeholder = "🔍 Artist/Stations"
-        searchTextField.tintColor = ThemeColor.buttonColor
-        searchTextField.textAlignment = .center
-        searchTextField.font = UIFont.montserratRegular
-        
-        collectionViewWidth = (Double(self.collectionView.frame.width * 0.5) - 25.0)
-//        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-//        layout.itemSize = CGSize(width: ((collectionViewWidth / 2) - 5), height: 75)
-//        layout.estimatedItemSize = CGSize(width: ((collectionViewWidth / 2) - 5), height: 75)
-        print("collectionViewWidth:  \(collectionViewWidth)")
-        collectionView.dataSource   = self
-        collectionView.delegate     = self
-        collectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCollectionViewCell")//
-        collectionView.register(UINib(nibName: "ArtistCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ArtistCollectionViewCell")//ArtistCollectionViewCell
-        collectionView.register(MyHeaderFooterClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
-
-        collectionView.backgroundColor = .clear
-        searchTextField.delegate = self
-        genreData = self.appD.genreData
-        print(genreData)
-        //name
-        callWebserviceForArtise()
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
     }
     
+    func myplans(){
+        let reuestURL = "https://tonnerumusic.com/api/v1/myplans"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+                          ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+                
+                if(resposeJSON["status"] as? Bool ?? false){
+                    
+                }else{
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                    
+                }
+            }
+    }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
@@ -82,10 +68,50 @@ class SearchViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        myplans()
+        activityIndicator = addActivityIndicator()
+        self.view.addSubview(activityIndicator)
+        self.setNeedsStatusBarAppearanceUpdate()
+        self.view.backgroundColor = ThemeColor.backgroundColor
+        
+        self.setNavigationBar(title: "Search", isBackButtonRequired: false)
+        self.setNeedsStatusBarAppearanceUpdate()
+        
+        searchLabelText.text = "SEARCH"
+        searchLabelText.textColor = .white
+        searchLabelText.font = UIFont.montserratMedium.withSize(30)
+        chooseGenreLabel.text = "ARTISTS"
+        
+        chooseGenreLabel.textColor = ThemeColor.headerColor
+        chooseGenreLabel.font = UIFont.montserratMedium.withSize(17)
+        
+        
+        searchTextField.placeholder = "🔍 Artist/Stations"
+        searchTextField.tintColor = ThemeColor.buttonColor
+        searchTextField.textAlignment = .center
+        searchTextField.font = UIFont.montserratRegular
+        
+        collectionViewWidth = (Double(self.collectionView.frame.width * 0.5) - 25.0)
+        print("collectionViewWidth:  \(collectionViewWidth)")
+        collectionView.dataSource   = self
+        collectionView.delegate     = self
+        collectionView.register(UINib(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCollectionViewCell")//
+        collectionView.register(UINib(nibName: "ArtistCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ArtistCollectionViewCell")//ArtistCollectionViewCell
+        collectionView.register(MyHeaderFooterClass.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "Header")
+        
+        collectionView.backgroundColor = .clear
+        searchTextField.delegate = self
+        genreData = self.appD.genreData
+        print(genreData)
+        //name
+        callWebserviceForArtise()
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+        
         callWebserviceFOrEndChat()
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         if (TonneruMusicPlayer.player?.isPlaying ?? false){
-         self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 56, right: 0)
+            self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 56, right: 0)
         }else{
             self.collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }

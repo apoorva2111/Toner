@@ -166,7 +166,15 @@ class TonneruDownloadManager: NSObject{
         }
     }
     
-    
+    func download(data: ContentDetailsEntityModel){
+        guard URL(string: data.songPath) != nil else{
+            print("Not a downloadable url")
+            return
+        }
+        print("FileSize is :\(ByteCountFormatter.string(fromByteCount: Int64(data.fileSize) ?? 0, countStyle: .file))")
+        ContentDetailsEntity.saveData(with: data)
+    }
+
     func cancelDownload(){
         print("Download cancell called")
         Alamofire.SessionManager.default.session.getTasksWithCompletionHandler { (sessionDataTask, uploadData, downloadData) in

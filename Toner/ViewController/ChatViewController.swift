@@ -33,11 +33,12 @@ class ChatViewController: UIViewController {
             //"https://www.tonnerumusic.com/pages/chatroom?artist_id=\(userId)"
         }else{
             let userId : String = UserDefaults.standard.fetchData(forKey: .userId)
-            chatWebview.load(URLRequest(url: URL(string:         "https://www.tonnerumusic.com/pages/chatroom?artist_id=\(artistId)&member_id=\(userId)&chat=true")!))
-           // chatWebview.load(URLRequest(url: URL(string:         "https://www.tonnerumusic.com/pages/chatroom?artist_id=142&member_id=48&chat=true")!))
+        chatWebview.load(URLRequest(url: URL(string:         "https://www.tonnerumusic.com/pages/chatroom?artist_id=\(artistId)&member_id=\(userId)&chat=true")!))
+   
+            //chatWebview.load(URLRequest(url: URL(string:         "https://www.tonnerumusic.com/pages/chatroom?artist_id=142&member_id=48&chat=true")!))
             
 //            guard let url = URL(string: "https://www.tonnerumusic.com/pages/chatroom?artist_id=142&member_id=48&chat=true") else{ return }
-//            let safariVC = SFSafariViewController(url: url)
+//          let safariVC = SFSafariViewController(url: url)
 //            self.present(safariVC, animated: true, completion: nil)
         }
     }

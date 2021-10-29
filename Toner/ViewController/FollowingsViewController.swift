@@ -36,8 +36,8 @@ class FollowingsViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "ArtistCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ArtistCollectionViewCell")
-        fetchGenereData()
-        
+       // fetchGenereData()
+        myplans()
         NotificationCenter.default.addObserver(self, selector: #selector(self.fetchGenereData), name: .UpdateFollowingList, object: nil)
     }
     
@@ -51,6 +51,35 @@ class FollowingsViewController: UIViewController {
         }
     }
     
+    func myplans(){
+        let reuestURL = "https://tonnerumusic.com/api/v1/myplans"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+                          ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+                
+                if(resposeJSON["status"] as? Bool ?? false){
+                    self.fetchGenereData()
+                }else{
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                    
+                }
+            }
+    }
     @objc func fetchGenereData(){
         self.activityIndicator.startAnimating()
         let parameter = [

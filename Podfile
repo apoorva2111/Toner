@@ -13,5 +13,4 @@ pod 'IQKeyboardManagerSwift'
 pod 'Alamofire', '4.7.3'
 pod 'PINRemoteImage', '~> 3.0.1'
 pod 'WKWebViewRTC'
-pod 'Stripe'
 end

@@ -13,6 +13,8 @@ import Alamofire
 class EditProfileViewController: UIViewController {
     
     @IBOutlet weak var submitButton: UIButton!
+    
+    @IBOutlet weak var bottomSubmitButtonConstraint: NSLayoutConstraint!
     @IBOutlet weak var datePicker: APJTextPickerView!
     @IBOutlet weak var tagLineText: UITextField!
     @IBOutlet weak var profileImage: UIImageView!
@@ -74,8 +76,37 @@ class EditProfileViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.selectStation.text = SelectStationViewController.selectedStationName.joined(separator: ",")
+        myplans()
+        bottomSubmitButtonConstraint.constant = (TonneruMusicPlayer.player?.isPlaying ?? false) ? 100 : 0
+    }
         
-        
+    func myplans(){
+        let reuestURL = "https://tonnerumusic.com/api/v1/myplans"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+                          ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+                
+                if(resposeJSON["status"] as? Bool ?? false){
+                    
+                }else{
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                    
+                }
+            }
     }
     fileprivate func initialSetUp(){
         profileImage.layer.cornerRadius = profileImage.bounds.height / 2
@@ -86,7 +117,7 @@ class EditProfileViewController: UIViewController {
         setUpTextFields(lastName, value: UserDefaults.standard.fetchData(forKey: .userLastName), placeHolder: "Last Name")
         setUpTextFields(emailTextField, value: UserDefaults.standard.fetchData(forKey: .userEmail), placeHolder: "Email Address")
         setUpTextFields(phoneText, value: UserDefaults.standard.fetchData(forKey: .userPhone), placeHolder: "Phone Number")
-        setUpTextFields(paypalID, value: "", placeHolder: "Strip ID")
+        setUpTextFields(paypalID, value: "", placeHolder: "Paypal ID")
         setUpTextFields(tagLineText, value: "", placeHolder: "Tag Line")
         
         if UserDefaults.standard.fetchData(forKey: .userGroupID) == "3" {
@@ -208,7 +239,7 @@ class EditProfileViewController: UIViewController {
                 "gender": self.selectedGender,
                 "dob": self.selectedDate,
                 "tagline": self.tagLineText.text ?? "",
-                "strip": self.paypalID.text ?? "",
+                "paypal": self.paypalID.text ?? "",
                 "genre_id": SelectStationViewController.selectedStationName,
                 "user_id" : UserDefaults.standard.string(forKey: "userId") ?? ""
             ] as [String : Any]

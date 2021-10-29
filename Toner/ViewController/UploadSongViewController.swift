@@ -214,7 +214,7 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
     func uploadImage()
     {
         
-        songData_ = try! Data(contentsOf: self.url!)
+      //  songData_ = try! Data(contentsOf: self.url!)
         self.activityIndicator.startAnimating()
 
         if !NetworkReachabilityManager()!.isReachable{
@@ -240,7 +240,9 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
             multipartFormData.append(self.release_date.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"release_date")
             multipartFormData.append(price!.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"price")
             multipartFormData.append(self.allow_download.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"allow_download")
-            multipartFormData.append(self.songData_ as Data, withName: "track", fileName: self.songName, mimeType: "audio/mp3")
+           // multipartFormData.append(self.songData_ as Data, withName: "track", fileName: self.songName, mimeType: "audio/mp3")
+            multipartFormData.append( (self.url!), withName: "track")
+
 //            multipartFormData.append(self.songName.data(using: String.Encoding.utf8, allowLossyConversion: false) ?? Data(), withName :"track")
 
         }, to: url,method:HTTPMethod.post,
@@ -345,6 +347,11 @@ extension UploadSongViewController:UIImagePickerControllerDelegate{
                 currentData.user_id = obj["user_id"] as? String ?? ""
                 self.arrAblum.append(currentData)
             }
+            if self.arrAblum.count == 0 {
+                self.txtAlbum.isUserInteractionEnabled = false
+            }else{
+                self.txtAlbum.isUserInteractionEnabled = true
+            }
             self.AlbumPicker.reloadAllComponents()
             self.activityIndicator.stopAnimating()
            
@@ -396,7 +403,7 @@ extension UploadSongViewController : UIPickerViewDelegate, UIPickerViewDataSourc
         } else if pickerView == allDownloadPicker{
             txtAllowDownload.text =  arrStatus[row]
             let download = arrStatus[row]
-            if download == "yes"{
+            if download == "Yes"{
                 allow_download = "1"
             }else{
                 allow_download = "0"

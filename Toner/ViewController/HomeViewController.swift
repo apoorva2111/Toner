@@ -20,15 +20,10 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if UserDefaults.standard.value(forKey: "userSubscribed")as! Int == 0 {
-//        self.tabBarController?.selectedIndex = 3
-//        }
-      
         NotificationCenter.default.addObserver(self, selector: #selector(itemsAdded), name: NSNotification.Name(rawValue: "itemCount"), object: nil)
         activityIndicator = addActivityIndicator()
         self.view.addSubview(activityIndicator)
         
-//        self.navigationController?.navigationBar.barTintColor = .black
         navigationController?.navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.white,
             NSAttributedString.Key.font : UIFont.montserratMedium.withSize(17)
@@ -46,9 +41,41 @@ class HomeViewController: UIViewController {
         tableView.register(UINib(nibName: "HomeBannerTableViewCell", bundle: nil), forCellReuseIdentifier: "HomeBannerTableViewCell")
         tableView.register(UINib(nibName: "TopArtistTableViewCell", bundle: nil), forCellReuseIdentifier: "TopArtistTableViewCell")
         tableView.register(UINib(nibName: "GenresTableViewCell", bundle: nil), forCellReuseIdentifier: "GenresTableViewCell")
-        getHomeBanner()
-        getHomePageData()
        
+    }
+    
+    fileprivate func myplans(){
+       // self.activityIndicator.startAnimating()
+        let reuestURL = "https://tonnerumusic.com/api/v1/myplans"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+            ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+            
+                if(resposeJSON["status"] as? Bool ?? false){
+                    self.getHomeBanner()
+                    self.getHomePageData()
+                  
+                }else{
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                    destination.isFromSub = true
+                    self.navigationController?.pushViewController(destination, animated: true)
+                    
+                }
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -64,10 +91,12 @@ class HomeViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         if (TonneruMusicPlayer.player?.isPlaying ?? false){
-            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
         }else{
             self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         }
+        myplans()
+
     }
     
     func getHomeBanner(){

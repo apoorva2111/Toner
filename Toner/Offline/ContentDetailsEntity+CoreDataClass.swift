@@ -52,6 +52,21 @@ public class ContentDetailsEntity: NSManagedObject {
         
     }
     
+    public class func deleteAll(){
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: EntityNames.ContentDetailsEntity)
+        do{
+            if let result = try context.fetch(fetchRequest) as? [ContentDetailsEntity] {
+                for object in result {
+                        context.delete(object)
+                }
+            }
+            context.saveContext()
+        }
+        catch{
+            print("Error in Data fetching")
+        }
+    }
+    
     public class func fetchData() -> [ContentDetailsEntityModel]{
         var contentDetailsData = [ContentDetailsEntityModel]()
         

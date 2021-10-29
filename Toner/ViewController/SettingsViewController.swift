@@ -52,9 +52,9 @@ class SettingsViewController: UIViewController {
         setupView()
     }
     override func viewWillAppear(_ animated: Bool) {
+      //  myplans()
         if (TonneruMusicPlayer.player?.isPlaying ?? false){
-            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
-
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
         }else{
             self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         }
@@ -66,6 +66,36 @@ class SettingsViewController: UIViewController {
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         profileImage.clipsToBounds = true
 
+    }
+    
+    func myplans(){
+        let reuestURL = "https://tonnerumusic.com/api/v1/myplans"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+                          ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+                
+                if(resposeJSON["status"] as? Bool ?? false){
+
+                }else{
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                    
+                }
+            }
     }
     fileprivate func setupView(){
         profileImageBackView.backgroundColor = ThemeColor.buttonColor

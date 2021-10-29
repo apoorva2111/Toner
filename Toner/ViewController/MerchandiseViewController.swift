@@ -81,7 +81,7 @@ class MerchandiseViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
         
         if (TonneruMusicPlayer.player?.isPlaying ?? false){
-            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
         }else{
             self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         }

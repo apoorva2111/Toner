@@ -28,6 +28,13 @@ class MusicListViewController: UIViewController {
     var btnState : DownloadButtonStatus?
     var btnSenderTag : Int?
     
+    //varible declearation
+    var subArtistName = ""
+    var subArtistAmount = ""
+    var subArtistSongName = ""
+    var subArtistDuration = ""
+    var subArtistImage = ""
+    var param = [String : Any]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,25 +62,43 @@ class MusicListViewController: UIViewController {
         return .lightContent
     }
     
+    func myplans(){
+        let reuestURL = "https://tonnerumusic.com/api/v1/myplans"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+                          ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+                
+                if(resposeJSON["status"] as? Bool ?? false){
+
+                }else{
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                    
+                }
+            }
+    }
     override func viewWillAppear(_ animated: Bool) {
+        myplans()
         if (TonneruMusicPlayer.player?.isPlaying ?? false){
-            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
 
         }else{
             self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
         }
-        if stripToken != ""{
-            if let songId = UserDefaults.standard.value(forKey: "songId"){
-               // self.checkDownloadStatus(song_id: songId as! String , download_state : btnState! , index: btnSenderTag! , sender : btnTapDownloadSong!)
-                //func callWebserviceArtistPaymentSong(song_id:String, data: SongModel, sender: TonneruDownloadButton) {
-                if (artistDetailsData?.songs.count ?? 0) > 0{
-                    guard let currentSong = artistDetailsData?.songs[btnSenderTag!] else {return}
-                    self.callWebserviceArtistPaymentSong(song_id: songId as! String, data: currentSong, sender: btnTapDownloadSong!)
-
-                }
-            }
-        }
-        
     }
     
     func getArtistData(){
@@ -93,6 +118,7 @@ class MusicListViewController: UIViewController {
                 }
                 
             let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+            print(resposeJSON)
             self.activityIndicator.stopAnimating()
             let results = resposeJSON["status"] as? Int ?? 0
             
@@ -125,7 +151,9 @@ class MusicListViewController: UIViewController {
                     let fileType = newSong["filetype"] as? String ?? ""
                     let filesize = newSong["filesize"] as? String ?? ""
                     let duration = newSong["duration"] as? String ?? ""
-                    let songData = SongModel(song_id : songId , song_name: songName, image: songimage, path: songPath, filetype: fileType, filesize: filesize, duration: duration, artist_name: artistName, artistImage: image)
+                    let price = newSong["price"] as? String ?? ""
+                    let allow_download = newSong["allow_download"] as? String ?? ""
+                    let songData = SongModel(song_id: songId, song_name: songName, image: songimage, path: songPath, filetype: fileType, filesize: filesize, duration: duration, artist_name: artistName, artistImage: image, price: price, allow_download: allow_download)//SongModel(song_id : songId , song_name: songName, image: songimage, path: songPath, filetype: fileType, filesize: filesize, duration: duration, artist_name: artistName, artistImage: image, price: price)
                     songsList.append(songData)
                 }
                 let artistDetails = ArtistDetailsModel(artistName: artistName, artistImage: image, followStatus: followStatus, social: socailData, songs: songsList)
@@ -149,7 +177,7 @@ class MusicListViewController: UIViewController {
         TonneruMusicPlayer.repeatMode = .off
         TonneruMusicPlayer.shuffleModeOn = false
         
-        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
     }
     
     @objc func addToPlaylist(sender: UIButton){
@@ -211,13 +239,27 @@ class MusicListViewController: UIViewController {
         let apiURL = "https://tonnerumusic.com/api/v1/paymentsong"
         let urlConvertible = URL(string: apiURL)!
         let userID : String = UserDefaults.standard.fetchData(forKey: .userId)
+        print(param)
+        print([
+            "song_id": song_id,
+            "user_id": userID,
+            "card_type": (param["card_type"] as? String ?? ""),
+            "card_number": (param["card_number"] as? String ?? ""),
+            "cc_expire_date_month": (param["cc_expire_date_month"] as? String ?? ""),
+            "cc_expire_date_year": (param["cc_expire_date_year"] as? String ?? ""),
+            "cc_cvv2": (param["cc_cvv2"] as? String ?? ""),
+          ])
         Alamofire.request(urlConvertible,
                       method: .post,
                       parameters: [
                         "song_id": song_id,
                         "user_id": userID,
-                        "stripe_token": stripToken,
-            ] as [String: Any]).validate().responseJSON { (response) in
+                        "card_type": (param["card_type"] as? String ?? ""),
+                        "card_number": (param["card_number"] as? String ?? ""),
+                        "cc_expire_date_month": (param["cc_expire_date_month"] as? String ?? ""),
+                        "cc_expire_date_year": (param["cc_expire_date_year"] as? String ?? ""),
+                        "cc_cvv2": (param["cc_cvv2"] as? String ?? ""),
+                      ] as [String: Any]).validate().responseJSON { (response) in
                 
                 guard response.result.isSuccess else {
                     self.tabBarController?.view.makeToast(message: Message.apiError)
@@ -297,8 +339,13 @@ class MusicListViewController: UIViewController {
             UserDefaults.standard.synchronize()
             
             let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmSubscriptionViewController") as! ConfirmSubscriptionViewController
+            destination.subArtistDuration = subArtistDuration
+            destination.subArtistAmount = subArtistAmount
+            destination.subArtistName = subArtistName
+            destination.subArtistSongName = subArtistSongName
+            destination.subArtistImage = subArtistImage
+            destination.delegate = self
             self.navigationController!.pushViewController(destination, animated: true)
-
         }
     }
     
@@ -312,35 +359,24 @@ class MusicListViewController: UIViewController {
                         "user_id": UserDefaults.standard.string(forKey: "userId") ?? "",
                         "song_id": song_id
                    ] as [String: String]
-//        let params =  [
-//                       "user_id": "48",
-//                       "song_id": "24"
-//                   ] as [String: String]
         print(params)
         Alamofire.request(urlConvertible,
                       method: .post,
                       parameters: params)
         .validate().responseJSON { (response) in
                 print(response)
-                guard response.result.isSuccess else {
-                    self.tabBarController?.view.makeToast(message: Message.apiError)
-                     self.activityIndicator.stopAnimating()
-                    return
-                }
-                
+            guard response.result.isSuccess else {
+                self.tabBarController?.view.makeToast(message: Message.apiError)
+                self.activityIndicator.stopAnimating()
+                return
+            }
             let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
             self.activityIndicator.stopAnimating()
-            
             status = resposeJSON["download_status"] as? Bool ?? true
             message = resposeJSON["message"] as? String ?? ""
-            
             self.checkDownloadStatus = (download_status: status, message: message)
-            
             self.downloadActionAccordingToStatus(downloadStatus: self.checkDownloadStatus, state: download_state, index: index, sender : sender, song_id: song_id)
-
-            
         }
-     
     }
 }
 
@@ -383,6 +419,9 @@ extension MusicListViewController: UITableViewDataSource, UITableViewDelegate{
             let cell = tableView.dequeueReusableCell(withIdentifier: "SongListCell", for: indexPath) as! SongListCell
             cell.artistName.text = artistDetailsData?.songs[indexPath.row].artist_name
             cell.songName.text = artistDetailsData?.songs[indexPath.row].song_name
+            if artistDetailsData?.songs[indexPath.row].allow_download == "0"{
+                
+            }else{
             cell.downloadButton.delegate = self
             cell.downloadButton.downloadImage = UIImage(named: "download_list")
             cell.downloadButton.downloadCompleteImage = UIImage(named: "downloadComplete")
@@ -401,7 +440,7 @@ extension MusicListViewController: UITableViewDataSource, UITableViewDelegate{
                 downloadButtonStatus = .download
             }
             cell.downloadButton.status = downloadButtonStatus
-            
+            }
             if TonneruMusicPlayer.shared.currentSong?.song_name == artistDetailsData?.songs[indexPath.row].song_name{
                 cell.songName.textColor = ThemeColor.buttonColor
             }else{
@@ -460,12 +499,17 @@ extension MusicListViewController: TonneruDownloadManagerDelegate, TonneruDownlo
         
         UserDefaults.standard.removeObject(forKey: "songId")
         UserDefaults.standard.synchronize()
-        print(sender.tag)
-        print(state)
-        print(sender)
+       
         btnTapDownloadSong = sender
         btnState = state
         btnSenderTag = sender.tag
+        subArtistName = self.artistDetailsData?.songs[sender.tag].song_name ?? ""
+        subArtistAmount = self.artistDetailsData?.songs[sender.tag].price ?? ""
+        subArtistSongName = self.artistDetailsData?.songs[sender.tag].song_name ?? ""
+        subArtistDuration = self.artistDetailsData?.songs[sender.tag].duration ?? ""
+        subArtistImage =  artistDetailsData?.artistImage ?? ""
+        
+        //subArtistAmount = self.artistDetailsData?.songs[sender.tag].
         self.checkDownloadStatus(song_id: self.artistDetailsData?.songs[sender.tag].song_id ?? "" , download_state : state , index: sender.tag , sender : sender)
     }
 }
@@ -515,5 +559,16 @@ extension MusicListViewController{
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+}
+extension MusicListViewController : ConfirmSubscriptionDelegate{
+    func backWithData(param: [String : Any]) {
+        self.param = param
+        if let songId = UserDefaults.standard.value(forKey: "songId"){
+            if (artistDetailsData?.songs.count ?? 0) > 0{
+                guard let currentSong = artistDetailsData?.songs[btnSenderTag!] else {return}
+                self.callWebserviceArtistPaymentSong(song_id: songId as! String, data: currentSong, sender: btnTapDownloadSong!)
+            }
+        }
     }
 }

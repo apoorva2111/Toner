@@ -21,7 +21,7 @@ class SubscriptionViewController: UIViewController {
     var myPlanList = [MyPlanModel]()
     var memberPlanList = [MemberPlanModel]()
     var isMember = false
-    
+    var isFromSub = false
     
 
     override func viewDidLoad() {
@@ -68,6 +68,13 @@ class SubscriptionViewController: UIViewController {
             isMember = false
 
         }
+        
+        if (TonneruMusicPlayer.player?.isPlaying ?? false){
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 100))
+        }else{
+            self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: CGFloat.leastNonzeroMagnitude))
+        }
+
         myplans()
     }
     fileprivate func getPlanList(playFor:String){
@@ -280,6 +287,7 @@ extension SubscriptionViewController: UITableViewDataSource, UITableViewDelegate
         let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ConfirmSubscriptionViewController") as! ConfirmSubscriptionViewController
         let obj = planList[indexPath.row]
         destination.plan_id = obj.id
+        destination.isFromCheckSub = isFromSub
         self.navigationController?.pushViewController(destination, animated: true)
         }
     }

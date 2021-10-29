@@ -18,8 +18,7 @@ class PlayListViewController: UIViewController {
   
     @IBOutlet weak var lblDownload: UILabel!
     @IBOutlet weak var btnDownloadOutlet: UIButton!
-    
- 
+
     var activityIndicator: NVActivityIndicatorView!
     var offlineData = [ContentDetailsEntityModel]()
 
@@ -43,9 +42,36 @@ class PlayListViewController: UIViewController {
         tableView.register(UINib(nibName: "PlayListTableViewCell", bundle: nil), forCellReuseIdentifier: "PlayListTableViewCell")
         tableView.register(UINib(nibName: "DownloadTableViewCell", bundle: nil), forCellReuseIdentifier: "DownloadTableViewCell")
 
-       // self.tableView.backgroundColor = .clear
-//        reloadPlaylist
         NotificationCenter.default.addObserver(self, selector: #selector(getAllPlayList), name: Notification.Name("reloadPlaylist"), object: nil)
+    }
+    
+    func myplans(){
+        let reuestURL = "https://tonnerumusic.com/api/v1/myplans"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+                          ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+                
+                if(resposeJSON["status"] as? Bool ?? false){
+                    self.getAllPlayList()
+                }else{
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                }
+            }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -54,14 +80,14 @@ class PlayListViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        getAllPlayList()
+        myplans()
 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-
+    
     @objc
     fileprivate func getAllPlayList(){
         self.playListData.removeAll()
@@ -227,7 +253,7 @@ class PlayListViewController: UIViewController {
         TonneruMusicPlayer.shared.songList.removeAll()
         TonneruMusicPlayer.repeatMode = .off
         TonneruMusicPlayer.shuffleModeOn = false
-        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
     }
 }
 //MARK:- Download Song
@@ -243,10 +269,12 @@ extension PlayListViewController{
             return currentDownloadData
         }
         let currentDownloadData = CurrentDownloadEntity.fetchData()
-        offlineData.removeAll { (offlineDat) -> Bool in
-            return currentDownloadData.contains(where: {$0.contentDetails.songID == offlineDat.songID})
-        }
+//        offlineData.removeAll { (offlineDat) -> Bool in
+//            return currentDownloadData.contains(where: {$0.contentDetails.songID == offlineDat.songID})
+//        }
         tableView.reloadData()
+        self.activityIndicator.stopAnimating()
+
         if offlineData.count == 0{
             let alertController = UIAlertController(title: "Alert!", message: "No songs found in offline.", preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default) { (_) in
@@ -259,7 +287,6 @@ extension PlayListViewController{
     
     @objc
     fileprivate func deleteAction(sender: UIButton){
-        
         if TonneruMusicPlayer.shared.songList.count > 0 && TonneruMusicPlayer.shared.currentIndex > -1 && TonneruMusicPlayer.shared.songList.count > TonneruMusicPlayer.shared.currentIndex{
             let currentPlayingSongID = TonneruMusicPlayer.shared.songList[TonneruMusicPlayer.shared.currentIndex].song_id
             if self.offlineData[sender.tag].songID == currentPlayingSongID && TonneruMusicPlayer.shared.isMiniViewActive {
@@ -271,15 +298,36 @@ extension PlayListViewController{
         let alertController = UIAlertController(title: "Alert!", message: "Are you sure you want to delete the downloaded song?", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Yes", style: .destructive) { (_) in
             let currentDownloadData = self.offlineData[sender.tag].songID
-            ContentDetailsEntity.delete(songId: currentDownloadData)
-            self.fetchOfflineData()
+            self.deleteSongFromServer(songId: currentDownloadData)
         }
         let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
         self.present(alertController, animated: true, completion: nil)
-        
     }
+    
+    func deleteSongFromServer(songId: String){
+        Alamofire.request(URL(string: "https://tonnerumusic.com/api/v1/removesongfromdownloads")!,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId),
+                            "song_id": songId
+                          ] as [String: String])
+            .validate().responseJSON { (response) in
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                if resposeJSON["status"] as? Bool == true{
+                    self.tabBarController?.view.makeToast(message: resposeJSON["message"] as! String)
+                    ContentDetailsEntity.delete(songId: songId)
+                    self.fetchOfflineData()
+                }
+            }
+    }
+
 }
 //MARK:- UIButton Action
 extension PlayListViewController{
@@ -299,15 +347,54 @@ extension PlayListViewController{
             btnDownloadOutlet.setTitleColor(.white, for: .normal)
             lblDownload.backgroundColor = #colorLiteral(red: 0.9259513617, green: 0.7214286327, blue: 0.1487246752, alpha: 1)
             isSelectedTab = false
-            fetchOfflineData()
+            self.activityIndicator.startAnimating()
+            fetchSongFromServer()
             if TonneruMusicPlayer.player?.isPlaying ?? false{
-                self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+                self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
             }else{
                 self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
             }
-
-
         }
+    }
+    
+    func fetchSongFromServer(){
+        Alamofire.request(URL(string: "https://tonnerumusic.com/api/v1/mydownloads")!,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+                          ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.fetchOfflineData()
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.result.value as? NSArray ?? NSArray()
+                ContentDetailsEntity.deleteAll()
+                for responseJ in resposeJSON {
+                    let item = responseJ as! NSDictionary
+                    let model = SongModel(song_id: item["song_id"] as? String ?? "", song_name: item["song_name"] as? String ?? "", image: item["image"] as? String ?? "", path: item["song_path"] as? String ?? "", filetype: item["filetype"] as? String ?? "", filesize: item["filesize"] as? String ?? "", duration: item["duration"] as? String ?? "", artist_name: item["artist_name"] as? String ?? "", artistImage: item["artist_image"] as? String ?? "", price: "")
+                    self.downloadAudio(data: model)
+                }
+                self.fetchOfflineData()
+            }
+    }
+    
+    func downloadAudio(data: SongModel){
+        var contentData =  ContentDetailsEntityModel()
+        contentData.artistImage = data.artistImage
+        contentData.artistName = data.artist_name
+        contentData.songName = data.song_name
+        contentData.songID = data.song_id
+        contentData.songImage = data.image
+        contentData.songPath = data.path
+        contentData.fileSize = data.filesize
+        contentData.fileType = data.filetype
+        contentData.songDuration = data.duration.durationString
+        TonneruDownloadManager.shared.download(data: contentData)
     }
 }
 

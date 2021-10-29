@@ -38,8 +38,43 @@ class MySongViewController: UIViewController {
         lbtMySong.register(UINib(nibName: "PlayListTableViewCell", bundle: nil), forCellReuseIdentifier: "PlayListTableViewCell")
         btnUploadSongOutlet.layer.cornerRadius = 5
         btnUploadSongOutlet.layer.masksToBounds = true
-        getSongList()
+       // getSongList()
+       
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        myplans()
+    }
+    
+    func myplans(){
+        let reuestURL = "https://tonnerumusic.com/api/v1/myplans"
+        let urlConvertible = URL(string: reuestURL)!
+        Alamofire.request(urlConvertible,
+                          method: .post,
+                          parameters: [
+                            "user_id": UserDefaults.standard.fetchData(forKey: .userId)
+                          ] as [String: String])
+            .validate().responseJSON { (response) in
+                
+                guard response.result.isSuccess else {
+                    self.tabBarController?.view.makeToast(message: Message.apiError)
+                    self.activityIndicator.stopAnimating()
+                    return
+                }
+                
+                let resposeJSON = response.value as? NSDictionary ?? NSDictionary()
+                print(resposeJSON)
+                self.activityIndicator.stopAnimating()
+                
+                if(resposeJSON["status"] as? Bool ?? false){
+                    self.getSongList()
+                }else{
+                    let destination = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SubscriptionViewController") as! SubscriptionViewController
+                    self.navigationController?.pushViewController(destination, animated: true)
+                    
+                }
+            }
     }
      func getSongList(){
         self.activityIndicator.startAnimating()
@@ -131,7 +166,7 @@ class MySongViewController: UIViewController {
         TonneruMusicPlayer.repeatMode = .off
         TonneruMusicPlayer.shuffleModeOn = false
         
-        self.lbtMySong.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 56))
+        self.lbtMySong.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 88))
     }
 }
 

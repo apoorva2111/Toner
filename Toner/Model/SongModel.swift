@@ -17,5 +17,9 @@ struct SongModel{
     var duration    : String = ""
     var artist_name : String = ""
     var artistImage : String = ""
+    var price       : String = ""
+    var allow_download : String = ""
+    
+    
 }
 

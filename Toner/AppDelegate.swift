@@ -12,7 +12,7 @@ import AudioPlayerManager
 import AVFoundation
 import CoreData
 import UserNotifications
-import Stripe
+//import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
 //        StripeAPI.defaultPublishableKey = "pk_test_51IyKkkGZwms8klUwrCKGzBP0DfyIrmV4YOs1BVSLkqGxsf8Wp22t2knBfCyJkXesUXSglIAL2MixI9bgev71KqSQ00WYyqUxXh"
        
-StripeAPI.defaultPublishableKey = "pk_live_51IyKkkGZwms8klUwXg3n6zSp6EI9A3xfhNx25d5yEK5UgN0QEb2Mb0HBzv8YZxzVJvT32yRhz0HIe13iC3KKJEZd00qNMUhNjC"
+//StripeAPI.defaultPublishableKey = "pk_live_51IyKkkGZwms8klUwXg3n6zSp6EI9A3xfhNx25d5yEK5UgN0QEb2Mb0HBzv8YZxzVJvT32yRhz0HIe13iC3KKJEZd00qNMUhNjC"
         
         print("Document Dir: \(DocumentDirectory)")
         if #available(iOS 10, *)
@@ -155,6 +155,9 @@ StripeAPI.defaultPublishableKey = "pk_live_51IyKkkGZwms8klUwXg3n6zSp6EI9A3xfhNx2
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "TonneruDownload")
+        for description in container.persistentStoreDescriptions {
+            print("db location: \(description.url!)")
+        }
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
